@@ -1,6 +1,11 @@
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
+  # You must skip_before_action for the destroy action in each SessionsController 
+  # to prevent the redirect to happen before the sign out occurs.
+  include Accessible
+  skip_before_action :check_user, only: :destroy
+  
   # GET /resource/sign_in
   # def new
   #   super
