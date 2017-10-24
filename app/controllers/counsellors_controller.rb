@@ -1,0 +1,2 @@
+class CounsellorsController < ApplicationController
+end
