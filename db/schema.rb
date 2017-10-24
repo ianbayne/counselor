@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024055126) do
+ActiveRecord::Schema.define(version: 20171024062436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,51 @@ ActiveRecord::Schema.define(version: 20171024055126) do
     t.index ["reset_password_token"], name: "index_counsellors_on_reset_password_token", unique: true
   end
 
+  create_table "goals", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id"
+    t.bigint "counsellor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["counsellor_id"], name: "index_goals_on_counsellor_id"
+    t.index ["user_id"], name: "index_goals_on_user_id"
+  end
+
+  create_table "moods", force: :cascade do |t|
+    t.integer "mood"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_moods_on_user_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "content"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id"
+    t.bigint "counsellor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["counsellor_id"], name: "index_reviews_on_counsellor_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "user_profiles", force: :cascade do |t|
+    t.integer "answer"
+    t.bigint "question_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_user_profiles_on_question_id"
+    t.index ["user_id"], name: "index_user_profiles_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -62,4 +107,11 @@ ActiveRecord::Schema.define(version: 20171024055126) do
 
   add_foreign_key "appointments", "counsellors"
   add_foreign_key "appointments", "users"
+  add_foreign_key "goals", "counsellors"
+  add_foreign_key "goals", "users"
+  add_foreign_key "moods", "users"
+  add_foreign_key "reviews", "counsellors"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "user_profiles", "questions"
+  add_foreign_key "user_profiles", "users"
 end
