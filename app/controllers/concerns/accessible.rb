@@ -21,7 +21,7 @@ module Accessible
       # if counsellor tries to visit user page, redicrect to counsellor dashboard
       # currently redirect to home page as there is no dash board view
       # redirect_to(authenticated_user_root_path) && return
-      redirect_to(root_path) && return
+      redirect_to(user_path(current_user)) && return
     end
   end
 end
