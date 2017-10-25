@@ -1,0 +1,8 @@
+<h1><%= @conversation.subject %></h1>
+
+<% @conversation.receipts_for(current_user).each do |receipt| %>
+  <div>
+    <div><%= receipt.message.sender.name %> commented:</div>
+    <p><%= receipt.message.body %></p>
+  </div>
+<% end %>
