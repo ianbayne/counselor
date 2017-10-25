@@ -1,0 +1,43 @@
+.anchor__text {
+  font-size: inherit;
+}
+
+%flexVertExtend {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  padding-bottom: 40px;
+}
+.flex__vert {
+  &--left {
+    @extend %flexVertExtend;
+    justify-content: left;
+  }
+  &--center {
+    @extend %flexVertExtend;
+    justify-content: center;
+  }
+}
+
+$heightNoNav: calc(100vh - #{$navbarHeight});
+.height__no-nav {
+  height: $heightNoNav;
+}
+
+$base: 20px;
+.well {
+  &__vertical {
+    &--sm {
+      padding: ($base * 1) 0;
+    }
+    &--md {
+      padding: ($base * 2) 0;
+    }
+    &--lg {
+      padding: ($base * 3) 0;
+    }
+  }
+}
+.font__color--white {
+  color: #FFFFFF;
+}
