@@ -16,6 +16,7 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
+gem 'mailboxer'
 
 group :development, :test do
   gem 'pry-byebug'
@@ -25,3 +26,6 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
+gem 'cloudinary'
+gem 'carrierwave'
