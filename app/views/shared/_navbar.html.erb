@@ -10,6 +10,7 @@
     <!-- test for accessing counsellor dashboard start -->
     <% if current_counsellor %>
     <%= link_to "Counsellor Dashboard #{current_counsellor.email}", counsellor_path(current_counsellor), class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "Counsellor logout", destroy_counsellor_session_path, method: :delete %>
     <% end %>
     <!-- test for accessing counsellor dashboard end -->
 
