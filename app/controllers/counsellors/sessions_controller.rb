@@ -3,6 +3,7 @@ class Counsellors::SessionsController < Devise::SessionsController
   
   # You must skip_before_action for the destroy action in each SessionsController 
   # to prevent the redirect to happen before the sign out occurs.
+  
   include Accessible
   skip_before_action :check_user, only: :destroy
 
