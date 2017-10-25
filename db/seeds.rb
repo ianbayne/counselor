@@ -38,6 +38,46 @@ p "Seed counsellors"
   i += 1
 end
 
+p "Finished seeding."
+
+# QUESTIONS#
+p "Seed questions"
+
+question = Question.create(content: "Work-related issues", active: true)
+p "create question \##{question.id}"
+p "content:", question.content
+p "active: #{question.active}"
+
+question = Question.create(content: "Relationship issues", active: true)
+p "create question \##{question.id}"
+p "content:", question.content
+p "active: #{question.active}"
+
+question = Question.create(content: "Loss of family or friend issues", active: true)
+p "create question \##{question.id}"
+p "content:", question.content
+p "active: #{question.active}"
+
+question = Question.create(content: "Financial issues", active: true)
+p "create question \##{question.id}"
+p "content:", question.content
+p "active: #{question.active}"
+
+question = Question.create(content: "Other issues", active: true)
+p "create question \##{question.id}"
+p "content:", question.content
+p "active: #{question.active}"
+
+question = Question.create(content: "Do you prefer a male counsellor?", active: true)
+p "create question \##{question.id}"
+p "content:", question.content
+p "active: #{question.active}"
+
+question = Question.create(content: "Do you prefer a female counsellor?", active: true)
+p "create question \##{question.id}"
+p "content:", question.content
+p "active: #{question.active}"
+
 p "Seed users"
 i = 1
 5.times do
@@ -56,3 +96,4 @@ i = 1
 end
 
 p "Finished seeding."
+
