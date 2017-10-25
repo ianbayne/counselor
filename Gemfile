@@ -33,3 +33,4 @@ end
 
 gem 'cloudinary'
 gem 'carrierwave'
+gem 'acts-as-taggable-on', '~> 5.0'
