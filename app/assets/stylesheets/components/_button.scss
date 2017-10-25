@@ -7,7 +7,11 @@
   line-height: 1;
   margin: 15px;
   padding: 10px 50px 13px 50px;
+  transition: $duration--sm ease-in;
   &:hover {
-    color: #FFFFFF;
+    // border: inherit;
+    background-color: #FFFFFF;
+    color: $color__theme--main;
+    transition: $duration--sm ease-in;
   }
 }

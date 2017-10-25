@@ -1,5 +1,17 @@
+$duration--sm: 0.2s;
+$duration--md: 0.4s;
+$duration--lg: 0.6s;
+
 .anchor__text {
+  border-bottom: 1px solid #FFF;
+  color: inherit;
   font-size: inherit;
+  font-weight: bold;
+  padding: 0 0 2px 0;
+  text-decoration: none;
+  &:hover {
+    padding: 0 0 4px 0;
+  }
 }
 
 %flexVertExtend {
