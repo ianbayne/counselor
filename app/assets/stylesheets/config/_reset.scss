@@ -59,6 +59,7 @@ table {
 $baseFont: 16px;
 p {
   font-size: $baseFont;
+  line-height: 1.25;
 }
 // NOTE
 // h1 = Banners (Banners)
@@ -84,7 +85,7 @@ h3 {
   }
 }
 h4 {
-  font-size: $baseFont * 1.6;
+  font-size: $baseFont * 1.75;
 }
 h5 {
   font-size: $baseFont * 1;
