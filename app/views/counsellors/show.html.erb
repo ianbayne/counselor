@@ -1,2 +1,7 @@
-<p>Counsellor dashboard: <%= current_counsellor.email %></p>
+<p>Counsellor dashboard:</p>
+<p> <%= current_counsellor.email %></p>
+<p><%= current_counsellor.first_name %></p>
+<p><%= current_counsellor.last_name %></p>
+<p><%= current_counsellor.age %></p>
+<p><%= current_counsellor.gender == 0 ? "male" : "female" %></p>
 

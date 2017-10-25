@@ -12,8 +12,18 @@ p "only email is available for user and counsellor now."
 i = 1
 p "Seed counsellors"
 10.times do
-  counsellor = Counsellor.create(email: "counsellor#{i}@test.com", password: 123456)
+  counsellor = Counsellor.create(
+    first_name: "first_name#{i}",
+    last_name: "last_name#{i}",
+    age: (30..60).to_a.sample,
+    gender: (0..1).to_a.sample,
+    email: "counsellor#{i}@test.com", 
+    password: "123456")
   p "create counsellor\##{i}"
+  p "first_name", counsellor.first_name
+  p "last_name", counsellor.last_name
+  p "age", counsellor.age
+  p "gender", counsellor.gender
   p "email:", counsellor.email
   p "password:", counsellor.password
   i += 1
@@ -26,7 +36,7 @@ i = 1
 
   user = User.create(user_name: "user_name#{i}", 
     email: "user#{i}@test.com", 
-    password: 123456,
+    password: "123456",
     counsellor: user_counsellor)
 
   p "create user\##{i}"
