@@ -1,1 +1,21 @@
 // Specific CSS for your home-page
+.background--multiply {
+  background-color: rgba(103, 173, 200, 0.8);
+}
+.background--home {
+  background-image: url('pexels-photo-238118');
+  background-position: center;
+  background-size: cover;
+  filter: blur(2px);
+  height: $heightNoNav;
+  left: 0;
+  opacity: 0.25;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  z-index: -100;
+}
+.wrapper {
+  height: $heightNoNav;
+  position: relative;
+}

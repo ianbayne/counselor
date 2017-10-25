@@ -4,17 +4,12 @@
 // $body-font: "Open Sans", "Helvetica", "sans-serif";
 // $headers-font: "Raleway", "Helvetica", "sans-serif";
 
-@import url('https://fonts.googleapis.com/css?family=Baloo|Open+Sans:300,400,600,700');
-$body-font: 'Open Sans', 'sans-serif';
+// @import url('https://fonts.googleapis.com/css?family=Baloo|Open+Sans:300,400,600,700');
+// $body-font: 'Open Sans', 'sans-serif';
+// $headers-font: 'Baloo', 'cursive';
+@import url('https://fonts.googleapis.com/css?family=Baloo|Exo+2:300,400,500,600,700');
+$body-font: 'Exo 2', 'sans-serif';
 $headers-font: 'Baloo', 'cursive';
-
-// NOTE
-// h1 = Banners (Banners)
-// h2 = Page Title
-// h3 = Page sub-Title
-// h4 = Article Header
-// h5 = Article sub-Header
-
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {

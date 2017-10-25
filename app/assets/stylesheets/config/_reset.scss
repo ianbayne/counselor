@@ -1,3 +1,4 @@
+// BASE RESET
 @charset "UTF-8";
 /* RESET */
 html, body, div, span, applet, object, iframe, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
@@ -14,12 +15,18 @@ html {
   box-sizing: inherit;
 }
 body {
-  font-family: "Poppins", "Helvetica", "Verdana", sans-serif;
+  // font-family: "Poppins", "Helvetica", "Verdana", sans-serif;
   font-variant-ligatures: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-h1, h2, h3, h4, h5, h6, p {
+h1, h2, h3, h4, h5, h6 {
+  color: $color__theme--main;
+  margin: 0;
+  // line-height: 1;
+}
+p {
+  color: $color__font--main;
   margin: 0;
 }
 img {
@@ -47,8 +54,47 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-a:hover {
-  text-decoration: none;
+
+// UNIQUE RESETS
+$baseFont: 16px;
+p {
+  font-size: $baseFont;
+}
+// NOTE
+// h1 = Banners (Banners)
+// h2 = Page Title
+// h3 = Page sub-Title
+// h4 = Article Header
+// h5 = Article sub-Header
+h1 {
+  font-size: $baseFont * 7;
+  letter-spacing: -1px;
+}
+h2 {
+  font-size: $baseFont * 2.5;
+  margin: $baseFont 0 $baseFont 0;
+  &.bfont {
+    font-family: $body-font;
+  }
+}
+h3 {
+  font-size: $baseFont * 1.5;
+  &.bfont {
+    font-family: $body-font;
+  }
+}
+h4 {
+  font-size: $baseFont * 1.6;
+}
+h5 {
+  font-size: $baseFont * 1;
+}
+a {
+  font-family: $body-font;
+  &:hover, &:active, &:focus {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 .debug {
   border: 1px dashed red;
