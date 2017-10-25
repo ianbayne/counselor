@@ -9,17 +9,6 @@
 p "start seeding."
 p "only email is available for user and counsellor now."
 
- p "Seed users"
- i = 1
- 5.times do
-   user = User.create(email: "user#{i}@test.com", password: 123456)
-   p "create user\##{i}"
-   p "email:", user.email
-   p "password:", user.password
-
-   i += 1
- end
-
 i = 1
 p "Seed counsellors"
 10.times do
@@ -27,6 +16,23 @@ p "Seed counsellors"
   p "create counsellor\##{i}"
   p "email:", counsellor.email
   p "password:", counsellor.password
+  i += 1
+end
+
+p "Seed users"
+i = 1
+5.times do
+  user_counsellor = Counsellor.where('id >= ?', rand((Counsellor.first.id)..(Counsellor.last.id))).first
+
+  user = User.create(user_name: "user_name#{i}", 
+    email: "user#{i}@test.com", 
+    password: 123456,
+    counsellor: user_counsellor)
+
+  p "create user\##{i}"
+  p "user_name:", user.user_name
+  p "email:", user.email
+  p "counsellor:", user.counsellor.email
   i += 1
 end
 
