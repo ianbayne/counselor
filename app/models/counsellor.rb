@@ -4,4 +4,5 @@ class Counsellor < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :appointments
+  has_many :users
 end
