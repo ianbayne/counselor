@@ -4,4 +4,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :appointments
+  
+  belongs_to :counsellor
+
+  acts_as_messageable
+
+  def name
+    "#{email}"
+  end
+
+  def mailboxer_email(object)
+    nil
+  end
 end
