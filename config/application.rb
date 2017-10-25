@@ -34,5 +34,8 @@ module Counselor
     config.generators.system_tests = nil
 
     config.action_view.embed_authenticity_token_in_remote_forms = true
+
   end
 end
+config.middleware.delete Rack::Lock
+config.middleware.use FayeRails::Middleware, mount: '/faye', :timeout => 25
