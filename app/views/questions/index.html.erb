@@ -1,0 +1,11 @@
+<div class="container">
+  <form action="">
+  <% @questions.each do |question| %>
+    <div>
+      <label for="<% question.id %>"><%= question.content %></label>
+      <input type="checkbox" id="<% question.id %>" name="" value="">
+    </div>
+  <% end %>
+    <input type="submit">
+  </form>
+</div>

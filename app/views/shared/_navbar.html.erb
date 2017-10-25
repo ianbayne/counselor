@@ -8,9 +8,17 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
+    <!-- test for accessing counsellor dashboard start -->
+    <% if current_counsellor %>
+    <%= link_to "Counsellor Dashboard #{current_counsellor.email}", counsellor_path(current_counsellor), class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "Counsellor logout", destroy_counsellor_session_path, method: :delete %>
+    <% end %>
+    <!-- test for accessing counsellor dashboard end -->
+
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
+
       <%#= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%#= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%#= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
@@ -21,9 +29,15 @@
           <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
+              <%= link_to "Profile", user_path(current_user) %>
+              
+              <%# Below can be deleted %>
+              <% if false %>
               <%= link_to "#" do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
               <% end %>
+              <% end %>
+
             </li>
             <li>
               <%= link_to "#" do %>
