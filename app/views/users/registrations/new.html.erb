@@ -8,7 +8,7 @@
     <%= f.association :counsellor, 
         required: true, 
         autofocus: true, 
-        collection: Counsellor.all,
+        collection: @matched_counsellors,
         :label_method => 
         lambda { |counsellor| "#{counsellor.first_name} #{counsellor.last_name}" } %>
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>

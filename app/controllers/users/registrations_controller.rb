@@ -6,9 +6,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   # GET /resource/sign_up
   def new
+    @matched_counsellors = Counsellor.limit(3)
     super
-    # by matching, limit @counsellors to three.
-    @counsellors = Counsellor.all
   end
 
   # POST /resource
