@@ -14,6 +14,11 @@ Counsellor.destroy_all
 i = 1
 p "Seed counsellors"
 10.times do
+
+  specialty_list = Counsellor::SPECIALTY.shuffle
+
+  p specialty_list
+
   counsellor = Counsellor.create(
     first_name: "first_name#{i}",
     last_name: "last_name#{i}",
@@ -21,6 +26,10 @@ p "Seed counsellors"
     gender: (0..1).to_a.sample,
     email: "counsellor#{i}@test.com", 
     password: "123456")
+
+  3.times do
+    counsellor.specialty_list.add(specialty_list.pop)
+  end
 
   url = ["https://cdn3.iconfinder.com/data/icons/rcons-user-action/32/boy-512.png",
         "https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png"]
