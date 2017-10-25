@@ -12,19 +12,18 @@ $duration--lg: 0.6s;
     padding: 0 0 4px 0;
   }
 }
-%flexVertExtend {
+%flexExtend {
   align-items: center;
   display: flex;
   height: 100%;
-  padding-bottom: 40px;
 }
-.flex__vert {
-  &--left {
-    @extend %flexVertExtend;
+.flex {
+  &--vh-left {
+    @extend %flexExtend;
     justify-content: left;
   }
-  &--center {
-    @extend %flexVertExtend;
+  &--vh-center {
+    @extend %flexExtend;
     justify-content: center;
   }
 }
