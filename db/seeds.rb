@@ -7,7 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 p "start seeding."
-p "only email is available for user and counsellor now."
+
+User.destroy_all
+Counsellor.destroy_all
 
 i = 1
 p "Seed counsellors"
@@ -19,11 +21,18 @@ p "Seed counsellors"
     gender: (0..1).to_a.sample,
     email: "counsellor#{i}@test.com", 
     password: "123456")
+
+  url = ["https://cdn3.iconfinder.com/data/icons/rcons-user-action/32/boy-512.png",
+        "https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png"]
+  counsellor.remote_photo_url = url[counsellor.gender]
+  counsellor.save! 
+
   p "create counsellor\##{i}"
   p "first_name", counsellor.first_name
   p "last_name", counsellor.last_name
   p "age", counsellor.age
   p "gender", counsellor.gender
+  p "photo_url", counsellor.photo
   p "email:", counsellor.email
   p "password:", counsellor.password
   i += 1
