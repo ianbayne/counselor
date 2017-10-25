@@ -5,6 +5,12 @@
 
   <div class="form-inputs">
     <%= f.input :email, required: true, autofocus: true %>
+    <%= f.association :counsellor, 
+        required: true, 
+        autofocus: true, 
+        collection: Counsellor.all,
+        :label_method => 
+        lambda { |counsellor| "#{counsellor.first_name} #{counsellor.last_name}" } %>
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
     <%= f.input :password_confirmation, required: true %>
   </div>
