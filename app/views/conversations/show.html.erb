@@ -7,7 +7,7 @@
   </div>
 <% end %>
 
-<%= form_tag conversation_messages_path(@conversation), method: :post do %> <!-- Regular form tag and not a form_for because we're not interacting with objects in the controller -->
+<%= form_tag conversation_messages_path(@conversation), method: :post, remote: true do %> <!-- Regular form tag and not a form_for because we're not interacting with objects in the controller -->
   <div>
     <%= text_area_tag :body %>
   </div>

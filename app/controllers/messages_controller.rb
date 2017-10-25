@@ -3,7 +3,9 @@ class MessagesController < ApplicationController
 
   def create
     receipt = current_user.reply_to_conversation(@conversation, params[:body]) #send_message is for creating a new conversation. reply_to_conversation is for replying to a conversation
-    redirect_to conversation_path(receipt.conversation)
+    # redirect_to conversation_path(receipt.conversation)
+    format.html {redirect_to root_url}
+    format.js
   end
 
   private
