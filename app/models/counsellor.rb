@@ -5,4 +5,14 @@ class Counsellor < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :appointments
   has_many :users
+
+  acts_as_messageable
+
+  def name
+    "User #{id}"
+  end
+
+  def mailboxer_email(object)
+    nil
+  end
 end

@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users, path: 'users', controllers: { 
+  devise_for :users, path: 'users', controllers: {
     sessions: "users/sessions",
     registrations: "users/registrations"
   }
-  devise_for :counsellors, path: 'counsellors', controllers: { 
+  devise_for :counsellors, path: 'counsellors', controllers: {
     sessions: "counsellors/sessions",
     registrations: "counsellors/registrations"
   }
@@ -11,4 +11,8 @@ Rails.application.routes.draw do
   resources :users
   resources :counsellors
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :conversations do
+    resources :messages
+  end
 end
