@@ -1,3 +1,5 @@
 <p>User dashboard:</p>
-<p><%= current_user.email %></p>
-<p><%= current_user.user_name %></p>
+<p><%= @user.email %></p>
+<p><%= @user.user_name %></p>
+<p>Name of counsellor</p>
+<p><%= @counsellor.first_name %> <%= @counsellor.last_name %></p>
