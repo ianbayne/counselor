@@ -1,15 +1,9 @@
 <h1><%= @conversation.subject %></h1>
 
-<% @conversation.receipts_for(current_user).reverse.each do |receipt| %>
-  <div>
-    <div><%= receipt.message.sender.name %> commented:</div>
-    <p><%= receipt.message.body %></p>
-  </div>
-<% end %>
+<div id="conversation">
+  <% @conversation.receipts_for(current_user).each do |receipt| %>
+    <%= render 'messages/show', receipt: receipt %>
+  <% end %>
+</div>
 
-<%= form_tag conversation_messages_path(@conversation), method: :post do %> <!-- Regular form tag and not a form_for because we're not interacting with objects in the controller -->
-  <div>
-    <%= text_area_tag :body %>
-  </div>
-  <%= submit_tag %>
-<% end %>
+<%= render 'messages/form', conversation: @conversation %>
