@@ -91,7 +91,7 @@ h5 {
 }
 a {
   font-family: $body-font;
-  &:hover {
+  &:hover, &:active, &:focus {
     color: inherit;
     text-decoration: none;
   }
