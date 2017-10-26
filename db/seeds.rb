@@ -14,7 +14,7 @@ Counsellor.destroy_all
 i = 1
 p "Seed counsellors"
 p "specialty_list for counsellor as below."
-p specialty_list
+p Counsellor::SPECIALTY
 20.times do
 
   specialty_list = Counsellor::SPECIALTY.shuffle
