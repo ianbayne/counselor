@@ -1,8 +1,18 @@
 <p>Counsellor dashboard:</p>
-<p> <%= current_counsellor.email %></p>
-<p><%= current_counsellor.first_name %></p>
-<p><%= current_counsellor.last_name %></p>
-<p><%= current_counsellor.age %></p>
-<p><%= current_counsellor.gender == 0 ? "male" : "female" %></p>
+<p>Email: <%= current_counsellor.email %></p>
+<p>First name: <%= current_counsellor.first_name %></p>
+<p>Last name: <%= current_counsellor.last_name %></p>
+<p>Age: <%= current_counsellor.age %></p>
+<p>Gender: <%= current_counsellor.gender == 0 ? "male" : "female" %></p>
+
+<p>My specialty</p>
+
+<ul>
+<% current_counsellor.specialty_list.each do |specialty| %>
+  <li><%= Counsellor::SPECIALTYMAP[specialty.to_sym] %></li>
+<% end %>
+</ul>
+
 <%= cl_image_tag current_counsellor.photo, height: 300, width: 400, crop: :fill %>
+
 

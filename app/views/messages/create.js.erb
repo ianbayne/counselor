@@ -1,2 +1,8 @@
-$('#conversation').append('<%= j render "messages/show", receipt: @receipt %>');
+// $('#conversation').append('<%= j render "messages/show", receipt: @receipt %>');
+// $('#comment-body').val('');
+
+
+publisher = client.publish('/comments', {
+  message: '<%= j render "messages/show", receipt: @receipt %>'
+});
 $('#comment-body').val('');
