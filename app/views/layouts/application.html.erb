@@ -9,11 +9,11 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
 
     <!-- fullcalendar.io -->
-    <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
+<!--     <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
     <script src='lib/jquery.min.js'></script>
     <script src='lib/moment.min.js'></script>
     <script src='fullcalendar/fullcalendar.js'></script>
-
+ -->
   </head>
   <body>
     <%= render 'shared/navbar' %>
@@ -25,5 +25,7 @@
       </div>
     </div>
     <%= javascript_include_tag 'application' %>
+    <%= yield(:after_js) %>
+
   </body>
 </html>
