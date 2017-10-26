@@ -33,10 +33,9 @@ end
 
 gem 'cloudinary'
 gem 'carrierwave'
-<<<<<<< HEAD
-# gem 'fullcalendar-rails'
+
 gem 'momentjs-rails'
 gem 'fullcalendar.io-rails'
-=======
+
 gem 'acts-as-taggable-on', '~> 5.0'
->>>>>>> master
+
