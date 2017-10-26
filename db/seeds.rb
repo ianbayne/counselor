@@ -19,14 +19,14 @@ p Counsellor::SPECIALTY
 
   specialty_list = Counsellor::SPECIALTY.shuffle
 
-  
+
 
   counsellor = Counsellor.create(
     first_name: "first_name#{i}",
     last_name: "last_name#{i}",
     age: (30..60).to_a.sample,
     gender: (0..1).to_a.sample,
-    email: "counsellor#{i}@test.com", 
+    email: "counsellor#{i}@test.com",
     password: "123456")
 
   3.times do
@@ -36,7 +36,7 @@ p Counsellor::SPECIALTY
   url = ["https://cdn3.iconfinder.com/data/icons/rcons-user-action/32/boy-512.png",
         "https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png"]
   counsellor.remote_photo_url = url[counsellor.gender]
-  counsellor.save! 
+  counsellor.save!
 
   p "create counsellor\##{i}"
   p "first_name", counsellor.first_name
@@ -94,8 +94,8 @@ i = 1
 5.times do
   user_counsellor = Counsellor.where('id >= ?', rand((Counsellor.first.id)..(Counsellor.last.id))).first
 
-  user = User.create(user_name: "user_name#{i}", 
-    email: "user#{i}@test.com", 
+  user = User.create(user_name: "user_name#{i}",
+    email: "user#{i}@test.com",
     password: "123456",
     counsellor: user_counsellor)
 
@@ -106,5 +106,33 @@ i = 1
   i += 1
 end
 
-p "Finished seeding."
 
+p "Seed Appointments"
+
+Appointment.create(
+  start_time: DateTime.new(2017,10,26,11),
+  end_time: DateTime.new(2017,10,26,12),
+  user_id: User.all.sample.id,
+  counsellor_id: Counsellor.all.sample.id)
+Appointment.create(
+  start_time: DateTime.new(2017,10,27,11),
+  end_time: DateTime.new(2017,10,27,12),
+  user_id: User.all.sample.id,
+  counsellor_id: Counsellor.all.sample.id)
+Appointment.create(
+  start_time: DateTime.new(2017,10,26,15),
+  end_time: DateTime.new(2017,10,26,16),
+  user_id: User.all.sample.id,
+  counsellor_id: Counsellor.all.sample.id)
+Appointment.create(
+  start_time: DateTime.new(2017,10,25,15),
+  end_time: DateTime.new(2017,10,25,16),
+  user_id: User.all.sample.id,
+  counsellor_id: Counsellor.all.sample.id)
+Appointment.create(
+  start_time: DateTime.new(2017,10,24,18),
+  end_time: DateTime.new(2017,10,24,19),
+  user_id: User.all.sample.id,
+  counsellor_id: Counsellor.all.sample.id)
+
+p "Finished seeding."
