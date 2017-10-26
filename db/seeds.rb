@@ -13,11 +13,13 @@ Counsellor.destroy_all
 
 i = 1
 p "Seed counsellors"
-10.times do
+p "specialty_list for counsellor as below."
+p specialty_list
+20.times do
 
   specialty_list = Counsellor::SPECIALTY.shuffle
 
-  p specialty_list
+  
 
   counsellor = Counsellor.create(
     first_name: "first_name#{i}",
