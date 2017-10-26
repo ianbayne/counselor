@@ -6,13 +6,16 @@ class UsersController < ApplicationController
 
   def show
     # Test Code
-    # @user = User.find(6)
-    # @counsellor = User.find(7)
+    # @user = User.find(16)
+    # @counsellor = User.find(17)
     # @conversation = @user.mailbox.conversations.participant(@counsellor).last
-
 
     @user = current_user
     @counsellor = @user.counsellor
-    @conversation = @user.mailbox.conversations.participant(@counsellor).last if @user.mailbox.conversations.participant(@counsellor).last
+    if @user.mailbox.conversations.participant(@counsellor).last
+      @conversation = @user.mailbox.conversations.participant(@counsellor).last
+    else
+      @recipients = @counsellor
+    end
   end
 end

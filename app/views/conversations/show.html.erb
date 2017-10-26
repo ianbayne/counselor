@@ -1,7 +1,30 @@
 <div id="conversation">
-  <% @conversation.receipts_for(current_user).each do |receipt| %>
-    <%= render 'messages/show', receipt: receipt %>
-    <br>
+  <% if @conversation %>
+    <% if current_user %>
+
+      <% array = [] %>
+      <% @conversation.receipts_for(current_user).reverse.each do |receipt| %>
+        <% array << receipt %>
+      <% end %>
+
+
+
+
+      <% @conversation.receipts_for(current_user).reverse.each do |receipt| %>
+        <%= receipt.created_at %>
+        <%#= render 'messages/show', receipt: receipt %>
+        <br>
+      <% end %>
+
+
+    <% elsif current_counsellor %>
+      <% @conversation.receipts_for(current_counsellor).reverse.each do |receipt| %>
+        <%= render 'messages/show', receipt: receipt %>
+        <br>
+      <% end %>
+
+
+    <% end %>
   <% end %>
 </div>
 

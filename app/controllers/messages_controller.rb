@@ -2,7 +2,11 @@ class MessagesController < ApplicationController
   before_action :set_conversation
 
   def create
-    @receipt = current_user.reply_to_conversation(@conversation, params[:body])
+    if current_user
+      @receipt = current_user.reply_to_conversation(@conversation, params[:body])
+    elsif current_counsellor
+      @receipt = current_counsellor.reply_to_conversation(@conversation, params[:body])
+    end
     ## send_message is for creating a new conversation. reply_to_conversation is for replying to a conversation
     # redirect_to conversation_path(@receipt.conversation)
     # if @receipt.save
@@ -22,6 +26,10 @@ class MessagesController < ApplicationController
   private
 
   def set_conversation
-    @conversation = current_user.mailbox.conversations.find(params[:conversation_id])
+    if current_user
+      @conversation = current_user.mailbox.conversations.find(params[:conversation_id])
+    elsif
+      @conversation = current_counsellor.mailbox.conversations.find(params[:conversation_id])
+    end
   end
 end
