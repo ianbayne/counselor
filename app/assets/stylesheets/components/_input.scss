@@ -1,0 +1,75 @@
+input {
+  background-color: transparent;
+  border-radius: 500px;
+  border: 2px solid $white;
+  color: $white;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1;
+  margin: 15px;
+  padding: 10px 50px 13px 50px;
+  transition: $duration--sm ease-in;
+  &:hover, &:active, &:focus {
+    // border: inherit;
+    background-color: $white;
+    color: $color__theme--main;
+    transition: $duration--sm ease-in;
+  }
+}
+
+
+.control-label {
+  color: $white;
+  font-size: 18px;
+  abbr {
+    border: none;
+    border-bottom-color: transparent;
+    cursor: none;
+    text-decoration: none;
+
+  }
+}
+.form-control {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid $white;
+  // border-collapse: separate;
+  // border-spacing: 0;
+  border-radius: 0;
+  color: $white;
+  box-shadow: none;
+  font-size: 20px;
+  height: 40px;
+  margin: 4px 0 0 0;
+  padding: 0 6px;
+&:hover, &:active, &:focus {
+    background-color: rgba(255,255,255,0.1);
+    // border: none;
+    border-bottom: 2px solid $white;
+    box-shadow: none;
+    color: $white;
+    transition: $duration--sm ease-in;
+  }
+}
+.form-group {
+  margin: 0 0 70px 0;
+  &:last-child {
+    margin: 0 0 35px 0;
+  }
+}
+.has-error .form-control {
+  border-color: $color__theme--accent;
+  box-shadow: none;
+  color: $color__theme--accent;
+  &:focus {
+    box-shadow: none;
+  }
+}
+.has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline, .has-error.radio label, .has-error.checkbox label, .has-error.radio-inline label, .has-error.checkbox-inline label {
+  color: $color__theme--accent;
+}
+.help-block {
+  display: block;
+  margin: 4px 0 0 0;
+  color: $white;
+}

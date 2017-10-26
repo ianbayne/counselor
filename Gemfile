@@ -16,7 +16,11 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
+gem 'coffee-rails'
+
 gem 'mailboxer'
+gem 'faye-rails', '~> 2.0'
+gem 'thin'
 
 group :development, :test do
   gem 'pry-byebug'
@@ -29,3 +33,4 @@ end
 
 gem 'cloudinary'
 gem 'carrierwave'
+gem 'acts-as-taggable-on', '~> 5.0'

@@ -1,0 +1,57 @@
+.modal__container {
+  &--counsellor {
+    width: 70%;
+  }
+}
+.modal__card {
+  &--counsellor {
+    background-color: white;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    display: flex;
+    margin: 0 0 30px 0;
+    position: relative;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    &:hover {
+      // box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
+    &:last-child {
+      margin: 0;
+    }
+    .modal {
+      &--counsellor-photo {
+        background-image: url("dummy.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 180px;
+        width: 180px;
+      }
+      &--counsellor-text {
+        padding: 30px;
+        width: 70%;
+        p {
+          margin: 10px 0 0 0;
+        }
+      }
+    }
+  }
+}
+.selected::after {
+  background-color: $color__theme--accent;
+  border-radius: 500px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  color: $white;
+  content: "\f00c";
+  display: inline-block;
+  font-family: FontAwesome;
+  font-size: 40px;
+  height: 60px;
+  line-height: 60px;
+  position: absolute;
+  right: -15px;
+  text-align: center;
+  top: -15px;
+  width: 60px;
+}
