@@ -30,7 +30,7 @@
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to "Profile", user_path(current_user) %>
-              
+
               <%# Below can be deleted %>
               <% if false %>
               <%= link_to "#" do %>
@@ -54,7 +54,8 @@
       </div>
     <% else %>
       <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".sign_in", default: "User Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".sign_in", default: "Counsellor Login"), new_counsellor_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
   </div>
 
