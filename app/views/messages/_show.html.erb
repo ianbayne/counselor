@@ -1,4 +1,15 @@
+<!-- <div>
+  <div><%#= receipt.message.sender.name %> commented:</div>
+  <p><%#= receipt.message.body %></p>
+</div> -->
+
 <div>
-  <div><%= receipt.message.sender.name %> commented:</div>
+  <div>
+    <% if receipt.message.sender == current_user %>
+      You commented:
+    <% else %>
+      <%= receipt.message.sender.name %> commented:
+    <% end %>
+  </div>
   <p><%= receipt.message.body %></p>
 </div>
