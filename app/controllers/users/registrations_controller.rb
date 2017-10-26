@@ -6,6 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   # GET /resource/sign_up
   def new
+    @answers = session[:answers].map { |hash| Answer.new(hash) }
     @matched_counsellors = Counsellor.limit(3)
     super
   end

@@ -1,0 +1,13 @@
+<%= simple_form_for(@answer) do |f| %>
+  <%#= f.error_notification %>
+  <%= f.association :question, 
+    as: :check_boxes, 
+    required: true, 
+    autofocus: true,
+    collection: Question.where(active: true),
+    :label_method => 
+    lambda { |question| "#{question.content}"} %>
+  <%#= f.input :end_time, as: :date, input_html: {class: "end_time"} %>
+  <%#= f.input :user_id, input_html: { value: current_user.id }, as: :hidden %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
