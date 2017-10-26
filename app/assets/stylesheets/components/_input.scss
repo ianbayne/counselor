@@ -1,3 +1,10 @@
+#new_answer {
+  margin-top: 20px;
+  label.control-label {
+    margin-bottom: 8px;
+  }
+}
+
 input {
   background-color: transparent;
   border-radius: 500px;
@@ -16,22 +23,11 @@ input {
     transition: $duration--sm ease-in;
   }
 }
-
 .boolean .optional{
   color: $white;
   font-weight: bolder;
   padding-left: 26px;
 }
-.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
-  border-radius: 0;
-  border: 0 !important;
-  height: 30px;
-  left: 14px;
-  position: absolute;
-  top: -10px;
-  width: 30px;
-}
-
 .control-label {
   color: $white;
   font-size: 18px;
@@ -66,9 +62,9 @@ input {
   }
 }
 .form-group {
-  margin: 0 0 50px 0;
+  margin: 0 0 40px 0;
   &:last-child {
-    margin: 0 0 25px 0;
+    margin: 0 0 20px 0;
   }
 }
 .has-error .form-control {
@@ -86,4 +82,21 @@ input {
   display: block;
   margin: 4px 0 0 0;
   color: $white;
+}
+label {
+  color: $white;
+}
+
+.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+  border-radius: 0;
+  border: 0 !important;
+  height: 30px;
+  left: 14px;
+  position: absolute;
+  top: -10px;
+  width: 30px;
+}
+.radio label, .checkbox label {
+  padding-left: 26px;
+  margin-bottom: 4px;
 }
