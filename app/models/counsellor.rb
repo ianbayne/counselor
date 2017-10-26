@@ -20,7 +20,7 @@ class Counsellor < ApplicationRecord
   }
 
   def name
-    "#{email}"
+    "Counsellor #{id}"
   end
 
   def mailboxer_email(object)
