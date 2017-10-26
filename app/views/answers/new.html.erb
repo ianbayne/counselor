@@ -1,13 +1,25 @@
-<%= simple_form_for(@answer) do |f| %>
-  <%#= f.error_notification %>
-  <%= f.association :question, 
-    as: :check_boxes, 
-    required: true, 
-    autofocus: true,
-    collection: Question.where(active: true),
-    :label_method => 
-    lambda { |question| "#{question.content}"} %>
-  <%#= f.input :end_time, as: :date, input_html: {class: "end_time"} %>
-  <%#= f.input :user_id, input_html: { value: current_user.id }, as: :hidden %>
-  <%= f.button :submit, "Matched with Counsellor" , class: "btn btn-primary" %>
-<% end %>
+<div class="row height__no-nav background--multiply flex--vh-center">
+  <div class="col-xs-12 col-sm-12 col-md-6">
+    <div class="well-lg width--100">
+
+      <h2 class="font__color--white">Help us learn more about you!</h2>
+
+      <%= simple_form_for(@answer) do |f| %>
+        <%#= f.error_notification %>
+        <%= f.association :question,
+          as: :check_boxes,
+          required: true,
+          autofocus: true,
+          collection: Question.where(active: true),
+          :label_method =>
+          lambda { |question| "#{question.content}" } %>
+        <%#= f.input :end_time, as: :date, input_html: {class: "end_time"} %>
+        <%#= f.input :user_id, input_html: { value: current_user.id }, as: :hidden %>
+        <%= f.button :submit, "Match me with a Counsellor", class: "btn--sm" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+

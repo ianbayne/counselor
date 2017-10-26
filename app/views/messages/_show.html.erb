@@ -1,7 +1,12 @@
 <div>
-  <div><%= receipt.message.sender.name %> commented:</div>
+  <div><%= receipt.message.sender.name %> commented:</div> <!-- Name is defined in the User Model -->
   <p><%= receipt.message.body %></p>
 </div>
+
+<script>
+  var element = document.getElementById("chat");
+  element.scrollTop = element.scrollHeight;
+</script>
 
 <!-- <div>
   <div>

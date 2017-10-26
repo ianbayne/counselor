@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     registrations: "counsellors/registrations"
   }
   root to: 'pages#home'
-  resources :users
+  resources :users do
+    resources :appointments, only: [:show]
+  end
   resources :counsellors
   resources :questions, only: [:index]
   resources :answers, only: [:new, :create]
