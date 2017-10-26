@@ -7,5 +7,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @counsellor = @user.counsellor
+    @conversation = current_user.mailbox.conversations.first
+    # .find(params[:conversation_id])
   end
 end
