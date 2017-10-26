@@ -3,8 +3,6 @@
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
-    const a = <%= @appointments[0].start_time.strftime("%Y-%m-%dT%H:%M").to_json.html_safe  %>;
-    console.log(a);
 
     $('#calendar').fullCalendar({
       defaultView: "listWeek",
