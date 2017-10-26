@@ -1,15 +1,23 @@
-<!-- <div>
-  <div><%#= receipt.message.sender.name %> commented:</div>
-  <p><%#= receipt.message.body %></p>
-</div> -->
-
 <div>
-  <div>
-    <% if receipt.message.sender == current_user %>
-      You commented:
-    <% else %>
-      <%= receipt.message.sender.name %> commented:
-    <% end %>
-  </div>
+  <div><%= receipt.message.sender.name %> commented:</div>
   <p><%= receipt.message.body %></p>
 </div>
+
+<!-- <div>
+  <div>
+    <%# puts "Generating partial //////////////////////////////" %>
+    Current_user: <%#= current_user.name %>
+    <br>
+    Sender: <%#= receipt.message.sender.name %>
+    <br>
+    Receiver: <%#= receipt.message.recipients.first.name %>
+    <br>
+    <%# if receipt.message.recipients.first == current_user %>
+      <%#= receipt.message.sender.name %> commented:
+    <%# else %>
+      You commented:
+    <%# end %>
+  </div>
+  <p><%#= receipt.message.body %></p>
+</div>
+ -->

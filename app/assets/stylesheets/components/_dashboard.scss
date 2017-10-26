@@ -1,0 +1,67 @@
+#dashcard {
+  &__counsellor {
+    img {
+      border-radius: 500px;
+      height: 100px;
+      width: 100px;
+      margin-bottom: 16px;
+    }
+  }
+  &__calendar {
+  }
+  &__goals {
+  }
+  &__mood {
+  }
+}
+.dashboard--container {
+
+}
+.dashcard {
+  &:after {
+    background-color: $white;
+    content: '';
+    display: block;
+    height: 2px;
+    margin: 0 auto;
+    width: 90%;
+  }
+  &:last-child {
+    &:after {
+      display: none;
+    }
+  }
+}
+
+// CSS GRID VERSION
+// .dashboard--container {
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+//   grid-template-rows: 1fr 1fr;
+// }
+// %extendCard {
+//   align-self: center;
+//   justify-self: center;
+// }
+// .dashcard {
+//   &-1 {
+//     grid-column: 1 / 2;
+//     grid-row: 1;
+//     @extend %extendCard;
+//   }
+//   &-2 {
+//     grid-column: 2 / 3;
+//     grid-row: 1;
+//     @extend %extendCard;
+//     }
+//   &-3 {
+//     grid-column: 1 / 2;
+//     grid-row: 2;
+//     @extend %extendCard;
+//     }
+//   &-4 {
+//     grid-column: 2 / 3;
+//     grid-row: 2;
+//     @extend %extendCard;
+//     }
+// }
