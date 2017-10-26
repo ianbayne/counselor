@@ -1,0 +1,27 @@
+<div id='calendar'></div>
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+
+    $('#calendar').fullCalendar({
+      defaultView: "listWeek",
+      weekends: false,
+      events: [
+
+            <% @appointments.each do |appointment| %>
+            {
+                title  : <%= ("Appointment with " + appointment.user.email.to_s).to_json.html_safe %>,
+                start  : <%= appointment.start_time.strftime("%Y-%m-%dT%H:%M").to_json.html_safe %>,
+                end    : <%= appointment.end_time.strftime("%Y-%m-%dT%H:%M").to_json.html_safe %>
+            },
+            <% end %>
+        ],
+      dayClick: function() {
+            alert('a day has been clicked!');
+        },
+    });
+
+
+  <% end %>
+<% end %>
