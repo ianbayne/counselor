@@ -15,7 +15,7 @@
         autofocus: true, 
         collection: @matched_counsellors,
         :label_method => 
-        lambda { |counsellor| "#{counsellor.first_name} #{counsellor.last_name}" } %>
+        lambda { |counsellor| "#{counsellor.first_name} #{counsellor.last_name} #{counsellor.specialty_list.sort} #{counsellor.gender == 0 ? "Male" : "female" } " } %>
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
     <%= f.input :password_confirmation, required: true %>
   </div>
