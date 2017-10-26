@@ -17,6 +17,20 @@ input {
   }
 }
 
+.boolean .optional{
+  color: $white;
+  font-weight: bolder;
+  padding-left: 26px;
+}
+.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+  border-radius: 0;
+  border: 0 !important;
+  height: 30px;
+  left: 14px;
+  position: absolute;
+  top: -10px;
+  width: 30px;
+}
 
 .control-label {
   color: $white;
