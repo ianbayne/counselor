@@ -14,6 +14,9 @@ $headers-font: 'Baloo', 'cursive';
 .font__size--tc {
   font-size: 12px;
 }
+.font__color--white {
+  color: $white;
+}
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
