@@ -38,10 +38,10 @@ input {
   border-radius: 0;
   color: $white;
   box-shadow: none;
-  font-size: 20px;
-  height: 40px;
+  font-size: 16px;
+  height: 28px;
   margin: 4px 0 0 0;
-  padding: 0 6px;
+  padding: 0 4px 0 6px;
 &:hover, &:active, &:focus {
     background-color: rgba(255,255,255,0.1);
     // border: none;
@@ -52,9 +52,9 @@ input {
   }
 }
 .form-group {
-  margin: 0 0 70px 0;
+  margin: 0 0 50px 0;
   &:last-child {
-    margin: 0 0 35px 0;
+    margin: 0 0 25px 0;
   }
 }
 .has-error .form-control {

@@ -4,24 +4,24 @@
       <div class="col-xs-12 col-sm-12 col-md-8 flex--vh-center">
         <div class="modal__container--counsellor">
 
-          <div class="modal__card--counsellor" style="background-image: url(<%= image_path "dummy" %>)">
-            <div class="modal--counsellor-photo"></div>
+          <div class="modal__card--counsellor">
+            <div class="modal--counsellor-photo" style="background-image: url(<%= image_path "dummy" %>)"></div>
             <div class="modal--counsellor-text selected">
               <h4>Jane Doe</h4>
               <h5>Expertise: Work / Family</h5>
               <p>Jon is a trained and accredited by the professional body the British Association for Counselling and Psychotherapy.</p>
             </div>
           </div>
-          <div class="modal__card--counsellor" style="background-image: url(<%= image_path "dummy" %>)">
-            <div class="modal--counsellor-photo"></div>
+          <div class="modal__card--counsellor">
+            <div class="modal--counsellor-photo" style="background-image: url(<%= image_path "dummy" %>)"></div>
             <div class="modal--counsellor-text">
               <h4>Jane Doe</h4>
               <h5>Expertise: Work / Family</h5>
               <p>Jon is a trained and accredited by the professional body the British Association for Counselling and Psychotherapy.</p>
             </div>
           </div>
-          <div class="modal__card--counsellor" style="background-image: url(<%= image_path "dummy" %>)">
-            <div class="modal--counsellor-photo"></div>
+          <div class="modal__card--counsellor">
+            <div class="modal--counsellor-photo" style="background-image: url(<%= image_path "dummy" %>)"></div>
             <div class="modal--counsellor-text">
               <h4>Jane Doe</h4>
               <h5>Expertise: Work / Family</h5>
@@ -34,47 +34,28 @@
 
       <div class="col-xs-12 col-sm-12 col-md-4 flex--vh-center background--multiply">
         <div class="well-lg width--100">
-          <h2 class="font__color--white">Sign up</h2>
-          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <%= f.error_notification %>
-            <div class="form-inputs">
-              <%= f.input :email, required: true, autofocus: true %>
-              <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-              <%= f.input :password_confirmation, required: true %>
-            </div>
-            <div class="form-actions">
-              <%= f.button :submit, "Submit"%>
-            </div>
-            <%#= render "devise/shared/links" %>
-          <% end %>
+          <h2 class="font__color--white">Getting started</h2>
+
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= f.error_notification %>
+              <div class="form-inputs">
+                <%= f.input :email, required: true, autofocus: true %>
+                <%= f.association :counsellor,
+                    required: true,
+                    autofocus: true,
+                    collection: @matched_counsellors,
+                    :label_method =>
+                    lambda { |counsellor| "#{counsellor.first_name} #{counsellor.last_name}" } %>
+                <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+                <%= f.input :password_confirmation, required: true %>
+              </div>
+              <div class="form-actions">
+                <%= f.button :submit, "Sign up", class:"btn--sm" %>
+              </div>
+            <% end %>
+            <%#= render "users/shared/links" %>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<% if false %>
-<h2>User Sign up</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.association :counsellor,
-        required: true,
-        autofocus: true,
-        collection: @matched_counsellors,
-        :label_method =>
-        lambda { |counsellor| "#{counsellor.first_name} #{counsellor.last_name}" } %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
-<% end %>
