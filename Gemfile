@@ -29,3 +29,6 @@ end
 
 gem 'cloudinary'
 gem 'carrierwave'
+# gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+gem 'fullcalendar.io-rails'
