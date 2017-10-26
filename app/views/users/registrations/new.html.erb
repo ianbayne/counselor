@@ -1,64 +1,26 @@
 <div class="wrapper">
   <div class="col-xs-12 col-sm-12 col-md-12">
     <div class="row height__no-nav">
+
       <div class="col-xs-12 col-sm-12 col-md-8 flex--vh-center">
         <div class="modal__container--counsellor">
-
-
-<p>User's answer to questions</p>
-<% @answers.each do |answer| %>
-  <p><%= answer.question.content %></p>
-  <p>Answer is <%= answer.content == 0 ? "No" : "Yes" %></p>
-<% end %>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.association :counsellor, 
-        required: true, 
-        autofocus: true, 
-        collection: @matched_counsellors,
-        :label_method => 
-        lambda { |counsellor| "#{counsellor.first_name} #{counsellor.last_name} #{counsellor.specialty_list.sort } #{counsellor.gender == 0 ? "Male" : "female" } " } %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
-  </div>
-
+          <h4>We recommend these Counsellors for you!</h4>
+        <% @matched_counsellors.each do |counsellor| %>
           <div class="modal__card--counsellor">
-            <div class="modal--counsellor-photo" style="background-image: url(<%= image_path "dummy" %>)"></div>
-            <div class="modal--counsellor-text selected">
-              <h4>Jane Doe</h4>
-              <h5>Expertise: Work / Family</h5>
-              <p>Jon is a trained and accredited by the professional body the British Association for Counselling and Psychotherapy.</p>
-            </div>
-          </div>
-          <div class="modal__card--counsellor">
-            <div class="modal--counsellor-photo" style="background-image: url(<%= image_path "dummy" %>)"></div>
+            <div class="modal--counsellor-photo" style="background-image: url(<%= counsellor.photo %>)"></div>
             <div class="modal--counsellor-text">
-              <h4>Jane Doe</h4>
-              <h5>Expertise: Work / Family</h5>
-              <p>Jon is a trained and accredited by the professional body the British Association for Counselling and Psychotherapy.</p>
+              <h3><%= counsellor.first_name %> <%= counsellor.last_name %></h3>
+              <!-- <h5>Expertise: <%#= counsellor.specialty_list %></h5> -->
+              <p><%= counsellor.first_name %> is a trained and accredited by the professional body the British Association for Counselling and Psychotherapy. There's an event so we've migrated to the tables.</p>
             </div>
           </div>
-          <div class="modal__card--counsellor">
-            <div class="modal--counsellor-photo" style="background-image: url(<%= image_path "dummy" %>)"></div>
-            <div class="modal--counsellor-text">
-              <h4>Jane Doe</h4>
-              <h5>Expertise: Work / Family</h5>
-              <p>Jon is a trained and accredited by the professional body the British Association for Counselling and Psychotherapy.</p>
-            </div>
-          </div>
-
+        <% end %>
         </div>
       </div>
-
 
       <div class="col-xs-12 col-sm-12 col-md-4 flex--vh-center background--multiply">
         <div class="well-lg width--100">
           <h2 class="font__color--white">Getting started</h2>
-
             <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
               <%= f.error_notification %>
               <div class="form-inputs">
@@ -73,12 +35,112 @@
                 <%= f.input :password_confirmation, required: true %>
               </div>
               <div class="form-actions">
+                <!-- 999 Currently goes to... root ===> redirect to user_path in user controller?-->
                 <%= f.button :submit, "Sign up", class:"btn--sm" %>
               </div>
             <% end %>
             <%#= render "users/shared/links" %>
         </div>
       </div>
+
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ORIGINAL BACKUP WILL DEL LATER by / shun -->
+<% if false %>
+  <p>User's answer to questions</p>
+  <% @answers.each do |answer| %>
+    <p><%= answer.question.content %></p>
+    <p>Answer is <%= answer.content == 0 ? "No" : "Yes" %></p>
+  <% end %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
+  <div class="form-inputs">
+    <%= f.input :email, required: true, autofocus: true %>
+    <%= f.association :counsellor,
+        required: true,
+        autofocus: true,
+        collection: @matched_counsellors,
+        :label_method =>
+        lambda { |counsellor| "#{counsellor.first_name} #{counsellor.last_name} #{counsellor.specialty_list.sort} #{counsellor.gender == 0 ? "Male" : "female" } " } %>
+    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+    <%= f.input :password_confirmation, required: true %>
+  </div>
+  <% end %>
+<% end %>
+
+<!-- BACKUP FOR SAFETY WILL DEL LATER by / shun -->
+<% if false %>
+  <div class="wrapper">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <div class="row height__no-nav">
+        <div class="col-xs-12 col-sm-12 col-md-8 flex--vh-center">
+          <div class="modal__container--counsellor">
+            <div class="modal__card--counsellor">
+              <div class="modal--counsellor-photo" style="background-image: url(<%= image_path "dummy" %>)"></div>
+              <div class="modal--counsellor-text selected">
+                <h4>Jane Doe</h4>
+                <h5>Expertise: Work / Family</h5>
+                <p>Jon is a trained and accredited by the professional body the British Association for Counselling and Psychotherapy.</p>
+              </div>
+            </div>
+            <div class="modal__card--counsellor">
+              <div class="modal--counsellor-photo" style="background-image: url(<%= image_path "dummy" %>)"></div>
+              <div class="modal--counsellor-text">
+                <h4>Jane Doe</h4>
+                <h5>Expertise: Work / Family</h5>
+                <p>Jon is a trained and accredited by the professional body the British Association for Counselling and Psychotherapy.</p>
+              </div>
+            </div>
+            <div class="modal__card--counsellor">
+              <div class="modal--counsellor-photo" style="background-image: url(<%= image_path "dummy" %>)"></div>
+              <div class="modal--counsellor-text">
+                <h4>Jane Doe</h4>
+                <h5>Expertise: Work / Family</h5>
+                <p>Jon is a trained and accredited by the professional body the British Association for Counselling and Psychotherapy.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 flex--vh-center background--multiply">
+          <div class="well-lg width--100">
+            <h2 class="font__color--white">Getting started</h2>
+              <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <%= f.error_notification %>
+                <div class="form-inputs">
+                  <%= f.input :email, required: true, autofocus: true %>
+                  <%= f.association :counsellor,
+                      required: true,
+                      autofocus: true,
+                      collection: @matched_counsellors,
+                      :label_method =>
+                      lambda { |counsellor| "#{counsellor.first_name} #{counsellor.last_name}" } %>
+                  <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+                  <%= f.input :password_confirmation, required: true %>
+                </div>
+                <div class="form-actions">
+                  <%= f.button :submit, "Sign up", class:"btn--sm" %>
+                </div>
+              <% end %>
+              <%#= render "users/shared/links" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ <% end %>

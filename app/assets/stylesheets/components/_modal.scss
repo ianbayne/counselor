@@ -21,7 +21,7 @@
     }
     .modal {
       &--counsellor-photo {
-        // background-image: url("dummy.png");
+        background-color: rgba(117,193,222,0.25);
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -32,9 +32,9 @@
         padding: 18px;
         width: 75%;
         p {
-          margin: 10px 0 0 0;
+          margin: 0 0 0 0;
         }
-        h4 {
+        h3 {
           margin-bottom: $baseFont / 4;
         }
         h5 {
