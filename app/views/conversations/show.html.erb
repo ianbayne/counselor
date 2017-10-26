@@ -3,6 +3,7 @@
 <div id="conversation">
   <% @conversation.receipts_for(current_user).each do |receipt| %>
     <%= render 'messages/show', receipt: receipt %>
+    <br>
   <% end %>
 </div>
 
