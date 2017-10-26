@@ -1,5 +1,49 @@
-<p>User dashboard:</p>
-<p><%= @user.email %></p>
-<p><%= @user.user_name %></p>
-<p>Name of counsellor</p>
-<p><%= @counsellor.first_name %> <%= @counsellor.last_name %></p>
+<div class="wrapper">
+  <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="row height__no-nav">
+      <div class="col-xs-12 col-sm-12 col-md-6 flex--vh-center">
+        <div>
+          <h2 class="font__color--white">PART1</h2>
+          <p><%= @user.email %></p>
+          <p><%= @user.user_name %></p>
+          <p>Name of counsellor</p>
+          <p><%= @counsellor.first_name %> <%= @counsellor.last_name %></p>
+        </div>
+      </div>
+
+      <!-- USE THE STUFF BELOW TO DEVELIP A CSS GRID REF TO THE FAV FOLDER CONTINUE HERE -->
+      <div class="col-xs-12 col-sm-12 col-md-6 dashboard--container height--100 background--multiply padding--none">
+        <div class="dashboard--card-1">
+          <h2 class="font__color--white">A</h2>
+        </div>
+        <div class="dashboard--card-2">
+          <h2 class="font__color--white">B</h2>
+        </div>
+        <div class="dashboard--card-3">
+          <h2 class="font__color--white">C</h2>
+        </div>
+        <div class="dashboard--card-4">
+          <h2 class="font__color--white">D</h2>
+        </div>
+      </div>
+
+      <!-- <div class="col-xs-12 col-sm-12 col-md-6 flex--vh-center background--multiply padding--none">
+        <div class="row height--100 width--100">
+          <div class="col-xs-12 col-sm-12 col-md-6 height--50 debug">
+            <h2 class="font__color--white">A</h2>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 height--50 debug">
+            <h2 class="font__color--white">B</h2>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 height--50 debug">
+            <h2 class="font__color--white">C</h2>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 height--50 debug">
+            <h2 class="font__color--white">D</h2>
+          </div>
+        </div>
+      </div> -->
+
+    </div>
+  </div>
+</div>
