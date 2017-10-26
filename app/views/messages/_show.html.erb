@@ -1,6 +1,6 @@
-<div>
-  <div><%= receipt.message.sender.name %> commented:</div> <!-- Name is defined in the User Model -->
-  <p><%= receipt.message.body %></p>
+<div class="chat__bubble">
+  <p class="chat__message"><%= receipt.message.body %></p>
+  <p class="chat__username"><%= receipt.message.sender.name %> commented:</p class="chat__username"> <!-- Name is defined in the User Model -->
 </div>
 
 <script>
