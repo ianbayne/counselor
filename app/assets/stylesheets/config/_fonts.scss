@@ -11,6 +11,10 @@
 $body-font: 'Exo 2', 'sans-serif';
 $headers-font: 'Baloo', 'cursive';
 
+.font__size--tc {
+  font-size: 12px;
+}
+
 // To use a font file (.woff) uncomment following lines
 // @font-face {
 //   font-family: "Font Name";
