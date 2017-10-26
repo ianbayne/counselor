@@ -12,10 +12,14 @@ class UsersController < ApplicationController
 
     @user = current_user
     @counsellor = @user.counsellor
+
+    @appointment = Appointment.new
+
     if @user.mailbox.conversations.participant(@counsellor).last
       @conversation = @user.mailbox.conversations.participant(@counsellor).last
     else
       @recipients = @counsellor
     end
+
   end
 end
