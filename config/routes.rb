@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :users
   resources :counsellors
   resources :questions, only: [:index]
+  resources :answers, only: [:new, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :appointments, only: [:index]
   resources :conversations do

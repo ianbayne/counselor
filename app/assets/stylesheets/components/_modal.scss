@@ -1,6 +1,6 @@
 .modal__container {
   &--counsellor {
-    width: 70%;
+    width: 80%;
   }
 }
 .modal__card {
@@ -21,18 +21,24 @@
     }
     .modal {
       &--counsellor-photo {
-        background-image: url("dummy.png");
+        // background-image: url("dummy.png");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        height: 180px;
-        width: 180px;
+        height: 140px;
+        width: 140px;
       }
       &--counsellor-text {
-        padding: 30px;
-        width: 70%;
+        padding: 18px;
+        width: 75%;
         p {
           margin: 10px 0 0 0;
+        }
+        h4 {
+          margin-bottom: $baseFont / 4;
+        }
+        h5 {
+          margin-bottom: $baseFont / 4;
         }
       }
     }

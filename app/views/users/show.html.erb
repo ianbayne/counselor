@@ -1,5 +1,58 @@
-<p>User dashboard:</p>
-<p><%= @user.email %></p>
-<p><%= @user.user_name %></p>
-<p>Name of counsellor</p>
-<p><%= @counsellor.first_name %> <%= @counsellor.last_name %></p>
+<div class="wrapper">
+  <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="row height__no-nav">
+      <div class="col-xs-12 col-sm-12 col-md-6 flex--vh-center">
+        <div>
+          <%= render 'shared/chat' %>
+          <!-- <p><%#= @user.email %></p> -->
+          <!-- <p><%#= @user.user_name %></p> -->
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-6 dashboard--container height--100 background--multiply">
+
+        <div class="row height--50 dashcard">
+          <div id="dashcard__counsellor" class="debug col-md-4 height--100 flex--vh-center">
+            <div class="text-center">
+              <h5 class="font__color--white">Your Counsellor</h5>
+              <%#= cl_image_tag @counsellor.photo, crop: :fill %>
+              <%= image_tag "dummy" %>
+              <!-- <p class="font__color--white"><%#= @counsellor.first_name %><br><%#= @counsellor.last_name %></p> -->
+              <h4 class="font__color--white">Jane<br>Doe</h4>
+              <a class="font__color--white font__size--tc">Feel like talking to a<br>different counsellor?</a>
+            </div>
+          </div>
+          <div id="dashcard__calendar" class="debug col-md-8 height--100 flex--vh-center">
+            <%= render 'shared/calendar' %>
+          </div>
+        </div>
+
+        <div class="row height--50 dashcard">
+          <div id="dashcard__goals" class="debug col-md-6 height--100 flex--vh-center">
+            <p class="font__color--white">Goals</p>
+          </div>
+          <div id="dashcard__mood" class="debug col-md-6 height--100 flex--vh-center">
+            <%= render 'shared/mood_tracker' %>
+          </div>
+        </div>
+
+      </div>
+      <!-- CSS GRID VERSION BACKUP
+      <div class="col-xs-12 col-sm-12 col-md-6 dashboard--container height--100 background--multiply padding--none">
+        <div class="dashcard-1">
+          <h2 class="font__color--white">Next Booking</h2>
+        </div>
+        <div class="dashcard-2">
+          <h2 class="font__color--white">My Counsellor is <%#= @counsellor.first_name %> <%#= @counsellor.last_name %></h2>
+        </div>
+        <div class="dashcard-3">
+          <h2 class="font__color--white">Goals</h2>
+        </div>
+        <div class="dashcard-4">
+          <h2 class="font__color--white">Mood Track</h2>
+        </div>
+      </div>
+       -->
+    </div>
+  </div>
+</div>
