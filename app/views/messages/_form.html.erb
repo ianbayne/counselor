@@ -1,6 +1,8 @@
-<%= form_tag conversation_messages_path(@conversation), method: :post, remote: true do %> <!-- Regular form tag and not a form_for because we're not interacting with objects in the controller -->
-  <div>
-    <%= text_area_tag :body, nil, id: "comment-body" %>
-  </div>
-  <%= submit_tag "Comment" %>
+<% if @conversation %>
+  <%= form_tag conversation_messages_path(@conversation), method: :post, remote: true do %> <!-- Regular form tag and not a form_for because we're not interacting with objects in the controller -->
+    <div>
+      <%= text_area_tag :body, nil, id: "comment-body" %>
+    </div>
+    <%= submit_tag "Comment" %>
+  <% end %>
 <% end %>

@@ -12,15 +12,15 @@ class Counsellor < ApplicationRecord
   SPECIALTY = [:work_related, :relationship, :loss, :financial]
 
   SPECIALTYMAP = {
-    work_related: "Work-related issues", 
+    work_related: "Work-related issues",
     relationship: "Relationship issues",
     loss: "Loss of family or friend issues",
-    financial: "Financial issues", 
-    other: "Other issues"    
+    financial: "Financial issues",
+    other: "Other issues"
   }
 
   def name
-    "User #{id}"
+    "Counsellor #{id}"
   end
 
   def mailboxer_email(object)
