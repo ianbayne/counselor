@@ -13,10 +13,6 @@ class UsersController < ApplicationController
 
     @user = current_user
     @counsellor = @user.counsellor
-    if @user.mailbox.conversations.participant(@counsellor).last
-      @conversation = @user.mailbox.conversations.participant(@counsellor).last
-    else
-      # Do something
-    end
+    @conversation = @user.mailbox.conversations.participant(@counsellor).last if @user.mailbox.conversations.participant(@counsellor).last
   end
 end
