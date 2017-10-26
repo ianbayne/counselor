@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171025072218) do
+
+ActiveRecord::Schema.define(version: 20171026021249) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.integer "content"
+    t.bigint "user_profile_id"
+    t.bigint "question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["question_id"], name: "index_answers_on_question_id"
+    t.index ["user_id"], name: "index_answers_on_user_id"
+    t.index ["user_profile_id"], name: "index_answers_on_user_profile_id"
+  end
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "start_time"
@@ -163,12 +177,9 @@ ActiveRecord::Schema.define(version: 20171025072218) do
   end
 
   create_table "user_profiles", force: :cascade do |t|
-    t.integer "answer"
-    t.bigint "question_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["question_id"], name: "index_user_profiles_on_question_id"
     t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
@@ -193,6 +204,9 @@ ActiveRecord::Schema.define(version: 20171025072218) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answers", "questions"
+  add_foreign_key "answers", "user_profiles"
+  add_foreign_key "answers", "users"
   add_foreign_key "appointments", "counsellors"
   add_foreign_key "appointments", "users"
   add_foreign_key "goals", "counsellors"
@@ -203,7 +217,6 @@ ActiveRecord::Schema.define(version: 20171025072218) do
   add_foreign_key "moods", "users"
   add_foreign_key "reviews", "counsellors"
   add_foreign_key "reviews", "users"
-  add_foreign_key "user_profiles", "questions"
   add_foreign_key "user_profiles", "users"
   add_foreign_key "users", "counsellors"
 end

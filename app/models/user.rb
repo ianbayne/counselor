@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :appointments
-  
+  # has_many :user_profile
+  has_many :answers
   belongs_to :counsellor
 
   acts_as_messageable
