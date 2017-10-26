@@ -9,6 +9,6 @@ class UsersController < ApplicationController
     @user = User.find(6)
     # @counsellor = @user.counsellor
     @counsellor = User.find(7)
-    @conversation = @user.mailbox.conversations.participant(@counsellor)
+    @conversation = @user.mailbox.conversations.participant(@counsellor).last
   end
 end
