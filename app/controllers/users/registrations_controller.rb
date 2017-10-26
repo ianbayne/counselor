@@ -9,6 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @answers = session[:answers].map { |hash| Answer.new(hash) }
     @matched_counsellors = Counsellor.all
     @answers.each do |answer|
+      # below works as I know which quesion's id is related to which issue
       if answer.question.id == 1 && answer.content == 1
         @matched_counsellors = @matched_counsellors.tagged_with(:work_related)
       end

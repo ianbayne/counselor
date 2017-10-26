@@ -1,5 +1,6 @@
 <h2>User Sign up</h2>
 
+<p>User's answer to questions</p>
 <% @answers.each do |answer| %>
   <p><%= answer.question.content %></p>
   <p>Answer is <%= answer.content == 0 ? "No" : "Yes" %></p>
@@ -15,7 +16,7 @@
         autofocus: true, 
         collection: @matched_counsellors,
         :label_method => 
-        lambda { |counsellor| "#{counsellor.first_name} #{counsellor.last_name} #{counsellor.specialty_list.sort} #{counsellor.gender == 0 ? "Male" : "female" } " } %>
+        lambda { |counsellor| "#{counsellor.first_name} #{counsellor.last_name} #{counsellor.specialty_list.sort } #{counsellor.gender == 0 ? "Male" : "female" } " } %>
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
     <%= f.input :password_confirmation, required: true %>
   </div>
