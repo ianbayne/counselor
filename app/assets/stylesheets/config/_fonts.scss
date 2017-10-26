@@ -11,8 +11,19 @@
 $body-font: 'Exo 2', 'sans-serif';
 $headers-font: 'Baloo', 'cursive';
 
+.anchor__text {
+  color: inherit;
+  text-decoration: none;
+  &:hover {
+    border-bottom: 1px solid #FFF;
+    padding: 0 0 4px 0;
+  }
+}
 .font__size--tc {
   font-size: 12px;
+}
+.font__color--white {
+  color: $white;
 }
 
 // To use a font file (.woff) uncomment following lines

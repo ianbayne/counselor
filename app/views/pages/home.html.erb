@@ -1,6 +1,6 @@
 
 <div class="wrapper">
-  <div class="background--home"></div>
+  <div class="background--home" style="background-image: url(<%= image_path "pexels-photo-238118" %>)"></div>
 
   <!-- div.row is in application.html.erb -->
   <!-- <div class="container-fluid"> -->
@@ -13,10 +13,12 @@
             <h3 class="bfont">Private and Convenient Professional Counselling. <br>Online Chat, Voice or Video Sessions</h3>
           </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-4 flex--vh-center background--multiply">
+        <div class="col-xs-12 col-sm-12 col-md-4 flex--vh-center background--multiply position--relative">
           <div class="text-center">
             <%= link_to "Get Started", new_user_registration_path, class: "btn" %>
-            <p class="font__color--white">or <%= link_to "Log in", new_user_session_path, class: "anchor__text" %> if you have an account</p>
+            <p class="font__color--white anchor__text"><%= link_to "Log in", new_counsellor_registration_path, class: "" %> if you have an account</p>
+            <p class="font__color--white">or</p>
+            <p id="counsellor_sign_up" class="font__color--white anchor__text">Interested to <%= link_to "work with us?", new_user_session_path, class: "" %></p>
             <%#= link_to "Counsellor login", new_counsellor_session_path, class: "btn-success" %>
           </div>
         </div>
