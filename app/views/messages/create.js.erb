@@ -1,6 +1,8 @@
+// Tutorial for this:
+// https://www.sitepoint.com/realtime-mini-chat-rails-faye/
+
 // $('#conversation').append('<%= j render "messages/show", receipt: @receipt %>');
 // $('#comment-body').val('');
-
 
 publisher = client.publish('/comments', {
   message: '<%= j render "messages/show", receipt: @receipt %>'
