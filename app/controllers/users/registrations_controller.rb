@@ -6,7 +6,32 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   # GET /resource/sign_up
   def new
-    @matched_counsellors = Counsellor.limit(3)
+    @answers = session[:answers].map { |hash| Answer.new(hash) }
+    @matched_counsellors = Counsellor.all
+    @answers.each do |answer|
+      # below works as I know which quesion's id is related to which issue
+      if answer.question.id == 1 && answer.content == 1
+        @matched_counsellors = @matched_counsellors.tagged_with(:work_related)
+      end
+      if answer.question.id == 2 && answer.content == 1
+        @matched_counsellors = @matched_counsellors.tagged_with(:relationship)
+      end
+      if answer.question.id == 3 && answer.content == 1
+        @matched_counsellors = @matched_counsellors.tagged_with(:loss)
+      end
+      if answer.question.id == 4 && answer.content == 1
+        @matched_counsellors = @matched_counsellors.tagged_with(:financial)
+      end
+      if answer.question.id == 6 && answer.content == 1
+        @matched_counsellors = @matched_counsellors.where(gender: 0)
+      end
+      if answer.question.id == 7 && answer.content == 1
+        @matched_counsellors = @matched_counsellors.where(gender: 1)
+      end
+    end
+    if @matched_counsellors.count >= 4
+      @matched_counsellors = @matched_counsellors.order("RANDOM()").limit(3)
+    end
     super
   end
 

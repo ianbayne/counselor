@@ -110,6 +110,9 @@ GEM
       thor (~> 0.14)
     font-awesome-sass (4.7.0)
       sass (>= 3.2)
+    fullcalendar.io-rails (3.6.2)
+      jquery-rails (>= 3.1.0, < 5.0)
+      momentjs-rails (~> 2.15)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     http-cookie (1.0.3)
@@ -141,6 +144,8 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.3.0)
     minitest (5.10.3)
+    momentjs-rails (2.17.1)
+      railties (>= 3.1)
     multi_json (1.12.2)
     netrc (0.11.0)
     nio4r (2.1.0)
@@ -261,10 +266,12 @@ DEPENDENCIES
   faye-rails (~> 2.0)
   figaro
   font-awesome-sass
+  fullcalendar.io-rails
   jbuilder (~> 2.0)
   jquery-rails
   listen (~> 3.0.5)
   mailboxer
+  momentjs-rails
   pg
   pry-byebug
   pry-rails

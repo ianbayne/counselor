@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if @user.mailbox.conversations.participant(@counsellor).last
       @conversation = @user.mailbox.conversations.participant(@counsellor).last
     else
-
+      # Do something
     end
   end
 end
