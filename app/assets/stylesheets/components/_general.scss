@@ -31,8 +31,17 @@ $duration--lg: 0.6s;
   color: $white;
 }
 $heightNoNav: calc(100vh - #{$navbarHeight});
+.height--100 {
+  height: 100%;
+}
+.height--50 {
+  height: 50%;
+}
 .height__no-nav {
   height: $heightNoNav;
+}
+.padding--none {
+  padding: 0;
 }
 $base: 20px;
 .well {
