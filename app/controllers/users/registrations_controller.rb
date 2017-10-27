@@ -1,7 +1,8 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
-  
+  before_action :answered_question?, only: [:new]
+
   include Accessible
   
   # GET /resource/sign_up
@@ -65,6 +66,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # protected
+
+  def answered_question?
+    redirect_to root_path unless session[:answers]
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
