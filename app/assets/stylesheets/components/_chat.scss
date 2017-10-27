@@ -1,12 +1,10 @@
 #chat {
-  // bottom: 0px;
-  // margin-top: 35px;
-  // position: absolute;
-  // top: 0px;
-  border: 1px dashed red;
   height: 100%;
   overflow-y: scroll;
   width: 100%;
+}
+#chat__form {
+  padding: 0 40px 40px 40px;
 }
 #chat-header {
   bottom: 0px;
@@ -15,6 +13,7 @@
 }
 #comment-body {
   border: 2px solid $color__theme--main;
+  border-radius: 4px;
   font-size: 16px;
   height: 130px;
   line-height: 1.2;
@@ -23,7 +22,7 @@
   width: 425px;
 }
 #conversation {
-  padding: 40px;
+  padding: 80px 40px 40px 40px;
 }
 $colorBubble: #C6EBF8;
 .chat__avatar {
