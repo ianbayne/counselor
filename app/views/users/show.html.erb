@@ -14,8 +14,8 @@
           <div id="dashcard__counsellor" class="debug col-md-4 height--100 flex--vh-center">
             <div class="text-center">
               <h5 class="font__color--white">Your Counsellor</h5>
-              <%#= cl_image_tag @counsellor.photo, crop: :fill %>
-              <%= image_tag "dummy" %>
+              <%= cl_image_tag @counsellor.photo, crop: :fill %>
+              <%#= image_tag "dummy" %>
               <!-- <p class="font__color--white"><%#= @counsellor.first_name %><br><%#= @counsellor.last_name %></p> -->
               <h4 class="font__color--white">Jane<br>Doe</h4>
               <a class="font__color--white font__size--tc">Feel like talking to a<br>different counsellor?</a>
