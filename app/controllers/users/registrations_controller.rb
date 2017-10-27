@@ -1,9 +1,9 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
-  
+
   include Accessible
-  
+
   # GET /resource/sign_up
   def new
     @answers = session[:answers].map { |hash| Answer.new(hash) }
@@ -36,9 +36,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    @user = User.last
+    @counsellor = @user.counsellor
+    @counsellor.send_message(@user, "Greetings! Welcome to Counsellor.com! We are glad to have you! Please tell me about yourself and your main concerns. I will respond to you as early as possible. Thank you!", "Greetings!")
+  end
 
   # GET /resource/edit
   # def edit
