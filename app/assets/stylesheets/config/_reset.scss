@@ -57,6 +57,9 @@ table {
 
 // UNIQUE RESETS
 // $baseFont: 16px;
+body {
+  background-color: $color__theme--main-light--lg;
+}
 p {
   font-size: $baseFont;
   line-height: 1.25;

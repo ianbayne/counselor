@@ -13,64 +13,39 @@
   top: 0px;
   bottom: 0px;
 }
-.chat__bubble{
-    background-color: $white;
-    border-radius: 8px;
-    margin: 16px 0 0 32px;
-    display: inline-block;
-    padding: 12px 14px;
-    position: relative;
+#conversation {
+  padding: 40px;
+}
+.chat__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  border: 1px dashed red;
+}
+$colorBubble: #C6EBF8;
+.chat__bubble {
+  position: relative;
+  margin-bottom: 18px;
+  color: $color__font--main;
+  padding: 11px 14px;
+  background: $colorBubble;
+  border-radius: 4px;
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.2));
+  display: inline-block;
 }
 .chat__bubble::after {
-    background-color: $white;
-    content: "\00a0";
-    display: block;
-    height: 20px;
-    left: -7px;
-    position: absolute;
-    top: 14px;
-    transform:             rotate( 45deg );
-        -moz-transform:    rotate( 45deg );
-        -ms-transform:     rotate( 45deg );
-        -o-transform:      rotate( 45deg );
-        -webkit-transform: rotate( 45deg );
-    width: 20px;
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 8px 18px 8px 0;
+  border-color: transparent $colorBubble;
+  display: block;
+  width: 0;
+  z-index: 1;
+  left: -16px;
+  top: 12px;
 }
 .chat__message {
-// CONTINUE HERE
 }
 .chat__username {
-
 }
-// .chat__bubble {
-// }
-// .chat__bubble:after {
-//     background-color: $color__theme--main-alpha40;
-//     box-shadow: -2px 2px 2px 0 rgba( 178, 178, 178, .4 );
-//     content: "\00a0";
-//     display: block;
-//     height: 20px;
-//     left: -10px;
-//     position: relative;
-//     top: 20px;
-//     transform:             rotate( 45deg );
-//         -moz-transform:    rotate( 45deg );
-//         -ms-transform:     rotate( 45deg );
-//         -o-transform:      rotate( 45deg );
-//         -webkit-transform: rotate( 45deg );
-//     width:  20px;
-// }
-//   content: '';
-//   position: absolute;
-//   left: 0;
-//   top: 50%;
-//   width: 0;
-//   height: 0;
-//   border: 20px solid transparent;
-//   border-right-color: $color__theme--main-alpha40;
-//   border-left: 0;
-//   border-bottom: 0;
-//   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-//   margin-top: -10px;
-//   margin-left: -20px;
-// }
