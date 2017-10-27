@@ -3,9 +3,19 @@
 * ------------------------------------- */
 
 .alert {
-  margin: 10px 0;
-  text-align: center;
-  color: white;
+  // margin: 10px 0;
+  // text-align: center;
+  // color: white;
+  border: 0;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  font-family: $headers-font;
+  span {
+    display: block;
+  }
 }
 .alert-info {
   background: $green;
