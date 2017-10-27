@@ -10,16 +10,17 @@ p "start seeding."
 
 User.destroy_all
 Counsellor.destroy_all
+Question.destroy_all
+Appointment.destroy_all
 
 i = 1
 p "Seed counsellors"
 p "specialty_list for counsellor as below."
 p Counsellor::SPECIALTY
+
 20.times do
 
   specialty_list = Counsellor::SPECIALTY.shuffle
-
-
 
   counsellor = Counsellor.create(
     first_name: "first_name#{i}",
