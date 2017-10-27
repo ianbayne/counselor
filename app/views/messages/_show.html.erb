@@ -1,6 +1,15 @@
-<div>
-  <div><%= receipt.message.sender.name %> commented:</div> <!-- Name is defined in the User Model -->
-  <p><%= receipt.message.body %></p>
+<div class="chat__container">
+  <%#= image_tag current_user.counsellor.photo, class: 'chat__avatar' %>
+  <i class="fa fa-user-circle chat__avatar" aria-hidden="true"></i>
+  <div class="chat__bubble">
+    <p class="chat__message"><%= receipt.message.body %></p>
+
+    <% if false %>
+      <!-- Name is defined in the User Model -->
+      <p class="chat__username"><%= receipt.message.sender.name%> commented:</p class="chat__username">
+    <% end %>
+
+  </div>
 </div>
 
 <script>
