@@ -11,9 +11,15 @@ $light-gray: #F4F4F4;
 $white: #FFFFFF;
 
 $color__theme--main: #75C1DE;
+$color__theme--main-light: #CEDADE;
+$color__theme--main-light--lg: #FFFEF7;
+$color__theme--main-alpha20: rgba(117,193,222, 0.2);
+$color__theme--main-alpha40: rgba(117,193,222, 0.4);
+$color__theme--main-alpha60: rgba(117,193,222, 0.6);
+$color__theme--main-alpha80: rgba(117,193,222, 0.8);
 // rgb(117,193,222)
 // rgba(117,193,222, 1)
-$color__theme--sub: #707FD1;
+// $color__theme--sub: #707FD1;
 // $color__theme--accent: #5ED088;
 $color__theme--accent: #D06464;
 $color__font--main: #282828;
