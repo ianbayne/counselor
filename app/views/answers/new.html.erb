@@ -8,9 +8,10 @@
         <%#= f.error_notification %>
         <%= f.association :question,
           as: :check_boxes,
-          required: true,
+          required: false,
           autofocus: true,
           collection: Question.where(active: true),
+          :label => "Please check below for us to know more about you.", 
           :label_method =>
           lambda { |question| "#{question.content}" } %>
         <%#= f.input :end_time, as: :date, input_html: {class: "end_time"} %>
