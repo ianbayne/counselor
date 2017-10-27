@@ -1,3 +1,29 @@
 /*
   *= require fullcalendar
 */
+
+#new_appointment {
+  & .form-group {
+    margin-bottom: 25px;
+  }
+  & select {
+    appearance: none;
+    background-color: $white;
+    border-radius: 6px;
+    border: 0;
+    color: $color__theme--main;
+    margin-top: 12px;
+    padding: 0 4px 0 0;
+    text-align: center;
+  }
+  .form-inline:after {
+    content: '\f0d7';
+    font-family: FontAwesome;
+    color: #fff;
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    pointer-events: none;
+  }
+}

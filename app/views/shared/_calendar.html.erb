@@ -1,26 +1,17 @@
 <!-- 432x296 ratio -->
-<% if false %>
-<p class="font__color--white">Next Booking<br>Calender construction site</p>
-<% end %>
 <!-- Below is test, please delete if needed -->
-
-<div>
+<div class="text-center">
   <div>
     <%= simple_form_for @appointment,
       # :url => url_for(:action => "create", :controller => "appointment"),
     :method => 'post' do |f| %>
       <%= f.input :start_time, label: 'Start time', as: :datetime %>
       <%#= f.input :end_time, label: 'End time', as: :datetime %>
-      <%= f.button :submit %>
-    <% end %>  
+      <%= f.button :submit, class: 'btn btn--sm' %>
+    <% end %>
   </div>
 
   <div>
-     <p class="text-center">
-     <%= link_to "Check counsellor's schedule", appointments_path, class: "font__color--white" %>     
-     </p>
-  </div>  
+     <p class="margin--top--sm"><%= link_to "Check counsellor's schedule", appointments_path, class: "font__color--white text-center" %></p>
+  </div>
 </div>
-
-
-
