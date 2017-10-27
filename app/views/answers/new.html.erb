@@ -11,7 +11,7 @@
           required: false,
           autofocus: true,
           collection: Question.where(active: true),
-          :label => "Please check below for us to know more about you.", 
+          :label => "", 
           :label_method =>
           lambda { |question| "#{question.content}" } %>
         <%#= f.input :end_time, as: :date, input_html: {class: "end_time"} %>
