@@ -1,10 +1,14 @@
 <div class="chat__container">
-  <%= image_tag current_user.counsellor.photo, class: 'chat__avatar' %>
+  <%#= image_tag current_user.counsellor.photo, class: 'chat__avatar' %>
+  <i class="fa fa-user-circle chat__avatar" aria-hidden="true"></i>
   <div class="chat__bubble">
     <p class="chat__message"><%= receipt.message.body %></p>
+
     <% if false %>
-      <p class="chat__username"><%= receipt.message.sender.name%> commented:</p class="chat__username"> <!-- Name is defined in the User Model -->
+      <!-- Name is defined in the User Model -->
+      <p class="chat__username"><%= receipt.message.sender.name%> commented:</p class="chat__username">
     <% end %>
+
   </div>
 </div>
 
