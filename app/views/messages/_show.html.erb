@@ -4,16 +4,11 @@
         <i class="fa fa-user-circle chat__avatar" aria-hidden="true"></i>
         <div class="chat__bubble">
           <p class="chat__message"><%= receipt.message.body %></p>
-          Sender: <%= receipt.message.sender.name %>
-          Receiver: <%= receipt.message.recipients.first.name %>
         </div>
       </div>
     <% elsif current_counsellor %>
       <div class="chat__container counsellor">
         <div class="chat__bubble">
-          <p class="chat__message"><%= receipt.message.body %></p>
-          Sender: <%= receipt.message.sender.name %>
-          Receiver: <%= receipt.message.recipients.first.name %>
         </div>
         <%= image_tag current_counsellor.photo, class: 'chat__avatar' %>
       </div>

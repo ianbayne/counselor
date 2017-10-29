@@ -1,28 +1,46 @@
 <div id="conversation">
   <% if @conversation %>
     <% if current_user %>
+      <% @conversation.receipts_for(current_user).reverse.each do |receipt| %>
+        <% if receipt.message.sender.name.include?('User') %>
+          <%= render 'messages/show_user', receipt: receipt %>
+        <% elsif receipt.message.sender.name.include?('Counsellor') %>
+          <%= render 'messages/show_counsellor', receipt: receipt %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+
+
+
+
+
+<!-- BACKUP COPY / by shun -->
+<% if false %>
+  <% if @conversation %>
+    <% if current_user %>
       <%# array = [] %>
       <%# @conversation.receipts_for(current_user).reverse.each do |receipt| %>
         <%# array << receipt %>
       <%# end %>
       <% @conversation.receipts_for(current_user).reverse.each do |receipt| %>
-        <%= render 'messages/show', receipt: receipt %>
-        <p>U:RELOAD</p>
+        <%= render 'messages/show_user', receipt: receipt %>
         <!-- 999 Need a code that can do something like...
           if message.sender is current_user then show in user format
         -->
       <% end %>
     <% elsif current_counsellor %>
       <% @conversation.receipts_for(current_counsellor).reverse.each do |receipt| %>
-        <%= render 'messages/show', receipt: receipt %>
-        <p>C:RELOAD</p>
+        <%= render 'messages/show_counsellor', receipt: receipt %>
         <!-- 999 Need a code that can do something like...
           if message.sender is user.counsellor then show in counsellor format
         -->
       <% end %>
     <% end %>
   <% end %>
-</div>
+<% end %>
 
 <div id="chat__form">
   <%= render 'messages/form', conversation: @conversation %>
