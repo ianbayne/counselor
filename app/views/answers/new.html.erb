@@ -6,6 +6,13 @@
 
       <%= simple_form_for(@answer) do |f| %>
         <%#= f.error_notification %>
+        <%= f.label "Do you prefer male/female counsellor?" %>
+        <br/>
+        <br/>
+        <%= f.collection_radio_buttons :gender, 
+          [[0, "Male"],[1, "Female"],[2, "No preference"]], :first, :last,
+          checked: 0 %>
+
         <%= f.association :question,
           as: :check_boxes,
           required: false,
@@ -14,6 +21,7 @@
           :label => "", 
           :label_method =>
           lambda { |question| "#{question.content}" } %>
+
         <%#= f.input :end_time, as: :date, input_html: {class: "end_time"} %>
         <%#= f.input :user_id, input_html: { value: current_user.id }, as: :hidden %>
         <%= f.button :submit, "Match me with a Counsellor", class: "btn--sm" %>

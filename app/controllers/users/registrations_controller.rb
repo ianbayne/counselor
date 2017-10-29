@@ -24,10 +24,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if answer.question.id == 4 && answer.content == 1
         @matched_counsellors = @matched_counsellors.tagged_with(:financial)
       end
-      if answer.question.id == 6 && answer.content == 1
+      if answer.question.id == 6 && answer.content == 0
         @matched_counsellors = @matched_counsellors.where(gender: 0)
       end
-      if answer.question.id == 7 && answer.content == 1
+      if answer.question.id == 6 && answer.content == 1
         @matched_counsellors = @matched_counsellors.where(gender: 1)
       end
     end
