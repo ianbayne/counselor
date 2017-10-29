@@ -54,8 +54,9 @@
       </div>
     <% else %>
       <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "User Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to t(".sign_in", default: "Counsellor Login"), new_counsellor_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t('.other_language'), "/en", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".user_login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".counsellor_login"), new_counsellor_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
   </div>
 

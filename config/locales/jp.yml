@@ -1,0 +1,16 @@
+jp:
+  pages:
+    home:
+      feeling_down?: "凹んでない？誰かに話してみる？"
+      private_and_convenient: "君のためのプロのカウンセリング。"
+      online_chat: "チャット、電話、ビデオで話せるよ。"
+      get_started: "ここから始める"
+      log_in_if: "アカウントがある方はここからログイン"
+      or: "または"
+      work_with_us: "カウンセラーとして仕事をしたい方"
+  shared:
+    navbar:
+      user_login: "ユーザーログイン"
+      counsellor_login: "カウンセラーログイン"
+      other_language: "English"
+
