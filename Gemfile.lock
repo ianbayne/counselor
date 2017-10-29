@@ -113,6 +113,8 @@ GEM
     fullcalendar.io-rails (3.6.2)
       jquery-rails (>= 3.1.0, < 5.0)
       momentjs-rails (~> 2.15)
+    gimei (0.3.0)
+      romaji
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     http-cookie (1.0.3)
@@ -201,6 +203,8 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    romaji (0.2.4)
+      rake (>= 0.8.0)
     sass (3.5.2)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -267,6 +271,7 @@ DEPENDENCIES
   figaro
   font-awesome-sass
   fullcalendar.io-rails
+  gimei
   jbuilder (~> 2.0)
   jquery-rails
   listen (~> 3.0.5)

@@ -22,51 +22,54 @@ p Counsellor::SPECIALTY
 
   specialty_list = Counsellor::SPECIALTY.shuffle
 
-  counsellor = Counsellor.create(
-    first_name: "first_name#{i}",
-    last_name: "last_name#{i}",
+  counsellor = Counsellor.new(
+    # first_name: "first_name#{i}",
+    # last_name: "last_name#{i}",
     age: (30..60).to_a.sample,
     gender: (0..1).to_a.sample,
     email: "counsellor#{i}@test.com",
     password: "123456")
 
+  # add 3 random speciality to counsellor from specilty list
   3.times do
     counsellor.specialty_list.add(specialty_list.pop)
   end
+
+  # random Japanese name to counsellor based on gender
+  gimei = counsellor.gender == 0 ? Gimei.male : Gimei.female
+  roman_name = gimei.romaji.split(" ")
+  first_name = roman_name[0]
+  last_name = roman_name[1]
+  counsellor.first_name = first_name
+  counsellor.last_name = last_name
 
   url = ["https://cdn3.iconfinder.com/data/icons/rcons-user-action/32/boy-512.png",
         "https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png"]
   counsellor.remote_photo_url = url[counsellor.gender]
   counsellor.save!
 
+  # introduction
+  introduction = "Hi there. 
+  My name is #{counsellor.first_name} and I am a Mental Health and Addictions Counselor licensed in Japan with over 8 years of clinical experience. 
+  I hold a Masters of Arts in Counseling Psychology. 
+  I am also certified with the National Board of Certified Counselors. 
+  I have worked with clients with a wide range of concerns 
+  including depression, anxiety, grief, relationship issues, addiction problems, career challenges, and life transitions. 
+  I have also helped individuals with a history of trauma, including emotional and physical abuse."
+
+  counsellor.introduction = introduction
+
   p "create counsellor\##{i}"
+  p "gender", counsellor.gender
   p "first_name", counsellor.first_name
   p "last_name", counsellor.last_name
+  p "introduction", counsellor.introduction
   p "age", counsellor.age
-  p "gender", counsellor.gender
   p "photo_url", counsellor.photo
   p "email:", counsellor.email
   p "password:", counsellor.password
   i += 1
 end
-
-p "counsellor for demo"
-
-counsellor = Counsellor.create(
-  first_name: "first_name21",
-  last_name: "last_name21",
-  age: (30..60).to_a.sample,
-  gender: 1,
-  email: "counsellor21@test.com",
-  password: "123456")
-
-counsellor.specialty_list.add(:work_related, :relationship, :loss)
-counsellor.remote_photo_url = "https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png"
-counsellor.save!
-
-p "counsellor for demo"
-
-p "Finished seeding."
 
 # QUESTIONS#
 p "Seed questions"
