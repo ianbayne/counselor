@@ -50,6 +50,22 @@ p Counsellor::SPECIALTY
   i += 1
 end
 
+p "counsellor for demo"
+
+counsellor = Counsellor.create(
+  first_name: "first_name21",
+  last_name: "last_name21",
+  age: (30..60).to_a.sample,
+  gender: 1,
+  email: "counsellor21@test.com",
+  password: "123456")
+
+counsellor.specialty_list.add(:work_related, :relationship, :loss)
+counsellor.remote_photo_url = "https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png"
+counsellor.save!
+
+p "counsellor for demo"
+
 p "Finished seeding."
 
 # QUESTIONS#
