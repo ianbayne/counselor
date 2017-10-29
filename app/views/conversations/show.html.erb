@@ -1,16 +1,41 @@
+<!-- conversations/_show.html.erb -->
 <div id="conversation">
   <% if @conversation %>
+
+    <!-- If you are currently a user... -->
     <% if current_user %>
+      <!-- For each conversation receipt... -->
       <% @conversation.receipts_for(current_user).reverse.each do |receipt| %>
+        <!-- If its from a user, render it with the user layout -->
         <% if receipt.message.sender.name.include?('User') %>
           <%= render 'messages/show_user', receipt: receipt %>
+        <!-- If its from a counsellor, render it with the counsellor layout -->
         <% elsif receipt.message.sender.name.include?('Counsellor') %>
           <%= render 'messages/show_counsellor', receipt: receipt %>
         <% end %>
       <% end %>
+
+    <% elsif current_counsellor %>
+      <% @conversation.receipts_for(current_counsellor).reverse.each do |receipt| %>
+        <% if receipt.message.sender.name.include?('Counsellor') %>
+          <%= render 'messages/show_counsellor', receipt: receipt %>
+        <% elsif receipt.message.sender.name.include?('User') %>
+          <%= render 'messages/show_user', receipt: receipt %>
+        <% end %>
+      <% end %>
+
     <% end %>
   <% end %>
 </div>
+
+<div id="chat__form">
+  <%= render 'messages/form', conversation: @conversation %>
+</div>
+
+<script>
+  var element = document.getElementById("chat");
+  element.scrollTop = element.scrollHeight;
+</script>
 
 
 
@@ -41,12 +66,3 @@
     <% end %>
   <% end %>
 <% end %>
-
-<div id="chat__form">
-  <%= render 'messages/form', conversation: @conversation %>
-</div>
-
-<script>
-  var element = document.getElementById("chat");
-  element.scrollTop = element.scrollHeight;
-</script>

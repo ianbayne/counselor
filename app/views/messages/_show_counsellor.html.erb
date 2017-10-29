@@ -2,10 +2,9 @@
   <div class="chat__bubble">
     <p class="chat__message"><%= receipt.message.body %></p>
   </div>
-  <!-- CONTINUE HERE JUST GOT THE SHOW CORRECT UPON RELOAD -->
-  <%#= image_tag current_counsellor.photo, class: 'chat__avatar' %>
+  <% if current_user %>
+    <%= image_tag current_user.counsellor.photo, class: 'chat__avatar' %>
+  <% elsif current_counsellor %>
+    <%= image_tag current_counsellor.photo, class: 'chat__avatar' %>
+  <% end %>
 </div>
-<script>
-  var element = document.getElementById("chat");
-  element.scrollTop = element.scrollHeight;
-</script>
