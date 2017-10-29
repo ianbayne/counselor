@@ -1,0 +1,11 @@
+<div class="chat__container counsellor">
+  <div class="chat__bubble">
+    <p class="chat__message"><%= receipt.message.body %></p>
+    <p>COUNSELLOR!!!</p>
+  </div>
+  <%= image_tag current_counsellor.photo, class: 'chat__avatar' %>
+</div>
+<script>
+  var element = document.getElementById("chat");
+  element.scrollTop = element.scrollHeight;
+</script>
