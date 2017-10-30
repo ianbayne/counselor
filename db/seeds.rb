@@ -99,12 +99,12 @@ p "create question \##{question.id}"
 p "content:", question.content
 p "active: #{question.active}"
 
-question = Question.create(content: "Do you prefer a male counsellor?", active: true)
+question = Question.create(content: "Do you prefer a male counsellor?", active: false)
 p "create question \##{question.id}"
 p "content:", question.content
 p "active: #{question.active}"
 
-question = Question.create(content: "Do you prefer a female counsellor?", active: true)
+question = Question.create(content: "Do you prefer a female counsellor?", active: false)
 p "create question \##{question.id}"
 p "content:", question.content
 p "active: #{question.active}"
