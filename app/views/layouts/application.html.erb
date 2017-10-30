@@ -26,6 +26,12 @@
     </div>
     <%= javascript_include_tag 'application' %>
     <%= yield(:after_js) %>
-
   </body>
+  <script>
+    $('document').ready(function() {
+      setTimeout(function() {
+        $('.alert').slideUp();
+      }, 1000);
+    });
+  </script>
 </html>
