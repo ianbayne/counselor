@@ -4,6 +4,7 @@ jp:
       feeling_down?: "凹んでない？誰かに話してみる？"
       private_and_convenient: "君のためのプロのカウンセリング。"
       online_chat: "チャット、電話、ビデオで話せるよ。"
+      first_week: "最初の1週間は無料でお試しいただけます！"
       get_started: "ここから始める"
       log_in_if: "アカウントがある方はここからログイン"
       or: "または"
@@ -13,4 +14,3 @@ jp:
       user_login: "ユーザーログイン"
       counsellor_login: "カウンセラーログイン"
       other_language: "English"
-
