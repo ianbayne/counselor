@@ -7,7 +7,7 @@
       <%= simple_form_for(@answer) do |f| %>
         <%#= f.error_notification %>
         <%#= f.label "Do you prefer male/female counsellor?" %>
-        <label class="control-label">Do you prefer male/female counsellor?</label>
+        <label class="control-label">Would you prefer talking to a male or female counsellor?</label>
         <div>
           <%= f.collection_radio_buttons :gender,
             [[0, "Male"],[1, "Female"],[2, "No preference"]], :first, :last,
