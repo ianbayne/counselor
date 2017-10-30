@@ -4,7 +4,7 @@
   width: 100%;
 }
 #chat__form {
-  padding: 0 40px 40px 40px;
+  padding: 0 20px 40px 20px;
 }
 #chat-header {
   bottom: 0px;
@@ -19,10 +19,10 @@
   line-height: 1.2;
   padding: 7px 10px;
   resize: none;
-  width: 425px;
+  width: 100%;
 }
 #conversation {
-  padding: 80px 40px 40px 40px;
+  padding: 40px 20px;
 }
 $colorBubble: #C6EBF8;
 .chat__avatar {
@@ -41,6 +41,7 @@ $colorBubble: #C6EBF8;
   left: 22px;
   padding: 11px 14px;
   position: relative;
+  max-width: 70%;
 }
 .chat__bubble::after {
   border-color: transparent $colorBubble;
@@ -57,7 +58,18 @@ $colorBubble: #C6EBF8;
 .chat__container {
   display: flex;
   margin-bottom: 18px;
-  width: 400px;
+  width: 100%;
+  &.counsellor {
+    justify-content: flex-end;
+    .chat__bubble {
+      left: -22px;
+      &:after {
+        border-width: 8px 0 8px 18px;
+        left: auto;
+        right: -16px;
+      }
+    }
+  }
 }
 .chat__message {
 }

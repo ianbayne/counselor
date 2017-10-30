@@ -1,0 +1,10 @@
+<div class="chat__container counsellor">
+  <div class="chat__bubble">
+    <p class="chat__message"><%= receipt.message.body %></p>
+  </div>
+  <% if current_user %>
+    <%= image_tag current_user.counsellor.photo, class: 'chat__avatar' %>
+  <% elsif current_counsellor %>
+    <%= image_tag current_counsellor.photo, class: 'chat__avatar' %>
+  <% end %>
+</div>

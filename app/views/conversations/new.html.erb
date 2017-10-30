@@ -9,11 +9,11 @@
     <% end %>
   </div>
   <div>
-    <%= text_field_tag :subject, nil, placeholder: "Subject" %>
+    <%= text_field_tag :subject, nil, placeholder: "Subject", class: "debug" %>
   </div>
   <div>
     <%= text_area_tag :body, nil, placeholder: "Leave a comment" %>
   </div>
 
-  <%= submit_tag "Start a conversation" %>
+  <%= submit_tag "Start a conversation", class: "btn btn--sm btn--invert font__color--white" %>
 <% end %>

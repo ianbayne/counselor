@@ -1,21 +1,35 @@
-<div class="chat__container">
-  <%#= image_tag current_user.counsellor.photo, class: 'chat__avatar' %>
-  <i class="fa fa-user-circle chat__avatar" aria-hidden="true"></i>
-  <div class="chat__bubble">
-    <p class="chat__message"><%= receipt.message.body %></p>
-
-    <% if false %>
-      <!-- Name is defined in the User Model -->
-      <p class="chat__username"><%= receipt.message.sender.name%> commented:</p class="chat__username">
-    <% end %>
-
-  </div>
-</div>
-
+<!-- messages/_show.html.erb -->
+<% if @conversation %>
+  <% if current_user %>
+    <%= render 'messages/show_user', receipt: receipt %>
+  <% elsif current_counsellor %>
+    <%= render 'messages/show_counsellor', receipt: receipt %>
+  <% end %>
+<% end %>
 <script>
-  var element = document.getElementById("chat");
+  var element = document.getElementById("conversation");
   element.scrollTop = element.scrollHeight;
 </script>
+
+<!-- BACKUP -->
+<% if false %>
+  <% if current_user %>
+    <div class="chat__container user">
+      <i class="fa fa-user-circle chat__avatar" aria-hidden="true"></i>
+      <div class="chat__bubble">
+        <p class="chat__message"><%= receipt.message.body %></p>
+      </div>
+    </div>
+  <% elsif current_counsellor %>
+    <p>989</p>
+    <div class="chat__container counsellor">
+      <div class="chat__bubble">
+      </div>
+      <%= image_tag current_counsellor.photo, class: 'chat__avatar' %>
+    </div>
+<% end %>
+
+<% end %>
 
 <!-- <div>
   <div>
@@ -34,4 +48,3 @@
   </div>
   <p><%#= receipt.message.body %></p>
 </div>
- -->
