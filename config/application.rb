@@ -35,7 +35,9 @@ module Counselor
 
     config.action_view.embed_authenticity_token_in_remote_forms = true
 
-config.middleware.delete Rack::Lock
-config.middleware.use FayeRails::Middleware, mount: '/faye', :timeout => 25
+    config.middleware.delete Rack::Lock
+    config.middleware.use FayeRails::Middleware, mount: '/faye', :timeout => 25
+
+    config.i18n.default_locale = :jp
   end
 end
