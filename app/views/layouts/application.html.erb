@@ -22,6 +22,8 @@
       <div class="row">
         <!-- div.col-##-## will be defined in the yields -->
         <%= yield %>
+        <%#= javascript_include_tag 'application' %>
+        <%#= yield(:after_js) %>
       </div>
     </div>
     <%= javascript_include_tag 'application' %>
