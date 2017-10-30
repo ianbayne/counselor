@@ -28,7 +28,7 @@
 <% end %>
 
 
-<% user_list = ZoomusClient.user_list %>
+<% user = current_user.user_create raise %>
 <% user_list['users'].each do |user| %>
   <% user_id = user['id'] %>
   <%= ZoomusClient.meeting_create(host_id: user_id, topic: "Testing!", type: 2) raise %>
