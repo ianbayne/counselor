@@ -22,18 +22,20 @@
     position: relative;
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     &.active {
-      // CONTINUE HERE PROB APPLY THIS AS A TOGGLE CLASS
+      // CONTINUE HERE PROB APPLY THIS AS A TOGGLE CLASS TO modal__card--counsellor
+      // On click toggle the active class, and change the content to full text.
       box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
       height: 80%;
-      margin: 0 10% 10% 0;
+      margin: 0 calc(10% + 10px) 10% 0;
       transition: all 0.3s cubic-bezier(.25,.8,.25,1);
       position: absolute;
       top: 10%;
+      z-index: 10;
     }
     &:last-child {
       margin: 0;
       &.active {
-        margin: 0 10% 10% 0;
+        margin: 0 calc(10% + 10px) 10% 0;
       }
     }
     .modal {
