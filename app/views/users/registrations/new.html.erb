@@ -148,31 +148,15 @@
 
 <%= content_for(:after_js) do %>
 <script>
-  console.log("test javascript is working.")
   const counsellorInput = document.querySelector("#user_counsellor_id")
-  //counsellorInput.selectedIndex = 0
-  // const counsellorInputOption = document.querySelectorAll("#user_counsellor_id option")
-  //counsellorInputOption.forEach(option => option.removeAttribute("selected"))
-
-  // console.log(counsellorInputOption)
-
   const counsellorCards = document.querySelectorAll(".modal__card--counsellor")
-  console.log(counsellorCards)
-
   counsellorCards.forEach((card, i) => {
     counsellorInput.selectedIndex = 0
     const cardIndex = card.attributes[1].value
     card.addEventListener("click", (e) => {
-      // counsellorInputOption.forEach(option => option.removeAttribute("selected"))
-      console.log("clicked card with index:", cardIndex)
-      // console.log(counsellorInputOption[cardIndex])
-      console.log(counsellorCards)
       counsellorInput.selectedIndex = cardIndex
-      // counsellorInputOption[cardIndex].setAttribute("selected", "true")
-      // console.log(counsellorInput.selectedIndex)
     });
   })
-
 </script>
 <% end %>
 
