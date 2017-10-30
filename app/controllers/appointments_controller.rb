@@ -16,7 +16,7 @@ class AppointmentsController < ApplicationController
     @appointment.counsellor = current_user.counsellor
 
     user_id = ZoomusClient.user_list['users'][0]['id']
-    @appointment.url = ZoomusClient.meeting_create(host_id: user_id, topic: " Counseling Session", type: 2)['join_url']
+    @appointment.url = ZoomusClient.meeting_create(host_id: user_id, topic: " Counseling Session", type: 2, start_time: @appointment.start_time)['join_url']
 
     begin
     user_list = ZoomusClient.user_list!
