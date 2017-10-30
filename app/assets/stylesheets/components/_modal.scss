@@ -1,14 +1,29 @@
+.form-group.user_counsellor {
+  visibility: hidden;
+  height: 0;
+  margin: 0;
+}
+.invisible {
+  visibility: hidden;
+  height: 0;
+  opacity: 0;
+}
 .modal__container {
+  flex-wrap: wrap;
   &--counsellor {
     align-items: center;
     display: flex;
-    // flex-direction: column; # Technically correct, but conflicts with :hover
     flex-wrap: wrap;
-    height: 90%;
-    justify-content: space-between;
+    height: 80%;
+    justify-content: center;
+    // justify-content: space-between;
     overflow: hidden;
-    padding: 5%;
+    margin: 5% 10% 10% 10%;
+    // CONTINUE HERE
     width: 90%;
+    position: relative;
+    // padding: 5%;
+    // flex-direction: column;
   }
 }
 .modal__card {
@@ -17,20 +32,25 @@
     border-radius: 2px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     display: flex;
-    height: 30%;
-    margin: 0 0 5% 0;
+    // height: 30%;
+    // margin: 0 0 5% 0;
     position: relative;
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-    &.active {
-      // CONTINUE HERE PROB APPLY THIS AS A TOGGLE CLASS TO modal__card--counsellor
-      // On click toggle the active class, and change the content to full text.
+    transition: all $duration--lg cubic-bezier(.25,.8,.25,1);
+    &:hover {
       box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-      height: 80%;
-      margin: 0 calc(10% + 10px) 10% 0;
-      transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-      position: absolute;
-      top: 10%;
-      z-index: 10;
+    }
+    &:nth-child(1), &:nth-child(2), &:nth-child(3) {
+      &.active {
+        bottom: 2.5%;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        height: 80%;
+        left: 5%;
+        margin: 0 calc(10% + 10px) 10% 0;
+        position: absolute;
+        transition: all 1s cubic-bezier(.25,.8,.25,1);
+        width: 90%;
+        z-index: 10;
+      }
     }
     &:last-child {
       margin: 0;
@@ -43,25 +63,59 @@
         background-color: rgba(117,193,222,0.25);
         background-position: center;
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: 85%;
         height: 140px;
         width: 140px;
       }
       &--counsellor-text {
-        padding: 18px;
-        width: 75%;
+        padding: 16px 18px 0 18px;
+        // width: 75%;
+        width: 600px;
         p {
           margin: 0 0 0 0;
+          &.whole {
+            line-height: 1.35;
+            height: 0;
+            &.activate__height {
+              height: 100%;
+              transition-duration: $duration--lg;
+            }
+          }
         }
         h3 {
-          margin-bottom: $baseFont / 4;
+          margin-bottom: 0;
+          line-height: 1;
         }
         h5 {
-          margin-bottom: $baseFont / 4;
+          margin-bottom: 6px;
+        }
+        &.active {
+          align-items: flex-start;
+          padding: 18px;
+        }
+        .counsellor__name {
+          transition-duration: $duration--sm;
+          &.active {
+            font-size: 40px;
+            margin-bottom: 0px;
+            transition-duration: $duration--sm;
+          }
+        }
+        .counsellor__expertise {
+          transition-duration: $duration--sm;
+          &.active {
+            margin-bottom: 8px;
+            transition-duration: $duration--sm;
+          }
         }
       }
     }
   }
+}
+.modal__header {
+  width: 100%;
+  text-align: center;
+  padding: 5% 0 0 0;
 }
 .selected::after {
   background-color: $color__theme--accent;

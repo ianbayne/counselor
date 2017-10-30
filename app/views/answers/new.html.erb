@@ -9,16 +9,16 @@
         <%= f.label "Do you prefer male/female counsellor?" %>
         <br/>
         <br/>
-        <%= f.collection_radio_buttons :gender, 
+        <%= f.collection_radio_buttons :gender,
           [[0, "Male"],[1, "Female"],[2, "No preference"]], :first, :last,
-          checked: 0 %>
+          checked: 2 %>
 
         <%= f.association :question,
           as: :check_boxes,
           required: false,
           autofocus: true,
           collection: Question.where(active: true),
-          :label => "", 
+          :label => "",
           :label_method =>
           lambda { |question| "#{question.content}" } %>
 

@@ -9,7 +9,7 @@ class Counsellor < ApplicationRecord
   acts_as_messageable
   acts_as_taggable_on :specialty # counsellor.specialty_list is added
   # acts_as_taggable # alias of "acts_as_taggable_on :tags"
-  SPECIALTY = [:work_related, :relationship, :loss, :financial]
+  SPECIALTY = [:Work, :Relationship, :Loss, :Financial]
 
   SPECIALTYMAP = {
     work_related: "Work-related issues",
