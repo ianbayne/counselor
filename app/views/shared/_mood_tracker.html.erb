@@ -5,9 +5,11 @@
   <br>
   <p class="font__color--white">Mood Tracker</p>
   <p class="font__color--white">[UNDER CONSTRUCTION]</p>
-  <% content_for :after_js do %>
-    <%= line_chart Mood.group_by_day(:created_at).count %>
+  
+  <div>
+    <% content_for :after_js do %>
+    <%= line_chart current_user.moods.group_by_day(:created_at).sum(:mood), min: 1, max: 5, width: "300px", height: "200px", download: "mood_tracker" %>    
+    <% end %>
+  </div>
     <!-- change the data to Mood[mood] for each day (Data = variable after line_chart -->
-  <% end %>
-
 </div>
