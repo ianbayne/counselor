@@ -1,6 +1,14 @@
 .modal__container {
   &--counsellor {
-    width: 80%;
+    align-items: center;
+    display: flex;
+    // flex-direction: column; # Technically correct, but conflicts with :hover
+    flex-wrap: wrap;
+    height: 90%;
+    justify-content: space-between;
+    overflow: hidden;
+    padding: 5%;
+    width: 90%;
   }
 }
 .modal__card {
@@ -9,15 +17,24 @@
     border-radius: 2px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     display: flex;
-    margin: 0 0 30px 0;
+    height: 30%;
+    margin: 0 0 5% 0;
     position: relative;
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-    &:hover {
-      // box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    &.active {
+      // CONTINUE HERE PROB APPLY THIS AS A TOGGLE CLASS
       box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      height: 80%;
+      margin: 0 10% 10% 0;
+      transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+      position: absolute;
+      top: 10%;
     }
     &:last-child {
       margin: 0;
+      &.active {
+        margin: 0 10% 10% 0;
+      }
     }
     .modal {
       &--counsellor-photo {
