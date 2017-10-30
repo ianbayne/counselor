@@ -14,19 +14,20 @@ class AppointmentsController < ApplicationController
     @appointment.end_time = @end_time
     @appointment.user = current_user
     @appointment.counsellor = current_user.counsellor
-    if @appointment.save
-      redirect_to appointments_path
-    else
-      render :index
-    end
 
     user_id = ZoomusClient.user_list['users'][0]['id']
-    @appointment.url = ZoomusClient.meeting_create(host_id: user_id, topic: "Testing!", type: 2)['join_url']
+    @appointment.url = ZoomusClient.meeting_create(host_id: user_id, topic: " Counseling Session", type: 2)['join_url']
 
     begin
     user_list = ZoomusClient.user_list!
     rescue Zoomus::Error => exception
       puts 'Something went wrong'
+    end
+
+    if @appointment.save
+      redirect_to appointments_path
+    else
+      render :index
     end
 
   end
