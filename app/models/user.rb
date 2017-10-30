@@ -7,6 +7,7 @@ class User < ApplicationRecord
   # has_many :user_profile
   has_many :answers
   belongs_to :counsellor
+  has_many :moods
 
   acts_as_messageable
 

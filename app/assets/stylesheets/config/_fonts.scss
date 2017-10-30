@@ -4,9 +4,6 @@
 // $body-font: "Open Sans", "Helvetica", "sans-serif";
 // $headers-font: "Raleway", "Helvetica", "sans-serif";
 
-// @import url('https://fonts.googleapis.com/css?family=Baloo|Open+Sans:300,400,600,700');
-// $body-font: 'Open Sans', 'sans-serif';
-// $headers-font: 'Baloo', 'cursive';
 @import url('https://fonts.googleapis.com/css?family=Baloo|Exo+2:300,400,500,600,700');
 $body-font: 'Exo 2', 'sans-serif';
 $headers-font: 'Baloo', 'cursive';
@@ -26,6 +23,7 @@ $headers-font: 'Baloo', 'cursive';
 .font__color--white {
   color: $white;
 }
+
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {

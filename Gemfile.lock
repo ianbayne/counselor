@@ -57,6 +57,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    chartkick (2.2.5)
     cloudinary (1.8.1)
       aws_cf_signer
       rest-client
@@ -117,6 +118,8 @@ GEM
       romaji
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    groupdate (3.2.0)
+      activesupport (>= 3)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     http_parser.rb (0.6.0)
@@ -271,6 +274,7 @@ DEPENDENCIES
   autoprefixer-rails
   bootstrap-sass
   carrierwave
+  chartkick
   cloudinary
   coffee-rails
   devise
@@ -279,6 +283,7 @@ DEPENDENCIES
   font-awesome-sass
   fullcalendar.io-rails
   gimei
+  groupdate
   jbuilder (~> 2.0)
   jquery-rails
   listen (~> 3.0.5)
