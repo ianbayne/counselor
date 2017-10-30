@@ -20,14 +20,11 @@ class AppointmentsController < ApplicationController
       render :index
     end
 
-    user_list = ZoomusClient.user_list raise
-    user_list['users'].each do |user|
-      user_id = user['id']
-      ZoomusClient.meeting_create(host_id: user_id, topic: "Testing!", type: 2)
-    end
+    user_id = ZoomusClient.user_list['users'][0]['id']
+    @appointment.url = ZoomusClient.meeting_create(host_id: user_id, topic: "Testing!", type: 2)['join_url']
 
     begin
-      user_list = ZoomusClient.user_list!
+    user_list = ZoomusClient.user_list!
     rescue Zoomus::Error => exception
       puts 'Something went wrong'
     end

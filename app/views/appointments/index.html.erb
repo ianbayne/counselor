@@ -14,7 +14,8 @@
             {
                 title  : <%= ("Booked").to_json.html_safe %>,
                 start  : <%= appointment.start_time.strftime("%Y-%m-%dT%H:%M").to_json.html_safe %>,
-                end    : <%= appointment.end_time.strftime("%Y-%m-%dT%H:%M").to_json.html_safe %>
+                end    : <%= appointment.end_time.strftime("%Y-%m-%dT%H:%M").to_json.html_safe %>,
+                url    : <%= appointment.url %>
             },
             <% end %>
         ],
@@ -28,15 +29,15 @@
 <% end %>
 
 
-<% user = current_user.user_create raise %>
-<% user_list['users'].each do |user| %>
-  <% user_id = user['id'] %>
-  <%= ZoomusClient.meeting_create(host_id: user_id, topic: "Testing!", type: 2) raise %>
-<% end %>
+<%# user_id = ZoomusClient.user_list['users'][0]['id'] %>
+<%# join_url = ZoomusClient.meeting_create(host_id: user_id, topic: "Testing!", type: 2)['join_url'] %>
+<!-- <p>Here's the join URL: <%#= join_url %></p> -->
 
-<% begin  %>
-<% user_list = ZoomusClient.user_list! %>
-<% rescue Zoomus::Error => exception %>
-<%=  'Something went wrong' %>
-<% end %>
 
+<!-- ZoomusClient.meeting_create(host_id: ZoomusClient.user_list['users'][0]['id'], topic: "testing", type: 2)['join_url'] -->
+
+<%# begin  %>
+<%# user_list = ZoomusClient.user_list! %>
+<%# rescue Zoomus::Error => exception %>
+<%#=  'Something went wrong' %>
+<%# end %>
