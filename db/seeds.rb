@@ -49,12 +49,12 @@ p Counsellor::SPECIALTY
   counsellor.save!
 
   # introduction
-  introduction = "Hi there. 
-  My name is #{counsellor.first_name} and I am a Mental Health and Addictions Counselor licensed in Japan with over 8 years of clinical experience. 
-  I hold a Masters of Arts in Counseling Psychology. 
-  I am also certified with the National Board of Certified Counselors. 
-  I have worked with clients with a wide range of concerns 
-  including depression, anxiety, grief, relationship issues, addiction problems, career challenges, and life transitions. 
+  introduction = "Hi there.
+  My name is #{counsellor.first_name} and I am a Mental Health and Addictions Counselor licensed in Japan with over 8 years of clinical experience.
+  I hold a Masters of Arts in Counseling Psychology.
+  I am also certified with the National Board of Certified Counselors.
+  I have worked with clients with a wide range of concerns
+  including depression, anxiety, grief, relationship issues, addiction problems, career challenges, and life transitions.
   I have also helped individuals with a history of trauma, including emotional and physical abuse."
 
   counsellor.introduction = introduction

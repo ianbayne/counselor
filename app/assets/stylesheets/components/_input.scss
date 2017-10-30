@@ -1,7 +1,13 @@
 #new_answer {
   margin-top: 20px;
   label.control-label {
-    margin-bottom: 8px;
+    margin: 30px 0 12px 0;
+  }
+  .checkbox {
+    margin: 0 0 4px 0;
+  }
+  .form-group {
+    margin: 0 0 10px 0;
   }
 }
 
@@ -90,11 +96,11 @@ label {
 .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
   border-radius: 0;
   border: 0 !important;
-  height: 30px;
-  left: 14px;
+  height: 26px;
+  left: 16px;
   position: absolute;
-  top: -10px;
-  width: 30px;
+  top: -8px;
+  width: 26px;
 }
 .radio label, .checkbox label {
   padding-left: 26px;

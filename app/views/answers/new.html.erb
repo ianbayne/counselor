@@ -6,19 +6,19 @@
 
       <%= simple_form_for(@answer) do |f| %>
         <%#= f.error_notification %>
-        <%= f.label "Do you prefer male/female counsellor?" %>
-        <br/>
-        <br/>
-        <%= f.collection_radio_buttons :gender, 
-          [[0, "Male"],[1, "Female"],[2, "No preference"]], :first, :last,
-          checked: 0 %>
-
+        <%#= f.label "Do you prefer male/female counsellor?" %>
+        <label class="control-label">Would you prefer talking to a male or female counsellor?</label>
+        <div>
+          <%= f.collection_radio_buttons :gender,
+            [[0, "Male"],[1, "Female"],[2, "No preference"]], :first, :last,
+            checked: 0 %>
+        </div>
         <%= f.association :question,
           as: :check_boxes,
           required: false,
           autofocus: true,
           collection: Question.where(active: true),
-          :label => "", 
+          :label => "I would like to talk about...",
           :label_method =>
           lambda { |question| "#{question.content}" } %>
 
