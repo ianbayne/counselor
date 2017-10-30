@@ -1,7 +1,6 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%#= image_tag "logo.png" %>
     <p class="navbar_wordmark">Counsellor</p>
   <% end %>
 
@@ -29,19 +28,8 @@
           <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "Profile", user_path(current_user) %>
-
-              <%# Below can be deleted %>
-              <% if false %>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-              <% end %>
-
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+              <%= link_to user_path(current_user) do %>
+                <i class="fa fa-user"></i>  Profile
               <% end %>
             </li>
             <li>
