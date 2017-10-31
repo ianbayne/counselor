@@ -42,7 +42,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
     @user = User.last
     @counsellor = @user.counsellor
-    @counsellor.send_message(@user, "Greetings! Welcome to Counsellor.com! We are glad to have you! Please tell me about yourself and your main concerns. I will respond to you as early as possible. Thank you!", "Greetings!")
+    @counsellor.send_message(@user, "Greetings, #{@user.user_name}! Welcome to Counsellor.com! We are glad to have you! Please tell me about yourself and your main concerns. I will respond to you as early as possible. Thank you!", "Greetings!")
   end
 
   # GET /resource/edit
