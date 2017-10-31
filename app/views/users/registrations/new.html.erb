@@ -4,7 +4,8 @@
 
       <div class="col-xs-12 col-sm-12 col-md-8 flex--vh-center modal__container">
         <div class="modal__header">
-          <h2>We recommend these Counsellors!</h2>
+          <h2>We recommend these Counsellors for you</h2>
+          <h3>Click to select and take a closer look</h3>
         </div>
         <div class="modal__container--counsellor">
         <% @matched_counsellors.each_with_index do |counsellor, i| %>
@@ -69,12 +70,15 @@ $(document).ready(function(){
       if (clickedCard.find("p.whole").hasClass("invisible")) {
         setTimeout(function() {
           clickedCard.find("p.whole").removeClass("invisible");
-          clickedCard.find("p.whole").addClass("activate__height");
-          clickedCard.find("p.whole").addClass("selected");
-        }, 500);
+          clickedCard.find("p.whole").addClass("activate");
+          setTimeout(function() {
+            clickedCard.find("p.whole").addClass("selected");
+          }, 800);
+        }, 800);
       } else if (!clickedCard.find("p.whole").hasClass("invisible")) {
         clickedCard.find("p.whole").addClass("invisible");
-        clickedCard.find("p.whole").removeClass("activate__height");
+        clickedCard.find("p.whole").removeClass("activate");
+          clickedCard.find("p.whole").removeClass("selected");
       }
     });
   })
