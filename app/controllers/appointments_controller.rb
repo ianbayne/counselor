@@ -1,4 +1,6 @@
 class AppointmentsController < ApplicationController
+before_action :set_appointment, only: [:show, :edit, :update, :destroy]
+
   def index
     @user = current_user
     @appointments = @user.counsellor.appointments
@@ -32,7 +34,18 @@ class AppointmentsController < ApplicationController
 
   end
 
+  def show
+  end
+
+  def destroy
+    @appointment.destroy
+  end
+
   private
+
+  def set_appointment
+    @appointment = Appointment.find(params[:id])
+  end
 
   def appointment_params
     params.require(:appointment).permit("start_time(1i)", "start_time(2i)",
