@@ -1,71 +1,102 @@
-<!-- 324x296 ratio -->
 <div class="text-center">
 
-  <p class="font__color--white">Mood Tracker</p>
+
+<!--   <%# user_moods = current_user.moods.limit(10) %>
+
+  <p class="font__color--white font__size--tc"><%#= user_moods.first.created_at.strftime("%B %d") %>  ~  <%#= user_moods.last.created_at.strftime("%B %d") %></p>
+  <%#= line_chart current_user.moods.limit(10).group_by_day(:created_at).sum(:mood), -->
+
+
+  <h5 class="font__color--white">Mood Tracker</h5>
   <% if @ten_days_moods.empty? %>
   <p class="font__color--white">Please start to track your mood.</p>
   <% else %>
   <p class="font__color--white"><%= @start_day %> to <%= @end_day %></p>
   <%= line_chart @ten_days_moods.limit(10).group_by_day(:created_at).sum(:mood),
+
     # use google chart, options are below
     # https://developers.google.com/chart/interactive/docs/gallery/linechart
     adapter: "google",
     # max: 5, min: 1,
-    width: "350px", height: "250px",
+
+    width: "300px",
+    height: "230px",
+    colors: ["#FFFFFF"],
+
 
     library: {
-      # height: 200,
-      # width: 350,
-      curveType: "none", # "function" to be curved line
+      curveType: "function", # "function" to be curved line
       backgroundColor: "transparent",
 
       # enable animation
       animation: {
         startup: true,
-        duration: 1000,
-        easing: "out"
+        duration: 800,
+        easing: "inAndOut"
       },
 
       chartArea: {
-        # top: 50,
-        # bottom: 10
-        height: "60%"
+        top: 30,
+        right: 5,
+        bottom: 30,
+        left: 30
+        # height: "80%",
+        # width: "80%"
       },
 
       hAxis: {
         textPosition: "none", # disable label of xAxis
-        format: 'MMM d',
-        slantedText: true,
-        slantedTextAngle: 50,
-        # textPosition: 'in'
+        format: 'MMM dd',
+        slantedText: false,
+        # slantedTextAngle: 50,
         showTextEvery: 1,
         textStyle: {
-          fontSize: 12
+          fontSize: 8,
+          color: "#FFFFFF"
         }
       },
 
       vAxis: {
         # below set min - max in the chart
+        # baseline: 1,
         viewWindow: {
           min: 1,
           max: 5
         },
-        gridlines: {count: 4},
+        gridlines: {
+          color: '#CEDADE',
+          count: 4
+          },
         textStyle: {
+          # color: '#FFFFFF',
+          # fontName: 'FontAwesome',
           fontSize: 20
         },
         ticks: [
           # https://getemoji.com
-          {v: 1, f: "😱"},
-          {v: 2, f: "😭"},
-          {v: 3, f: "🙂"},
-          {v: 4, f: "😀"},
-          {v: 5, f: "😁"}]
+          # {v: 1, f: "&#xf118;"},
+          # {v: 2, f: ""},
+          # {v: 3, f: "&#xf11a;"},
+          # {v: 4, f: ""},
+          # {v: 5, f: "&#xf119;"}]
+          {v: 1, f: "😞"},
+          # {v: 2, f: "😭"},
+          {v: 2, f: ""},
+          {v: 3, f: "😐"},
+          # {v: 4, f: "😀"},
+          {v: 4, f: ""},
+          {v: 5, f: "🙂"}]
           }
         } %>
 
   <% end %>
 </div>
+
+
+
+
+
+
 
 
 
@@ -79,6 +110,8 @@
 # vAxis: {title: "mood", ticks: [1,2,3,4,5]}, # this is not working
 # download: "mood_tracker",
 <% end %>
+
+
 
 <% if false %>
 <script>
@@ -102,9 +135,11 @@
 </script>
 <% end %>
 
+
+
 <% if false %>
-<% library_options = { 
-  max: 5, # min: 1, 
+<% library_options = {
+  max: 5, # min: 1,
   width: "300px", height: "200px",
   # discrete: true,
   # vAxis: {ticks: [1,2,3,4,5]},
@@ -120,9 +155,8 @@
   },
   # vAxis: {ticks: (1..5).to_a},
   # xAxis: { crosshair: true },
-  download: "mood_tracker" 
+  download: "mood_tracker"
 } %>
+
 <% end %>
-
-
 

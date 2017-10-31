@@ -73,7 +73,7 @@ p {
 %extendHeader {
   margin-bottom: $baseFont;
 }
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4 {
   @extend %extendHeader;
   &:last-child {
     margin-bottom: 0;
