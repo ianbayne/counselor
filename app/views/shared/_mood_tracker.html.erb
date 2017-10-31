@@ -9,22 +9,34 @@
   <p class="font__color--white">Mood Tracker</p>
   <% end %>
   
-  <%#= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+  <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
   <%#= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
   <%= javascript_include_tag 'application' %>
   
   <%# content_for :after_js do %>
   <%= line_chart current_user.moods.group_by_day(:created_at).sum(:mood),
-    max: 5, min: 1, 
-    width: "300px", height: "200px",
+    # use google chart, options are below
+    # https://developers.google.com/chart/interactive/docs/gallery/linechart
+    adapter: "google",
+    # max: 5, min: 1, 
+    # width: "300px", height: "200px",
     # discrete: true, # this does not work
     # xtitle: "Time", ytitle: "Population", title works
     # https://stackoverflow.com/questions/27590771/rails-chartkick-want-only-integer-values-on-axes-use-discrete-or-something-els
     #library: { vAxis: { ticks: [1,2,3,4,5] }}
     # scales: { yAxes: [{ticks: {reverse: true}}]},
     # hAxis: {ticks: (1..5).to_a}, # this is not working
-    vAxis: {title: "mood", ticks: [1,2,3,4,5]}, # this is not working
-    download: "mood_tracker" %>
+    # vAxis: {title: "mood", ticks: [1,2,3,4,5]}, # this is not working
+    download: "mood_tracker",
+    library: {
+      height: 200,
+      width: 300,
+      curveType: "function",
+      backgroundColor: "transparent",
+      vAxis: {
+        ticks: [1,2,3,4,5]
+      }
+    } %>
   <%# end %>
   
     <!-- change the data to Mood[mood] for each day (Data = variable after line_chart -->
@@ -41,7 +53,7 @@
           // callback:(v)=>this.formatSecsAsMins(v),
           min: 1,
           max: 5,
-          stepSize: 1,
+          stepSize: 0.5,
         }
       }]
     },
