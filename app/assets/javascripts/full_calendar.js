@@ -10,16 +10,16 @@ initialize_calendar = function() {
       eventLimit: true,
     //   events: '/appointments.json',
 
-    //   select: function(start, end) {
-    //     $.getScript('/appointments/new', function() {
-    //       $('#event_date_range').val(moment(start).format("MM/DD/YYYY HH:mm") + ' - ' + moment(end).format("MM/DD/YYYY HH:mm"))
-    //       date_range_picker();
-    //       $('.start_hidden').val(moment(start).format('YYYY-MM-DD HH:mm'));
-    //       $('.end_hidden').val(moment(end).format('YYYY-MM-DD HH:mm'));
-    //     });
+      select: function(start, end) {
+        $.getScript('/appointments/new', function() {
+          $('#event_date_range').val(moment(start).format("MM/DD/YYYY HH:mm") + ' - ' + moment(end).format("MM/DD/YYYY HH:mm"))
+          date_range_picker();
+          $('.start_hidden').val(moment(start).format('YYYY-MM-DD HH:mm'));
+          $('.end_hidden').val(moment(end).format('YYYY-MM-DD HH:mm'));
+        });
 
-    //     calendar.fullCalendar('unselect');
-    //   },
+        calendar.fullCalendar('unselect');
+      },
 
     //   eventDrop: function(event, delta, revertFunc) {
     //     event_data = {
