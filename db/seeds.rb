@@ -119,6 +119,14 @@ i = 1
     password: "123456",
     counsellor: user_counsellor)
 
+  p "seed mood of the user"
+  day = Date.today
+  10.times do
+    mood = Mood.new(mood: rand(1..5), user: user, created_at: day, updated_at: day)
+    mood.save!
+    day += 1.day
+  end
+
   p "create user\##{i}"
   p "user_name:", user.user_name
   p "email:", user.email
