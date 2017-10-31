@@ -5,7 +5,6 @@
 //= require moment
 //= require fullcalendar
 
-//= require Chart.bundle
 //= require chartkick
 
 //= require faye
