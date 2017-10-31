@@ -1,18 +1,5 @@
 <!-- 324x296 ratio -->
 <div class="text-center">
-  
-  <% if false %>
-  
-  <i class="fa fa-smile-o fa-5x font__color--white"></i>
-  <br>
-  <br>
-  <p class="font__color--white">[UNDER CONSTRUCTION]</p>
-  <p class="font__color--white">Mood Tracker</p>
-  <% end %>
-  
-  <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
-  <%#= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
-  <%= javascript_include_tag 'application' %>
 
   <p class="font__color--white">Mood Tracker</p>
   <% if @ten_days_moods.empty? %>
@@ -23,7 +10,7 @@
     # use google chart, options are below
     # https://developers.google.com/chart/interactive/docs/gallery/linechart
     adapter: "google",
-    # max: 5, min: 1, 
+    # max: 5, min: 1,
     width: "350px", height: "250px",
 
     library: {
@@ -31,14 +18,14 @@
       # width: 350,
       curveType: "none", # "function" to be curved line
       backgroundColor: "transparent",
-      
-      # enable animation      
+
+      # enable animation
       animation: {
         startup: true,
         duration: 1000,
         easing: "out"
       },
-      
+
       chartArea: {
         # top: 50,
         # bottom: 10
@@ -76,6 +63,7 @@
           {v: 5, f: "😁"}]
           }
         } %>
+
   <% end %>
 </div>
 
@@ -135,5 +123,6 @@
   download: "mood_tracker" 
 } %>
 <% end %>
+
 
 
