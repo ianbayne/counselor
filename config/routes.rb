@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   }
   scope '(:locale)', locale: /en/ do
     root to: 'pages#home'
+    resources :moods, only: [:new, :create]
     resources :users do
       resources :appointments, only: [:show]
     end

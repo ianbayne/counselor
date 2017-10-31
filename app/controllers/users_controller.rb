@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
     @user = current_user
     @counsellor = @user.counsellor
-
+    @mood = Mood.new
     @appointment = Appointment.new
 
     if @user.mailbox.conversations.participant(@counsellor).last
