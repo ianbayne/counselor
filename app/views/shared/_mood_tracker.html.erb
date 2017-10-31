@@ -1,20 +1,28 @@
 <div class="text-center">
 
-  <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
-  <%#= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
-  <%= javascript_include_tag 'application' %>
 
-  <% user_moods = current_user.moods.limit(10) %>
+<!--   <%# user_moods = current_user.moods.limit(10) %>
+
+  <p class="font__color--white font__size--tc"><%#= user_moods.first.created_at.strftime("%B %d") %>  ~  <%#= user_moods.last.created_at.strftime("%B %d") %></p>
+  <%#= line_chart current_user.moods.limit(10).group_by_day(:created_at).sum(:mood), -->
+
+
   <h5 class="font__color--white">Mood Tracker</h5>
-  <p class="font__color--white font__size--tc"><%= user_moods.first.created_at.strftime("%B %d") %>  ~  <%= user_moods.last.created_at.strftime("%B %d") %></p>
-  <%= line_chart current_user.moods.limit(10).group_by_day(:created_at).sum(:mood),
+  <% if @ten_days_moods.empty? %>
+  <p class="font__color--white">Please start to track your mood.</p>
+  <% else %>
+  <p class="font__color--white"><%= @start_day %> to <%= @end_day %></p>
+  <%= line_chart @ten_days_moods.limit(10).group_by_day(:created_at).sum(:mood),
+
     # use google chart, options are below
     # https://developers.google.com/chart/interactive/docs/gallery/linechart
     adapter: "google",
     # max: 5, min: 1,
+
     width: "300px",
     height: "230px",
     colors: ["#FFFFFF"],
+
 
     library: {
       curveType: "function", # "function" to be curved line
@@ -80,6 +88,8 @@
           {v: 5, f: "🙂"}]
           }
         } %>
+
+  <% end %>
 </div>
 
 
@@ -147,4 +157,6 @@
   # xAxis: { crosshair: true },
   download: "mood_tracker"
 } %>
+
 <% end %>
+
