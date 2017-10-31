@@ -17,21 +17,13 @@
   <% user_moods = current_user.moods.limit(10) %>
   <p class="font__color--white">Mood Tracker</p>
   <p class="font__color--white"><%= user_moods.first.created_at.strftime("%B %d") %> to <%= user_moods.last.created_at.strftime("%B %d") %></p>
-  <%# content_for :after_js do %>
   <%= line_chart current_user.moods.limit(10).group_by_day(:created_at).sum(:mood),
     # use google chart, options are below
     # https://developers.google.com/chart/interactive/docs/gallery/linechart
     adapter: "google",
     # max: 5, min: 1, 
     width: "350px", height: "250px",
-    # discrete: true, # this does not work
-    # xtitle: "Time", ytitle: "Population", title works
-    # https://stackoverflow.com/questions/27590771/rails-chartkick-want-only-integer-values-on-axes-use-discrete-or-something-els
-    #library: { vAxis: { ticks: [1,2,3,4,5] }}
-    # scales: { yAxes: [{ticks: {reverse: true}}]},
-    # hAxis: {ticks: (1..5).to_a}, # this is not working
-    # vAxis: {title: "mood", ticks: [1,2,3,4,5]}, # this is not working
-    # download: "mood_tracker",
+
     library: {
       # height: 200,
       # width: 350,
@@ -64,12 +56,11 @@
       },
 
       vAxis: {
+        # below set min - max in the chart
         viewWindow: {
           min: 1,
           max: 5
         },
-        # minValue: 1,
-        # maxValue: 5,
         gridlines: {count: 4},
         textStyle: {
           fontSize: 20
@@ -83,10 +74,19 @@
           {v: 5, f: "😁"}]
           }
         } %>
-  <%# end %>
-  
-    <!-- change the data to Mood[mood] for each day (Data = variable after line_chart -->
 </div>
+
+
+<% if false %>
+# discrete: true, # this does not work
+# xtitle: "Time", ytitle: "Population", title works
+# https://stackoverflow.com/questions/27590771/rails-chartkick-want-only-integer-values-on-axes-use-discrete-or-something-els
+#library: { vAxis: { ticks: [1,2,3,4,5] }}
+# scales: { yAxes: [{ticks: {reverse: true}}]},
+# hAxis: {ticks: (1..5).to_a}, # this is not working
+# vAxis: {title: "mood", ticks: [1,2,3,4,5]}, # this is not working
+# download: "mood_tracker",
+<% end %>
 
 <% if false %>
 <script>
