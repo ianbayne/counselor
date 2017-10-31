@@ -13,16 +13,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @answers.each do |answer|
       # below works as I know which quesion's id is related to which issue
       if answer.question.id == 1 && answer.content == 1
-        @matched_counsellors = @matched_counsellors.tagged_with(:work_related)
+        @matched_counsellors = @matched_counsellors.tagged_with(:Work)
       end
       if answer.question.id == 2 && answer.content == 1
-        @matched_counsellors = @matched_counsellors.tagged_with(:relationship)
+        @matched_counsellors = @matched_counsellors.tagged_with(:Relationship)
       end
       if answer.question.id == 3 && answer.content == 1
-        @matched_counsellors = @matched_counsellors.tagged_with(:loss)
+        @matched_counsellors = @matched_counsellors.tagged_with(:Loss)
       end
       if answer.question.id == 4 && answer.content == 1
-        @matched_counsellors = @matched_counsellors.tagged_with(:financial)
+        @matched_counsellors = @matched_counsellors.tagged_with(:Financial)
       end
       if answer.question.id == 6 && answer.content == 0
         @matched_counsellors = @matched_counsellors.where(gender: 0)
@@ -42,7 +42,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
     @user = User.last
     @counsellor = @user.counsellor
-    @counsellor.send_message(@user, "Greetings! Welcome to Counsellor.com! We are glad to have you! Please tell me about yourself and your main concerns. I will respond to you as early as possible. Thank you!", "Greetings!")
+    @counsellor.send_message(@user, "Greetings, #{@user.user_name}! Welcome to Counsellor.com! We are glad to have you! Please tell me about yourself and your main concerns. I will respond to you as early as possible. Thank you!", "Greetings!")
   end
 
   # GET /resource/edit
