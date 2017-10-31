@@ -14,7 +14,7 @@
   <%#= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
   <%= javascript_include_tag 'application' %>
 
-  <% user_moods = current_user.moods.limit(10) %>
+  <% user_moods = @user_moods %>
   <p class="font__color--white">Mood Tracker</p>
   <p class="font__color--white"><%= user_moods.first.created_at.strftime("%B %d") %> to <%= user_moods.last.created_at.strftime("%B %d") %></p>
   <%= line_chart current_user.moods.limit(10).group_by_day(:created_at).sum(:mood),

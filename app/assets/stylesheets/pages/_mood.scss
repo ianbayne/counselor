@@ -1,3 +1,15 @@
 .mood-face:hover {
   cursor: pointer;
 }
+
+.btn.btn-primary.mood-submit {
+  display: none;
+}
+
+#modal-open {
+  display: none; 
+}
+
+.mood_mood {
+  display: none;
+}

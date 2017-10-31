@@ -55,6 +55,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title font__color--white" id="myModalLabel">Mood Tracker</h4>
+        <h4 class="modal-title font__color--white" id="myModalLabel">Please click a face according to your mood</h4>  
       </div>
       <div class="modal-body">
         <%= simple_form_for @mood, :method => 'post' do |f| %>
@@ -76,8 +77,10 @@
               <h2>😁</h2>
             </li>
           </ul>
-          <%= f.input :mood, collection: 1..5, selected: 3%>
-          <%= f.button :submit, "Save your mood", class: "btn btn-primary mood-submit" %>
+          <!-- if set as: :hidden, select option will disapper -->
+          <!-- so set display: none in the css -->
+          <%= f.input :mood, collection: 1..5 %>
+          <%= f.button :submit, "Save your mood", class: "btn btn-primary mood-submit"%>
         <% end %>
       </div>
 <!--       <div class="modal-footer">
@@ -90,6 +93,12 @@
 
 <% content_for(:after_js) do %>
 <script>
+  var modalOpen = document.querySelector("#modal-open")
+  if (<%= @mood_tracker_check %>) {
+    modalOpen.click();
+    console.log("Modal opens")
+  }
+
   var moodSelector = document.querySelector("#mood_mood")
   console.log(moodSelector)
   console.log(moodSelector.selectedIndex)
@@ -97,19 +106,14 @@
   console.log(moodFaces)
   var moodButton = document.querySelector(".mood-submit")
   console.log(moodButton)
-  var modalOpen = document.querySelector("#modal-open")
   
-  if (<%= @mood_tracker_check %>) {
-    console.log("Modal opens")
-    modalOpen.click();
-  }
-
   moodFaces.forEach(function(face, i) {
     face.addEventListener("click", function(e){
       moodSelector.selectedIndex = 0
       e.preventDefault()
       console.log(face, i)
-      moodSelector.selectedIndex = i
+      moodSelector.selectedIndex = i + 1
+      console.log(moodSelector.selectedIndex)
       moodButton.click()
     });
   })

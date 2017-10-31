@@ -15,11 +15,12 @@ class UsersController < ApplicationController
     @mood = Mood.new
     @appointment = Appointment.new
 
+    @user_moods = @user.moods.order(created_at: :desc).limit(10)
     # check for activate mood tracker
     @today = Date.today.to_date
     @mood_tracker_check = true
-    @user.moods.limit(10).each do |mood|
-      # if user already created mood, not show modal.
+    @user_moods.each do |mood|
+      # if user already created mood today, not show modal.
       @mood_tracker_check = false if mood.created_at.to_date == @today
     end
 
