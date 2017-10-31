@@ -17,7 +17,6 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-
       <%#= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%#= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%#= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
@@ -25,13 +24,11 @@
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-
-        <% if current_user %>
-          <i id="navbar-wagon-menu" class="fa fa-user-circle avatar dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
-        <% elsif current_counsellor %>
-          <%= image_tag current_counsellor.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-        <% end %>
-
+          <% if current_user %>
+            <i id="navbar-wagon-menu" class="fa fa-user-circle avatar dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
+          <% elsif current_counsellor %>
+            <%= image_tag current_counsellor.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to user_path(current_user) do %>
