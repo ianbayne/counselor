@@ -34,10 +34,14 @@
               }
             </style>
 
-
             <div id="calendar"></div>
+
+
+
             <% content_for(:after_js) do %>
               <%= javascript_tag do %>
+
+
 
 
                 var event = {
@@ -51,7 +55,6 @@
                   height: "parent",
                   defaultView: "month",
                   header: false,
-                  <!-- defaultView: "listWeek", -->
                   weekends: false,
                   events: [
 
