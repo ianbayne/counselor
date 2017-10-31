@@ -1,10 +1,12 @@
 <!-- 324x296 ratio -->
 <div class="text-center">
 
-  <% user_moods = current_user.moods.limit(10) %>
   <p class="font__color--white">Mood Tracker</p>
-  <p class="font__color--white"><%= user_moods.first.created_at.strftime("%B %d") %> to <%= user_moods.last.created_at.strftime("%B %d") %></p>
-  <%= line_chart current_user.moods.limit(10).group_by_day(:created_at).sum(:mood),
+  <% if @ten_days_moods.empty? %>
+  <p class="font__color--white">Please start to track your mood.</p>
+  <% else %>
+  <p class="font__color--white"><%= @start_day %> to <%= @end_day %></p>
+  <%= line_chart @ten_days_moods.limit(10).group_by_day(:created_at).sum(:mood),
     # use google chart, options are below
     # https://developers.google.com/chart/interactive/docs/gallery/linechart
     adapter: "google",
@@ -61,4 +63,66 @@
           {v: 5, f: "😁"}]
           }
         } %>
+
+  <% end %>
 </div>
+
+
+
+<% if false %>
+# discrete: true, # this does not work
+# xtitle: "Time", ytitle: "Population", title works
+# https://stackoverflow.com/questions/27590771/rails-chartkick-want-only-integer-values-on-axes-use-discrete-or-something-els
+#library: { vAxis: { ticks: [1,2,3,4,5] }}
+# scales: { yAxes: [{ticks: {reverse: true}}]},
+# hAxis: {ticks: (1..5).to_a}, # this is not working
+# vAxis: {title: "mood", ticks: [1,2,3,4,5]}, # this is not working
+# download: "mood_tracker",
+<% end %>
+
+<% if false %>
+<script>
+  var chart = Chartkick.charts["chart-1"]
+  console.log(chart)
+  var options = {
+    scales: {
+      yAxes: [{
+        ticks:{
+          // callback:(v)=>this.formatSecsAsMins(v),
+          min: 1,
+          max: 5,
+          stepSize: 0.5,
+        }
+      }]
+    },
+  }
+  chart.setOptions(options)
+  console.log(chart)
+  chart.redraw()
+</script>
+<% end %>
+
+<% if false %>
+<% library_options = { 
+  max: 5, # min: 1, 
+  width: "300px", height: "200px",
+  # discrete: true,
+  # vAxis: {ticks: [1,2,3,4,5]},
+  scales: {
+    yAxes: [{
+      # crosshair: true,
+      ticks: {
+        min: 1,
+        max: 5,
+        stepSize: 1
+      }
+    }]
+  },
+  # vAxis: {ticks: (1..5).to_a},
+  # xAxis: { crosshair: true },
+  download: "mood_tracker" 
+} %>
+<% end %>
+
+
+
