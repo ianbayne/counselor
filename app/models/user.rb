@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :answers
   belongs_to :counsellor
   has_many :moods
+  has_many :goals
 
   acts_as_messageable
 

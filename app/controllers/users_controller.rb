@@ -12,12 +12,20 @@ class UsersController < ApplicationController
 
     @user = current_user
     @counsellor = @user.counsellor
+    @ten_days_moods = @user.moods.limit(10)
+    unless @ten_days_moods.empty?
+      @start_day = @ten_days_moods.first.created_at.strftime("%B %d")
+      @end_day = @ten_days_moods.last.created_at.strftime("%B %d")
+    end
+
 
     # Original code before movement of calendar
     # @appointment = Appointment.new
 
     # Code required for moving calendar
     @appointments = @user.counsellor.appointments
+    @goal = Goal.new
+
 
     if @user.mailbox.conversations.participant(@counsellor).last
       @conversation = @user.mailbox.conversations.participant(@counsellor).last

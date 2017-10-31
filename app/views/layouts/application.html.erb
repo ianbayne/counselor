@@ -7,6 +7,9 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <!-- ADDED AS NAV FIX 999 -->
+    <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+
 
     <!-- fullcalendar.io -->
 <!--     <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
@@ -36,4 +39,6 @@
       }, 1000);
     });
   </script>
+  <!-- ADDED NAV FIX 999 -->
+  <%= yield :charts_js %>
 </html>

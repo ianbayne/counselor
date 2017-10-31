@@ -1,10 +1,32 @@
 #dashcard {
   &__counsellor {
+    position: relative;
     img {
       border-radius: 500px;
-      height: 100px;
-      width: 100px;
-      margin-bottom: 16px;
+      height: 90px;
+      width: 90px;
+      margin: 12px 0 12px 0;
+    }
+    h5 {
+      margin-bottom: 0;
+    }
+    h4 {
+      margin: 0 0 16px 0;
+      &:last-child {
+        margin: 0;
+      }
+    }
+    .change__counsellor {
+      bottom: 40px;
+      left: 0;
+      position: absolute;
+      text-align: center;
+      transform: translateY(-50%);
+      width: 100%;
+      &:hover {
+        color: $white;
+        text-decoration: underline;
+      }
     }
   }
   &__calendar {
@@ -12,6 +34,8 @@
   &__goals {
   }
   &__mood {
+    overflow: hidden;
+    padding: 20px 20px 0 0;
   }
 }
 .dashboard--container {

@@ -1,0 +1,58 @@
+<div class="container">
+  <!-- temporary styling -->
+  <style>
+    .check-btn {
+      font-size: 14px;
+      padding: 5px;
+      margin: 0 0 0 0;
+      width: 2.5%;
+      height:2.5%;
+    }
+    .del-btn {
+      font-size: 14px;
+      padding: 5px;
+      margin: 0 0 0 0;
+      border-radius: 50%;
+      width: 2.5%;
+      height:2.5%;
+    }
+    .goal-input {
+      font-size: 16px;
+      text-align: center;
+      background-color: white;
+      width: 250px;
+      height: 20px;
+      margin-right: 0;
+    }
+    .submit-btn {
+      font-size: 14px;
+      padding: 5px;
+      margin: 0 0 0 0;
+    }
+    .done {
+      text-decoration: line-through;
+    }
+  </style>
+
+  <% @user.goals.each do |goal| %>
+    <p> <span class="goal-content "><%= goal[:content]%></span>
+    <button class="btn btn--invert check-btn"><i class="fa fa-check" aria-hidden="true"></i></button>
+    <%= link_to "<i class='fa fa-times' aria-hidden='true'></i>".html_safe, goal_path(goal.id), method: :delete, class: 'btn btn--invert del-btn'  %>
+
+    </p>
+  <% end %>
+  <%= form_for(@goal) do |f| %>
+    <%= f.text_field :content, class: "goal-input", :placeholder => "New Goal" %>
+    <%= f.submit 'Submit', :class => 'btn btn--invert submit-btn' %>
+  <% end %>
+
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(".check-btn").click(function(){
+      $(".goal-content").toggleClass("done");
+    });
+
+  <% end %>
+<% end %>
