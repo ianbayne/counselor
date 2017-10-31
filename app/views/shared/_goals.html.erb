@@ -1,10 +1,20 @@
 <div class="container">
   <!-- temporary styling -->
   <style>
+    .check-btn {
+      font-size: 14px;
+      padding: 5px;
+      margin: 0 0 0 0;
+      width: 2.5%;
+      height:2.5%;
+    }
     .del-btn {
       font-size: 14px;
       padding: 5px;
       margin: 0 0 0 0;
+      border-radius: 50%;
+      width: 2.5%;
+      height:2.5%;
     }
     .goal-input {
       font-size: 16px;
@@ -12,6 +22,7 @@
       background-color: white;
       width: 250px;
       height: 20px;
+      margin-right: 0;
     }
     .submit-btn {
       font-size: 14px;
@@ -22,8 +33,8 @@
 
   <% @user.goals.each do |goal| %>
     <p><%= goal[:content]%>
-    check
-    <%= link_to "delete", goal_path(goal.id), method: :delete, class: 'btn btn--invert del-btn'  %>
+    <button class="btn btn--invert check-btn"><i class="fa fa-check" aria-hidden="true"></i></button>
+    <%= link_to "<i class='fa fa-times' aria-hidden='true'></i>".html_safe, goal_path(goal.id), method: :delete, class: 'btn btn--invert del-btn'  %>
 
     </p>
   <% end %>
