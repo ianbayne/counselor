@@ -2,16 +2,22 @@
   <div class="col-xs-12 col-sm-12 col-md-12">
     <div class="row height__no-nav">
 
-      <div class="col-xs-12 col-sm-12 col-md-8 flex--vh-center">
+      <div class="col-xs-12 col-sm-12 col-md-8 flex--vh-center modal__container">
+        <div class="modal__header">
+          <h2>We recommend these Counsellors for you</h2>
+          <h3>Click to select and take a closer look</h3>
+        </div>
         <div class="modal__container--counsellor">
-          <h4>We recommend these Counsellors for you!</h4>
         <% @matched_counsellors.each_with_index do |counsellor, i| %>
           <div class="modal__card--counsellor" data-index=<%= i + 1 %>>
             <div class="modal--counsellor-photo" style="background-image: url(<%= counsellor.photo %>)"></div>
             <div class="modal--counsellor-text">
-              <h3><%= counsellor.first_name %> <%= counsellor.last_name %></h3>
-              <!-- <h5>Expertise: <%#= counsellor.specialty_list %></h5> -->
-              <p><%= counsellor.first_name %> is a trained and accredited by the professional body the British Association for Counselling and Psychotherapy. There's an event so we've migrated to the tables.</p>
+              <div>
+                <h3 class="counsellor__name"><%= counsellor.first_name %> <%= counsellor.last_name %></h3>
+                <h5 class="counsellor__expertise">Expertise: <%= counsellor.specialty_list %></h5>
+                <p class="summary"><%= counsellor.first_name %> is a trained and accredited by the professional body the British Association for Counselling and Psychotherapy. There's an event so we've migrated to the tables.</p>
+                <p class="whole invisible"><%= counsellor.first_name %> is a trained and accredited by the professional body the British Association for Counselling and Psychotherapy. There's an event so we've migrated to the tables.<br><br>Psychology is the science of behavior and mind, embracing all aspects of conscious and unconscious experience as well as thought. It is an academic discipline and a social science which seeks to understand individuals and groups by establishing general principles and researching specific cases.<br><br>In this field, a professional practitioner or researcher is called a psychologist and can be classified as a social, behavioral, or cognitive scientist. Psychologists attempt to understand the role of mental functions in individual and social behavior, while also exploring the physiological and biological processes that underlie cognitive functions and behaviors.</p>
+              </div>
             </div>
           </div>
         <% end %>
@@ -24,7 +30,8 @@
             <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
               <%= f.error_notification %>
               <div class="form-inputs">
-                <%= f.input :email, required: true, autofocus: true %>
+                <%= f.input :user_name, required: true, autofocus: true %>
+                <%= f.input :email, required: true %>
                 <%= f.association :counsellor,
                     required: true,
                     autofocus: true,
@@ -35,11 +42,9 @@
                 <%= f.input :password_confirmation, required: true %>
               </div>
               <div class="form-actions">
-                <!-- 999 Currently goes to... root ===> redirect to user_path in user controller?-->
                 <%= f.button :submit, "Sign up", class:"btn--sm" %>
               </div>
             <% end %>
-            <%#= render "users/shared/links" %>
         </div>
       </div>
 
@@ -47,116 +52,75 @@
   </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- ORIGINAL BACKUP WILL DEL LATER by / shun -->
-<% if false %>
-  <p>User's answer to questions</p>
-  <% @answers.each do |answer| %>
-    <p><%= answer.question.content %></p>
-    <p>Answer is <%= answer.content == 0 ? "No" : "Yes" %></p>
-  <% end %>
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= f.error_notification %>
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.association :counsellor,
-        required: true,
-        autofocus: true,
-        collection: @matched_counsellors,
-        :label_method =>
-        lambda { |counsellor| "#{counsellor.first_name} #{counsellor.last_name} #{counsellor.specialty_list.sort} #{counsellor.gender == 0 ? "Male" : "female" } " }
-      %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
-  </div>
-  <% end %>
-<% end %>
-
-<!-- BACKUP FOR SAFETY WILL DEL LATER by / shun -->
-<% if false %>
-  <div class="wrapper">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-      <div class="row height__no-nav">
-        <div class="col-xs-12 col-sm-12 col-md-8 flex--vh-center">
-          <div class="modal__container--counsellor">
-            <div class="modal__card--counsellor">
-              <div class="modal--counsellor-photo" style="background-image: url(<%= image_path "dummy" %>)"></div>
-              <div class="modal--counsellor-text selected">
-                <h4>Jane Doe</h4>
-                <h5>Expertise: Work / Family</h5>
-                <p>Jon is a trained and accredited by the professional body the British Association for Counselling and Psychotherapy.</p>
-              </div>
-            </div>
-            <div class="modal__card--counsellor">
-              <div class="modal--counsellor-photo" style="background-image: url(<%= image_path "dummy" %>)"></div>
-              <div class="modal--counsellor-text">
-                <h4>Jane Doe</h4>
-                <h5>Expertise: Work / Family</h5>
-                <p>Jon is a trained and accredited by the professional body the British Association for Counselling and Psychotherapy.</p>
-              </div>
-            </div>
-            <div class="modal__card--counsellor">
-              <div class="modal--counsellor-photo" style="background-image: url(<%= image_path "dummy" %>)"></div>
-              <div class="modal--counsellor-text">
-                <h4>Jane Doe</h4>
-                <h5>Expertise: Work / Family</h5>
-                <p>Jon is a trained and accredited by the professional body the British Association for Counselling and Psychotherapy.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-4 flex--vh-center background--multiply">
-          <div class="well-lg width--100">
-            <h2 class="font__color--white">Getting started</h2>
-              <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                <%= f.error_notification %>
-                <div class="form-inputs">
-                  <%= f.input :email, required: true, autofocus: true %>
-                  <%= f.association :counsellor,
-                      required: true,
-                      autofocus: true,
-                      collection: @matched_counsellors,
-                      :label_method =>
-                      lambda { |counsellor| "#{counsellor.first_name} #{counsellor.last_name}" } %>
-                  <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-                  <%= f.input :password_confirmation, required: true %>
-                </div>
-                <div class="form-actions">
-                  <%= f.button :submit, "Sign up", class:"btn--sm" %>
-                </div>
-              <% end %>
-              <%#= render "users/shared/links" %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
- <% end %>
-
 <%= content_for(:after_js) do %>
 <script>
-  const counsellorInput = document.querySelector("#user_counsellor_id")
-  const counsellorCards = document.querySelectorAll(".modal__card--counsellor")
-  counsellorCards.forEach((card, i) => {
-    counsellorInput.selectedIndex = 0
-    const cardIndex = card.attributes[1].value
-    card.addEventListener("click", (e) => {
-      counsellorInput.selectedIndex = cardIndex
+$(document).ready(function(){
+  var counsellorInput = document.querySelector("#user_counsellor_id");
+  var counsellorCards = document.querySelectorAll(".modal__card--counsellor");
+  counsellorCards.forEach(function(card, i) {
+    counsellorInput.selectedIndex = 0;
+    var cardIndex = card.attributes[1].value;
+
+    // When you click...
+    card.addEventListener("click", function(e) {
+      // It will look for the closest div with the class modal__card--counsellor
+      var clickedCard = $(e.target).closest("div.modal__card--counsellor");
+      // It will then adjust all these classes
+      clickedCard.toggleClass("active");
+      clickedCard.find("div.modal--counsellor-text").toggleClass("active")
+      clickedCard.find("p.summary").toggleClass("invisible");
+      clickedCard.find(".counsellor__name").toggleClass("active");
+      clickedCard.find(".counsellor__expertise").toggleClass("active");
+      // If card not clicked, activate modal mode
+      if (clickedCard.find("p.whole").hasClass("invisible")) {
+        setTimeout(function() {
+          clickedCard.find("p.whole").removeClass("invisible");
+          clickedCard.find("p.whole").addClass("activate");
+          setTimeout(function() {
+            clickedCard.find("p.whole").addClass("selected");
+            // Select the counsellor
+            counsellorInput.selectedIndex = cardIndex;
+            console.log('counsellor has been selected');
+          }, 800);
+        }, 800);
+      //  If card clicked, de-activate modal mode
+      } else if (!clickedCard.find("p.whole").hasClass("invisible")) {
+        clickedCard.find("p.whole").addClass("invisible");
+        clickedCard.find("p.whole").removeClass("activate");
+        clickedCard.find("p.whole").removeClass("selected");
+        // Deselect the counsellor
+        counsellorInput.selectedIndex = 0;
+        console.log('counsellor has been removed');
+      }
     });
   })
+});
 </script>
+<!-- ES 6 VERSION BACKUP / INCOMPATIBLE WITH HEROKU (;_;) -->
+<!-- <script>
+  var counsellorInput = document.querySelector("#user_counsellor_id");
+  var counsellorCards = document.querySelectorAll(".modal__card--counsellor");
+  counsellorCards.forEach((card, i) => {
+    counsellorInput.selectedIndex = 0;
+    var cardIndex = card.attributes[1].value;
+    card.addEventListener("click", (e) => {
+      counsellorInput.selectedIndex = cardIndex;
+      var clickedCard = $(e.target).closest("div.modal__card--counsellor");
+      clickedCard.toggleClass("active");
+      clickedCard.find("div.modal--counsellor-text").toggleClass("active")
+      clickedCard.find("p.summary").toggleClass("invisible");
+      clickedCard.find(".counsellor__name").toggleClass("active");
+      clickedCard.find(".counsellor__expertise").toggleClass("active");
+      if (clickedCard.find("p.whole").hasClass("invisible")) {
+        setTimeout(function() {
+          clickedCard.find("p.whole").removeClass("invisible");
+          clickedCard.find("p.whole").addClass("activate__height");
+        }, 500);
+      } else if (!clickedCard.find("p.whole").hasClass("invisible")) {
+        clickedCard.find("p.whole").addClass("invisible");
+        clickedCard.find("p.whole").removeClass("activate__height");
+      }
+    });
+  })
+</script> -->
 <% end %>
-
