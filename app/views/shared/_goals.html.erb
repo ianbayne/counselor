@@ -29,10 +29,13 @@
       padding: 5px;
       margin: 0 0 0 0;
     }
+    .done {
+      text-decoration: line-through;
+    }
   </style>
 
   <% @user.goals.each do |goal| %>
-    <p><%= goal[:content]%>
+    <p> <span class="goal-content "><%= goal[:content]%></span>
     <button class="btn btn--invert check-btn"><i class="fa fa-check" aria-hidden="true"></i></button>
     <%= link_to "<i class='fa fa-times' aria-hidden='true'></i>".html_safe, goal_path(goal.id), method: :delete, class: 'btn btn--invert del-btn'  %>
 
@@ -44,3 +47,12 @@
   <% end %>
 
 </div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(".check-btn").click(function(){
+      $(".goal-content").toggleClass("done");
+    });
+
+  <% end %>
+<% end %>
