@@ -9,36 +9,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     @answers = session[:answers].map { |hash| Answer.new(hash) }
-    @matched_counsellors = Counsellor.all
-    @answers.each do |answer|
-      # below works as I know which quesion's id is related to which issue
-      if answer.question.id == 1 && answer.content == 1
-        @matched_counsellors = @matched_counsellors.tagged_with(:Work)
-      end
-      if answer.question.id == 2 && answer.content == 1
-        @matched_counsellors = @matched_counsellors.tagged_with(:Relationship)
-      end
-      if answer.question.id == 3 && answer.content == 1
-        @matched_counsellors = @matched_counsellors.tagged_with(:Loss)
-      end
-      if answer.question.id == 4 && answer.content == 1
-        @matched_counsellors = @matched_counsellors.tagged_with(:Financial)
-      end
-      if answer.question.id == 6 && answer.content == 0
-        @matched_counsellors = @matched_counsellors.where(gender: 0)
-      end
-      if answer.question.id == 6 && answer.content == 1
-        @matched_counsellors = @matched_counsellors.where(gender: 1)
-      end
-    end
-    if @matched_counsellors.count >= 4
-      @matched_counsellors = @matched_counsellors.order("RANDOM()").limit(3)
-    end
+    @matched_counsellors = filter_counsellor_by_answer(@answers)
     super
   end
 
   # POST /resource
   def create
+    @answers = session[:answers].map { |hash| Answer.new(hash) }
+    @matched_counsellors = filter_counsellor_by_answer(@answers)
     super
     @user = User.last
     @counsellor = @user.counsellor
@@ -70,6 +48,35 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # protected
+  # filter counserllor with specilty of counsellor and 
+  def filter_counsellor_by_answer(answers)
+    matched_counsellors = Counsellor.all
+    answers.each do |answer|
+      # below works as I know which quesion's id is related to which issue
+      if answer.question.id == 1 && answer.content == 1
+        matched_counsellors = matched_counsellors.tagged_with(:Work)
+      end
+      if answer.question.id == 2 && answer.content == 1
+        matched_counsellors = matched_counsellors.tagged_with(:Relationship)
+      end
+      if answer.question.id == 3 && answer.content == 1
+        matched_counsellors = matched_counsellors.tagged_with(:Loss)
+      end
+      if answer.question.id == 4 && answer.content == 1
+        matched_counsellors = matched_counsellors.tagged_with(:Financial)
+      end
+      if answer.question.id == 6 && answer.content == 0
+        matched_counsellors = matched_counsellors.where(gender: 0)
+      end
+      if answer.question.id == 6 && answer.content == 1
+        matched_counsellors = matched_counsellors.where(gender: 1)
+      end
+      if matched_counsellors.count >= 4
+        matched_counsellors = matched_counsellors.order("RANDOM()").limit(3)
+      end
+    end
+    matched_counsellors
+  end
 
   def answered_question?
     redirect_to root_path unless session[:answers]
