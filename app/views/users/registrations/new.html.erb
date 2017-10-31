@@ -60,26 +60,37 @@ $(document).ready(function(){
   counsellorCards.forEach(function(card, i) {
     counsellorInput.selectedIndex = 0;
     var cardIndex = card.attributes[1].value;
+
+    // When you click...
     card.addEventListener("click", function(e) {
-      counsellorInput.selectedIndex = cardIndex;
+      // It will look for the closest div with the class modal__card--counsellor
       var clickedCard = $(e.target).closest("div.modal__card--counsellor");
+      // It will then adjust all these classes
       clickedCard.toggleClass("active");
       clickedCard.find("div.modal--counsellor-text").toggleClass("active")
       clickedCard.find("p.summary").toggleClass("invisible");
       clickedCard.find(".counsellor__name").toggleClass("active");
       clickedCard.find(".counsellor__expertise").toggleClass("active");
+      // If card not clicked, activate modal mode
       if (clickedCard.find("p.whole").hasClass("invisible")) {
         setTimeout(function() {
           clickedCard.find("p.whole").removeClass("invisible");
           clickedCard.find("p.whole").addClass("activate");
           setTimeout(function() {
             clickedCard.find("p.whole").addClass("selected");
+            // Select the counsellor
+            counsellorInput.selectedIndex = cardIndex;
+            console.log('counsellor has been selected');
           }, 800);
         }, 800);
+      //  If card clicked, de-activate modal mode
       } else if (!clickedCard.find("p.whole").hasClass("invisible")) {
         clickedCard.find("p.whole").addClass("invisible");
         clickedCard.find("p.whole").removeClass("activate");
-          clickedCard.find("p.whole").removeClass("selected");
+        clickedCard.find("p.whole").removeClass("selected");
+        // Deselect the counsellor
+        counsellorInput.selectedIndex = 0;
+        console.log('counsellor has been removed');
       }
     });
   })
