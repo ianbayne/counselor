@@ -20,7 +20,78 @@
           </div>
 
           <div id="dashcard__calendar" class="col-md-8 height--100 flex--vh-center">
-            <%= render 'shared/calendar' %>
+
+            <!-- Insert calendar from appointments/index for testing purposes -->
+
+            <%= stylesheet_link_tag 'calendar', media: 'all' %>
+
+            <!-- In-file styling of the calendar -->
+            <style>
+              #calendar {
+                font-size: 14px;
+                margin-right: -25px;
+                /*width: 90%;*/
+              }
+            </style>
+
+
+            <div id="calendar"></div>
+            <% content_for(:after_js) do %>
+              <%= javascript_tag do %>
+
+
+                var event = {
+                  id: 1,
+                  title: "test",
+                  start: new Date()
+                };
+
+
+                $('#calendar').fullCalendar({
+                  height: "parent",
+                  defaultView: "month",
+                  header: false,
+                  <!-- defaultView: "listWeek", -->
+                  weekends: false,
+                  events: [
+
+                    <% @appointments.each do |appointment| %>
+                      {
+                          <!-- title  : <%= ("Booked").to_json.html_safe %>, -->
+                          start  : <%= appointment.start_time.strftime("%Y-%m-%dT%H:%M").to_json.html_safe %>,
+                          end    : <%= appointment.end_time.strftime("%Y-%m-%dT%H:%M").to_json.html_safe %>,
+                          title    :
+                         <!--  Probably don't need, since all bookings should from now on have a URL -->
+                          <% if appointment.url %>
+                            "Booked with the URL: " + <%= appointment.url.to_json.html_safe %>
+                          <% else %>
+                            <%= ("Booked").to_json.html_safe %>
+                          <% end %>,
+                          url    : <%= appointment.url.to_json.html_safe %>
+
+                      },
+                    <% end %>
+                  ],
+
+                  eventClick: function(event) {
+                    if (event.url) {
+                        window.open(event.url);
+                        return false;
+                    }
+
+
+                  }
+                });
+
+
+                $('#calendar').fullCalendar( 'renderEvent', event, true);
+
+
+              <% end %>
+            <% end %>
+
+
+            <!--<%#= render 'shared/calendar' %> -->
           </div>
         </div>
 

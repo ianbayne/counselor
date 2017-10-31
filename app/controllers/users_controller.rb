@@ -13,7 +13,11 @@ class UsersController < ApplicationController
     @user = current_user
     @counsellor = @user.counsellor
 
-    @appointment = Appointment.new
+    # Original code before movement of calendar
+    # @appointment = Appointment.new
+
+    # Code required for moving calendar
+    @appointments = @user.counsellor.appointments
 
     if @user.mailbox.conversations.participant(@counsellor).last
       @conversation = @user.mailbox.conversations.participant(@counsellor).last
