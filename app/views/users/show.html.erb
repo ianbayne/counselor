@@ -43,14 +43,9 @@
   </div>
 </div>
 
-
-<% if false %>
-<%= content_for(:after_js) do %>
-<% end %>
-<% end %>
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
+<button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal" id="modal-open">
+  <%= @mood_tracker_check %>
 </button>
 
 <!-- Modal -->
@@ -59,13 +54,30 @@
     <div class="modal-content background--multiply">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title font__color--white" id="myModalLabel">Mood Tracker</h4>
       </div>
       <div class="modal-body">
         <%= simple_form_for @mood, :method => 'post' do |f| %>
           <%#= f.error_notification %>
-          <%= f.input :mood, collection: 1..5 %>
-          <%= f.button :submit, "Save your mood", class: "btn btn-primary" %>
+          <ul class="list-inline text-center">
+            <li class="list-inline-item mood-face">
+              <h2>😱</h2>
+            </li>
+            <li class="list-inline-item mood-face">
+              <h2>😭</h2>
+            </li>
+            <li class="list-inline-item mood-face">
+              <h2>🙂</h2>
+            </li>
+            <li class="list-inline-item mood-face">
+              <h2>😀</h2>
+            </li>
+            <li class="list-inline-item mood-face">
+              <h2>😁</h2>
+            </li>
+          </ul>
+          <%= f.input :mood, collection: 1..5, selected: 3%>
+          <%= f.button :submit, "Save your mood", class: "btn btn-primary mood-submit" %>
         <% end %>
       </div>
 <!--       <div class="modal-footer">
@@ -76,8 +88,32 @@
   </div>
 </div>
 
+<% content_for(:after_js) do %>
+<script>
+  var moodSelector = document.querySelector("#mood_mood")
+  console.log(moodSelector)
+  console.log(moodSelector.selectedIndex)
+  var moodFaces = document.querySelectorAll(".mood-face")
+  console.log(moodFaces)
+  var moodButton = document.querySelector(".mood-submit")
+  console.log(moodButton)
+  var modalOpen = document.querySelector("#modal-open")
+  
+  if (<%= @mood_tracker_check %>) {
+    console.log("Modal opens")
+    modalOpen.click();
+  }
 
-
-
+  moodFaces.forEach(function(face, i) {
+    face.addEventListener("click", function(e){
+      moodSelector.selectedIndex = 0
+      e.preventDefault()
+      console.log(face, i)
+      moodSelector.selectedIndex = i
+      moodButton.click()
+    });
+  })
+</script>
+<% end %>
 
 
