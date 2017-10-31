@@ -1,5 +1,9 @@
 <%= stylesheet_link_tag 'calendar', media: 'all' %>
-<div id='calendar'></div>
+<div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+  <div class="well-lg width--100">
+    <div id='calendar'></div>
+  </div>
+</div>
 
 
 <% content_for(:after_js) do %>
@@ -12,17 +16,44 @@
 
             <% @appointments.each do |appointment| %>
             {
-                title  : <%= ("Booked").to_json.html_safe %>,
+                <!-- title  : <%= ("Booked").to_json.html_safe %>, -->
                 start  : <%= appointment.start_time.strftime("%Y-%m-%dT%H:%M").to_json.html_safe %>,
-                end    : <%= appointment.end_time.strftime("%Y-%m-%dT%H:%M").to_json.html_safe %>
+                end    : <%= appointment.end_time.strftime("%Y-%m-%dT%H:%M").to_json.html_safe %>,
+                title    :
+                <% if appointment.url %>
+                  "Booked with the URL: " + <%= appointment.url.to_json.html_safe %>
+                <% else %>
+                  <%= ("Booked").to_json.html_safe %>
+                <% end %>,
+                url    : <%= appointment.url.to_json.html_safe %>
+
             },
             <% end %>
         ],
-      dayClick: function() {
-            alert('a day has been clicked!');
-        },
+      eventClick: function(event) {
+        if (event.url) {
+            window.open(event.url);
+            return false;
+        }
+
+
+        }
     });
 
 
   <% end %>
 <% end %>
+
+
+<%# user_id = ZoomusClient.user_list['users'][0]['id'] %>
+<%# join_url = ZoomusClient.meeting_create(host_id: user_id, topic: "Testing!", type: 2)['join_url'] %>
+<!-- <p>Here's the join URL: <%#= join_url %></p> -->
+
+
+<!-- ZoomusClient.meeting_create(host_id: ZoomusClient.user_list['users'][0]['id'], topic: "testing", type: 2)['join_url'] -->
+
+<%# begin  %>
+<%# user_list = ZoomusClient.user_list! %>
+<%# rescue Zoomus::Error => exception %>
+<%#=  'Something went wrong' %>
+<%# end %>
