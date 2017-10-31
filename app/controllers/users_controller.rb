@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     @counsellor = @user.counsellor
 
     @appointment = Appointment.new
+    @goal = Goal.new
 
     if @user.mailbox.conversations.participant(@counsellor).last
       @conversation = @user.mailbox.conversations.participant(@counsellor).last

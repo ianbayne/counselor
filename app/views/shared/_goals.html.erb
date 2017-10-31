@@ -1,6 +1,35 @@
 <div class="container">
-  <% current_user.goals do |goal| %>
-    <p>ffff</p>
-    <p><% goal[:content] %> check edit delete</p>
+  <!-- temporary styling -->
+  <style>
+    .del-btn {
+      font-size: 14px;
+      padding: 5px;
+      margin: 0 0 0 0;
+    }
+    .goal-input {
+      font-size: 16px;
+      text-align: center;
+      background-color: white;
+      width: 250px;
+      height: 20px;
+    }
+    .submit-btn {
+      font-size: 14px;
+      padding: 5px;
+      margin: 0 0 0 0;
+    }
+  </style>
+
+  <% @user.goals.each do |goal| %>
+    <p><%= goal[:content]%>
+    check
+    <%= link_to "delete", goal_path(goal.id), method: :delete, class: 'btn btn--invert del-btn'  %>
+
+    </p>
   <% end %>
+  <%= form_for(@goal) do |f| %>
+    <%= f.text_field :content, class: "goal-input", :placeholder => "New Goal" %>
+    <%= f.submit 'Submit', :class => 'btn btn--invert submit-btn' %>
+  <% end %>
+
 </div>
