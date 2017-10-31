@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     @appointment = Appointment.new
 
     @user_moods = @user.moods.order(created_at: :desc).limit(10)
+    p @user_moods
     # check for activate mood tracker
     @today = Date.today.to_date
     @mood_tracker_check = true
