@@ -1,0 +1,70 @@
+#myModal {
+
+}
+#mood__modal--backdrop {
+  background-color: $color__theme--main-alpha90;
+  border-radius: 500px;
+  bottom: 50%;
+  height: 90%;
+  mix-blend-mode: multiply;
+  opacity: 0;
+  position: absolute;
+  right: 50%;
+  transform: translate(50%, 50%);
+  transition-duration: $duration--lg;
+  visibility: collapsed;
+  width: 90%;
+  z-index: 1040;
+  &.active {
+    opacity: 1;
+    visibility: visible;;
+  }
+}
+.modal {
+  -webkit-overflow-scrolling: touch;
+  height: 80%;
+  left: 50%;
+  outline: initial;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  z-index: 1050;
+  &-backdrop {
+    display: none;
+    box-shadow: 2px 6px 12px rgba(0,0,0,0.24), 0 1px 2px rgba(0,0,0,0.48);
+  }
+  &-body {
+    font-size: 32px;
+    padding: 0 0 15px 0;
+  }
+  &-content {
+    background-clip: padding-box;
+    background-color: transparent !important;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 16px;
+    outline: initial;
+    text-align: center;
+  }
+  &-dialog {
+    height: 100%;
+    margin: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+  &-header {
+    border: 0;
+    font-family: $headers-font;
+    padding: 0 15px 15px 15px;
+  }
+  &-title {
+    line-height: 1.25;
+    padding: 0;
+  }
+}
+.mood-face:hover {
+  transform: translateY(-4px);
+}
