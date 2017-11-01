@@ -6,8 +6,8 @@
     <li class="flex--vh-spb">
       <p class="goal__list--text font__color--white"><%= goal[:content]%></p>
       <div class="button__case">
-        <button class="btn btn--check"><i class="fa fa-check" aria-hidden="true"></i></button>
-        <%#= link_to "<i class='fa fa-times' aria-hidden='true'></i>".html_safe, goal_path(goal.id), method: :delete, class: 'btn btn--delete' %>
+        <!-- <a class="btn btn--check"><i class="fa fa-check" aria-hidden="true"></i></a> -->
+        <%= link_to "<i class='fa fa-times' aria-hidden='true'></i>".html_safe, goal_path(goal.id), method: :delete, class: 'btn btn--delete' %>
       </div>
     </li>
 
@@ -23,22 +23,22 @@
 
 <% content_for(:after_js) do %>
 <script>
-$(document).ready(function(){
-  var checkButtons = document.querySelectorAll(".btn--check");
-  checkButtons.forEach(function(button, i) {
-    button.addEventListener("click", function(e) {
-      var buttonClicked = $(e.target).closest("button");
-      console.log('Button has been clicked');
-      buttonClicked.closest("p.goal__list--text").toggleClass('done');
+  // var checkButtons = document.querySelectorAll(".btn--check");
+  // checkButtons.forEach(function(button, i) {
+    // button.addEventListener("click", function(e){
+      // var buttonClicked = $(e.target).closest(".btn");
+      // console.log(buttonClicked);
+      // buttonClicked.closest("p.goal__list--text").addClass('done');
+      // console.log(buttonClicked.closest("p.goal__list--text"));
+    // });
+  // });
+
+  var goalChecks = $(".btn--check");
+  $.each(goalChecks, (function(i, check) {
+    check.addEventListener("click", function(e) {
+    var p = $(e.target).closest("p.goal__list--text");
+    p.toggleClass("done");
     });
-  });
-  // var goalChecks = $(".check-btn");
-  // $.each(goalChecks, (function(i, check) {
-  //   check.addEventListener("click", function(e) {
-  //   var p = $(e.target).closest("p.goal__list--text");
-  //   p.toggleClass("done");
-  //   });
-  // }));
-}):
+  }));
 </script>
 <% end %>
