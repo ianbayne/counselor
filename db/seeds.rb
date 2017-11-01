@@ -20,8 +20,12 @@ p "Seed counsellors"
 p "specialty_list for counsellor as below."
 p Counsellor::SPECIALTY
 
-p "counsellors for demo, 3 male and 3 female."
+p "counsellors for demo, 3 male and 3 female plus Kazuya and Ian"
 p "Please choose Work, Relationship, Loss and No preference for gender to have consistent matching result."
+
+## Kazuya
+
+p "Making Kazuya..."
 
 counsellor = Counsellor.new(
     first_name: "Kazuya",
@@ -33,7 +37,7 @@ counsellor = Counsellor.new(
     photo: File.open(File.join(Rails.root, "app/assets/images/counsellor_m1.png"))
     )
 
-counsellor.specialty_list.add([:Work, :Relationship, :Loss])
+counsellor.specialty_list.add([:Work])
 
 introduction = "Hi there.
 My name is Kazuya and I am a Mental Health and Addictions Counselor licensed in Japan with over 8 years of clinical experience.
@@ -45,6 +49,37 @@ I have also helped individuals with a history of trauma, including emotional and
 
 counsellor.introduction = introduction
 counsellor.save!
+
+p "Kazuya finished!"
+
+## Ian
+
+p "Making Ian..."
+
+counsellor = Counsellor.new(
+    first_name: "Ian",
+    last_name: "Bayne",
+    age: 38,
+    gender: 0,
+    email: "ianbayne@gmail.com",
+    password: "123456",
+    photo: File.open(File.join(Rails.root, "app/assets/images/ian.png"))
+    )
+
+counsellor.specialty_list.add([:Work, :Relationship, :Loss])
+
+introduction = "Hi there.
+My name is Ian and I am a Mental Health and Addictions Counselor licensed in Japan with over 8 years of clinical experience.
+I hold a Masters of Arts in Counseling Psychology.
+I am also certified with the National Board of Certified Counselors.
+I have worked with clients with a wide range of concerns
+including depression, anxiety, grief, relationship issues, addiction problems, career challenges, and life transitions.
+I have also helped individuals with a history of trauma, including emotional and physical abuse."
+
+counsellor.introduction = introduction
+counsellor.save!
+
+p "Ian finished!"
 
 p "counsellor#{i} finished"
 i += 1
@@ -63,9 +98,9 @@ counsellor = Counsellor.new(
 
 counsellor.specialty_list.add([:Work, :Relationship, :Financial])
 
-introduction = "I am a Licensed Professional Counselor in the Tokyo, Japan. 
-I received a Master's Degree in Counseling Psychology at Avila University in Kansas City, 
-Missouri. I added a certification as a Personal Trainer through Smart Fitness because mental health, 
+introduction = "I am a Licensed Professional Counselor in the Tokyo, Japan.
+I received a Master's Degree in Counseling Psychology at Avila University in Kansas City,
+Missouri. I added a certification as a Personal Trainer through Smart Fitness because mental health,
 diet and exercise go hand in hand. "
 
 counsellor.introduction = introduction
@@ -88,8 +123,8 @@ counsellor = Counsellor.new(
 
 counsellor.specialty_list.add([:Work, :Relationship, :Financial])
 
-introduction = "I am a licensed mental health counselor in Tokyo with over 3 years work in community mental health 
-and 14 years experience in private practice, including 10 years as a certified clinical trainer for other counselors. 
+introduction = "I am a licensed mental health counselor in Tokyo with over 3 years work in community mental health
+and 14 years experience in private practice, including 10 years as a certified clinical trainer for other counselors.
 I work a great deal with adult survivors of childhood abuse, but also with those dealing with depression and anxiety."
 
 counsellor.introduction = introduction
@@ -112,12 +147,12 @@ counsellor = Counsellor.new(
 
 counsellor.specialty_list.add([:Work, :Relationship, :Loss])
 
-introduction = "I have a warm and friendly style 
-and strongly believe in the importance of the therapeutic bond 
-and building a healthy and trusting relationships with all of my clients. 
-When working with me you can expect me to take a strong interest in your case 
+introduction = "I have a warm and friendly style
+and strongly believe in the importance of the therapeutic bond
+and building a healthy and trusting relationships with all of my clients.
+When working with me you can expect me to take a strong interest in your case
 and concern for your well-being. I own a sucessful private practice,
-and am looking forward to bringing my services to many of you through BetterHelp's online counseling services. 
+and am looking forward to bringing my services to many of you through BetterHelp's online counseling services.
 Take care and I look forward to working with you!"
 
 counsellor.introduction = introduction
@@ -140,12 +175,12 @@ counsellor = Counsellor.new(
 
 counsellor.specialty_list.add([:Work, :Relationship, :Loss])
 
-introduction = "I have a warm and friendly style 
-and strongly believe in the importance of the therapeutic bond 
-and building a healthy and trusting relationships with all of my clients. 
-When working with me you can expect me to take a strong interest in your case 
+introduction = "I have a warm and friendly style
+and strongly believe in the importance of the therapeutic bond
+and building a healthy and trusting relationships with all of my clients.
+When working with me you can expect me to take a strong interest in your case
 and concern for your well-being. I own a sucessful private practice,
-and am looking forward to bringing my services to many of you through Counsellor.tokyo online counseling services. 
+and am looking forward to bringing my services to many of you through Counsellor.tokyo online counseling services.
 Take care and I look forward to working with you!"
 
 counsellor.introduction = introduction
@@ -168,12 +203,12 @@ counsellor = Counsellor.new(
 
 counsellor.specialty_list.add([:Work, :Relationship, :Financial])
 
-introduction = "I'm a Licensed Professional Counselor 
-and an Internationally Certified Alcohol and Drug Counselor. 
-I have worked in a variety of settings to include both mental health 
-and addiction treatment facilities. 
-I have over 15 years experience in the counseling field addressing depression, anxiety, anger, trauma/abuse and addiction. 
-I am also very comfortable providing crisis interventions to those 
+introduction = "I'm a Licensed Professional Counselor
+and an Internationally Certified Alcohol and Drug Counselor.
+I have worked in a variety of settings to include both mental health
+and addiction treatment facilities.
+I have over 15 years experience in the counseling field addressing depression, anxiety, anger, trauma/abuse and addiction.
+I am also very comfortable providing crisis interventions to those
 that may be experiencing immediate distress!"
 
 counsellor.introduction = introduction
