@@ -20,8 +20,14 @@
     padding: 6px 28px 8px 28px;
     margin: 15px 0 0 0;
   }
+  &--xs {
+    font-size: 18px;
+    margin: 15px 0 0 0;
+    padding: 4px 28px 6px 28px;
+    width: 65%;
+  }
   &--invert {
-    background-color: $color__theme--main;
+    background-color: transparent;
     border: 2px solid $color__theme--main-light--lg;
   }
 }

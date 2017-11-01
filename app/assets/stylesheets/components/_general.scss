@@ -12,6 +12,15 @@
     @extend %flexExtend;
     justify-content: center;
   }
+  &--h-center {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+  }
+  &--vh-spb {
+    @extend %flexExtend;
+    justify-content: space-between;
+  }
 }
 .height--100 {
   height: 100%;
