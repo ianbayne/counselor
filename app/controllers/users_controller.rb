@@ -42,6 +42,8 @@ class UsersController < ApplicationController
       @mood_tracker_check = false if mood.created_at.to_date == @today
     end
 
+    # Is this the reason why conversations don't show the initial text box if
+    # a counselor has more than one user?
     if @user.mailbox.conversations.participant(@counsellor).last
       @conversation = @user.mailbox.conversations.participant(@counsellor).last
     else

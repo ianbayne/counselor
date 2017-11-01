@@ -45,7 +45,12 @@
       </div>
     <% else %>
       <!-- Login link (when logged out) -->
-      <%= link_to t('.other_language'), "/en", class: "navbar-wagon-item navbar-wagon-link" %>
+
+      <% if I18n.locale == I18n.default_locale %>
+        <%= link_to t('.other_language'), { :locale=>'en' }, class: "navbar-wagon-item navbar-wagon-link" %>
+      <% else %>
+        <%= link_to t('.other_language'), { :locale=>'' }, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%end%>
       <%= link_to t(".user_login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to t(".counsellor_login"), new_counsellor_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
