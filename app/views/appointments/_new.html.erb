@@ -1,9 +1,9 @@
-<div class="modal fade" id="new_event">
+<div class="modal fade flex--vh-center" id="new_event">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Create New Booking</h4>
+        <h2 class="modal-title font__color--white">Create New Booking</h2>
       </div>
       <div class="modal-body">
         <%= render 'form', appointment: @appointment %>
