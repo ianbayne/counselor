@@ -68,8 +68,14 @@
   %>
   <% end %>
 
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal" id="modal-open">
+    <%= @mood_tracker_check %>
+  </button>
+
   <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <!--  tabindex="-1" was preventing it from accessing input tags -->
+  <div id="myModal" class="modal fade" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog flex--vh-center" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -113,35 +119,30 @@
   </div>
 </div>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal" id="modal-open">
-  <%= @mood_tracker_check %>
-</button>
-
 <% content_for(:after_js) do %>
 <script>
   var modalOpen = document.querySelector("#modal-open");
   if (<%= @mood_tracker_check %>) {
     modalOpen.click();
     $("#mood__modal--backdrop").addClass("active");
-    console.log("Modal opens");
+    // console.log("Modal opens");
   }
 
   var moodSelector = document.querySelector("#mood_mood");
-  console.log(moodSelector);
-  console.log(moodSelector.selectedIndex);
+  // console.log(moodSelector);
+  // console.log(moodSelector.selectedIndex);
   var moodFaces = document.querySelectorAll(".mood-face");
-  console.log(moodFaces);
+  // console.log(moodFaces);
   var moodButton = document.querySelector(".mood-submit");
-  console.log(moodButton);
+  // console.log(moodButton);
 
   moodFaces.forEach(function(face, i) {
     face.addEventListener("click", function(e){
       moodSelector.selectedIndex = 0;
       e.preventDefault();
-      console.log(face, i);
+      // console.log(face, i);
       moodSelector.selectedIndex = i + 1;
-      console.log(moodSelector.selectedIndex);
+      // console.log(moodSelector.selectedIndex);
       moodButton.click();
     });
   })
