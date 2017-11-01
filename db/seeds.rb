@@ -21,8 +21,7 @@ p "specialty_list for counsellor as below."
 p Counsellor::SPECIALTY
 
 p "counsellors for demo, 3 male and 3 female."
-p "Please choose Work, Relationship, Loss and No preference for gender"
-p "to have consistent mathing result."
+p "Please choose Work, Relationship, Loss and No preference for gender to have consistent matching result."
 
 counsellor = Counsellor.new(
     first_name: "Kazuya",
