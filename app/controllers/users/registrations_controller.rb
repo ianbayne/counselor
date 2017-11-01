@@ -21,6 +21,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.last
     @counsellor = @user.counsellor
     @counsellor.send_message(@user, "Greetings, #{@user.user_name}! Welcome to Counsellor.com! We are glad to have you! Please tell me about yourself and your main concerns. I will respond to you as early as possible. Thank you!", "Greetings!")
+    Goal.create(user_id: @user.id, counsellor_id: @counsellor.id, content: "Rate your mood today")
+    Goal.create(user_id: @user.id, counsellor_id: @counsellor.id, content: "Chat with your counsellor")
+    Goal.create(user_id: @user.id, counsellor_id: @counsellor.id, content: "Get live counselling")
   end
 
   # GET /resource/edit
@@ -48,7 +51,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # protected
-  # filter counserllor with specilty of counsellor and 
+  # filter counserllor with specilty of counsellor and
   def filter_counsellor_by_answer(answers)
     matched_counsellors = Counsellor.all
     answers.each do |answer|
