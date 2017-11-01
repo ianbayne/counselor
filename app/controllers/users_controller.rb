@@ -12,8 +12,18 @@ class UsersController < ApplicationController
 
     @user = current_user
     @counsellor = @user.counsellor
+
     @mood = Mood.new
+
+    @ten_days_moods = @user.moods.limit(10)
+    unless @ten_days_moods.empty?
+      @start_day = @ten_days_moods.first.created_at.strftime("%B %d")
+      @end_day = @ten_days_moods.last.created_at.strftime("%B %d")
+    end
+
+
     @appointment = Appointment.new
+    @goal = Goal.new
 
     @user_moods = @user.moods.order(created_at: :desc).limit(10)
     p @user_moods

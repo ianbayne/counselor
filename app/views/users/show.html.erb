@@ -15,7 +15,7 @@
               <h5 class="font__color--white">Your Counsellor</h5>
               <%= cl_image_tag @counsellor.photo, crop: :fill %>
               <h4 class="font__color--white"><%= @counsellor.first_name %><br><%= @counsellor.last_name %></h4>
-              <a class="font__color--white font__size--tc">Feel like talking to a<br>different counsellor?</a>
+              <a class="font__color--white font__size--tc change__counsellor">Prefer a different counsellor?</a>
             </div>
           </div>
 
@@ -27,11 +27,12 @@
         <div class="row height--50 dashcard">
           <div id="dashcard__goals" class="col-md-6 height--100 flex--vh-center">
             <div class="text-center">
-              <i class="fa fa-flag fa-5x font__color--white"></i>
+              <!-- <i class="fa fa-flag fa-5x font__color--white"></i>
               <br>
-              <br>
+              <br> -->
               <p class="font__color--white">Goals</p>
-              <p class="font__color--white">[UNDER CONSTRUCTION]</p>
+              <!-- <p class="font__color--white">[UNDER CONSTRUCTION]</p> -->
+              <%= render 'shared/goals' %>
             </div>
           </div>
           <div id="dashcard__mood" class="col-md-6 height--100 flex--vh-center">
