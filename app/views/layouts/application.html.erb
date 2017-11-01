@@ -34,6 +34,11 @@
     <div class="container-fluid">
       <div class="row">
         <%= yield %>
+
+        <%#= javascript_include_tag 'application' %>
+        <%#= yield(:after_js) %>
+        <div id='remote_container'></div>
+
       </div>
     </div>
     <%= javascript_include_tag 'application' %>

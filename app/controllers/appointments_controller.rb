@@ -1,4 +1,6 @@
 class AppointmentsController < ApplicationController
+before_action :set_appointment, only: [:show, :edit, :update, :destroy]
+
   def index
     @user = current_user
     @appointments = @user.counsellor.appointments
@@ -25,17 +27,33 @@ class AppointmentsController < ApplicationController
     end
 
     if @appointment.save
-      redirect_to appointments_path
+      redirect_to user_path(current_user)
     else
       render :index
     end
 
   end
 
+  def show
+  end
+
+  def destroy
+    @appointment.destroy
+  end
+
   private
 
+  def set_appointment
+    @appointment = Appointment.find(params[:id])
+  end
+
   def appointment_params
-    params.require(:appointment).permit("start_time(1i)", "start_time(2i)",
-     "start_time(3i)", "start_time(4i)", "start_time(5i)")
+    # New for following URL
+    # https://www.driftingruby.com/episodes/fullcalendar-events-and-scheduling#show_notes
+    params.require(:appointment).permit("start_time")
+
+    # Previous version
+    # params.require(:appointment).permit("start_time(1i)", "start_time(2i)",
+    #  "start_time(3i)", "start_time(4i)", "start_time(5i)")
   end
 end

@@ -22,7 +22,14 @@ class UsersController < ApplicationController
     end
 
 
-    @appointment = Appointment.new
+    # Original code before movement of calendar
+    # @appointment = Appointment.new
+
+    # Code required for moving calendar
+    @appointments = @user.counsellor.appointments
+
+
+    # @appointment = Appointment.new
     @goal = Goal.new
 
     @user_moods = @user.moods.order(created_at: :desc).limit(10)
