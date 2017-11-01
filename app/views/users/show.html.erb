@@ -19,7 +19,8 @@
             </div>
           </div>
 
-          <div id="dashcard__calendar" class="col-md-8 height--100 flex--vh-center">
+            <div id="dashcard__calendar" class="col-md-8 height--100 flex--h-center">
+            <!-- <%#= render 'shared/calendar' %> -->
 
             <!-- Insert calendar from appointments/index for testing purposes -->
 
@@ -39,28 +40,44 @@
 
 
 
-                var event = {
-                  id: 1,
-                  title: "test",
-                  start: new Date()
-                };
+                var initialize_calendar;
+initialize_calendar = function() {
+  $('.calendar').each(function(){
+    var calendar = $(this);
+    calendar.fullCalendar({
+      header: false,
+      selectable: true,
+      selectHelper: true,
+      editable: true,
+      eventLimit: true,
 
 
-                $('#calendar').fullCalendar({
-                  height: "parent",
-                  defaultView: "month",
-                  header: false,
-                  weekends: false,
-                  selectable: true,
+      select: function(start, end) {
+        $.getScript('/appointments/new', function() {
+          $('#event_date_range').val(moment(start).format("MM/DD/YYYY HH:mm") + ' - ' + moment(end).format("MM/DD/YYYY HH:mm"))
+          date_range_picker();
+          $('.start_hidden').val(moment(start).format('YYYY-MM-DD HH:mm'));
+          $('.end_hidden').val(moment(end).format('YYYY-MM-DD HH:mm'));
+
+          $('.time-picker').change(e => {
+            const time = $(e.currentTarget).val();
+            const date = $('.start_hidden').val().split(' ')[0];
+            $('.start_hidden').val(date + ' ' + time);
+          });
 
 
-                  select: function(start){
-                    alert(start);
-                    // var selDate = new Date(start);
-                    // add your function
-                  },
 
-                  events: [
+
+        });
+
+        calendar.fullCalendar('unselect');
+      },
+
+      events:
+
+      [
+
+
 
                     <% @appointments.each do |appointment| %>
                       {
@@ -78,42 +95,41 @@
 
                       },
                     <% end %>
+
+
                   ],
-
-                  eventClick: function(event) {
-                    if (event.url) {
-                        window.open(event.url);
-                        return false;
-                    }
-
-
-                  }
-                });
+            eventClick: function(event) {
+              if (event.url) {
+                  window.open(event.url);
+                  return false;
+              }
+            }
 
 
-                $('#calendar').fullCalendar( 'renderEvent', event, true);
+
+
+    });
+  })
+};
+$(document).ready(function(){initialize_calendar()});
+
 
 
               <% end %>
             <% end %>
 
 
-            <!--<%#= render 'shared/calendar' %> -->
+
           </div>
         </div>
 
         <div class="row height--50 dashcard">
-          <div id="dashcard__goals" class="col-md-6 height--100 flex--vh-center">
-            <div class="text-center">
-              <!-- <i class="fa fa-flag fa-5x font__color--white"></i>
-              <br>
-              <br> -->
-              <p class="font__color--white">Goals</p>
-              <!-- <p class="font__color--white">[UNDER CONSTRUCTION]</p> -->
+          <div id="dashcard__goals" class="col-md-6 height--100 flex--h-center">
+            <div class="width--100">
               <%= render 'shared/goals' %>
             </div>
           </div>
-          <div id="dashcard__mood" class="col-md-6 height--100 flex--vh-center">
+          <div id="dashcard__mood" class="col-md-6 height--100 flex--h-center">
             <%= render 'shared/mood_tracker' %>
           </div>
         </div>

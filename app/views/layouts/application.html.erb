@@ -3,31 +3,42 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Enzo & Ian & Kazuya & Shun">
+    <meta name="description" content="Counsellor offers Private and Convenient Professional Counselling.  Online Chat, Voice or Video Sessions">
+    <meta name="keywords" content="counsellor, online, private, chat, professional">
     <title>Counsellor</title>
+    <%= favicon_link_tag %>
+    <!-- #=> <link href="/assets/favicon.ico" rel="shortcut icon" type="image/x-icon" /> -->
+    <%= favicon_link_tag 'favicon_16px.png', sizes:'16x16', type:'image/png' %>
+    <%= favicon_link_tag 'favicon_32px.png', sizes:'32x32', type:'image/png' %>
+    <%= favicon_link_tag 'favicon_48px.png', sizes:'48x48', type:'image/png' %>
+    <%= favicon_link_tag 'favicon_57px.png', sizes:'57x57', type:'image/png' %>
+    <%= favicon_link_tag 'favicon_128px.png', sizes:'128x128', type:'image/png' %>
+    <%= favicon_link_tag 'favicon_16px.svg', sizes:'any', type:'image/svg+xml' %>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <!-- ADDED AS NAV FIX 999 -->
     <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
-
-
     <!-- fullcalendar.io -->
-<!--     <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
+    <!--
+    <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
     <script src='lib/jquery.min.js'></script>
     <script src='lib/moment.min.js'></script>
     <script src='fullcalendar/fullcalendar.js'></script>
- -->
+    -->
+
   </head>
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <div class="container-fluid">
       <div class="row">
-        <!-- div.col-##-## will be defined in the yields -->
         <%= yield %>
+
         <%#= javascript_include_tag 'application' %>
         <%#= yield(:after_js) %>
         <div id='remote_container'></div>
+
       </div>
     </div>
     <%= javascript_include_tag 'application' %>
@@ -40,6 +51,5 @@
       }, 1000);
     });
   </script>
-  <!-- ADDED NAV FIX 999 -->
   <%= yield :charts_js %>
 </html>
