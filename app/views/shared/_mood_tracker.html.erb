@@ -1,13 +1,16 @@
+<!-- Modal Backdrop / shun -->
+<div id="mood__modal--backdrop">
+
+</div>
+
+<!-- Main Part -->
 <div class="width--100">
-
-
   <% if @ten_days_moods.empty? %>
-    <p class="font__color--white">Please start to track your mood.</p>
+    <!-- <p class="font__color--white">Please start to track your mood.</p> -->
   <% else %>
     <h5 class="font__color--white">Mood Tracker</h5>
     <p class="font__color--white"><%= @start_day %> to <%= @end_day %></p>
   <%= line_chart @ten_days_moods.limit(10).group_by_day(:created_at).sum(:mood),
-
     # use google chart, options are below
     # https://developers.google.com/chart/interactive/docs/gallery/linechart
     adapter: "google",
@@ -15,25 +18,21 @@
     width: "286px",
     height: "200px",
     colors: ["#FFFFFF"],
-
     library: {
       curveType: "none", # "function" to be curved line
       backgroundColor: "transparent",
-
       # enable animation
       animation: {
         startup: true,
         duration: 800,
         easing: "inAndOut"
       },
-
       chartArea: {
         top: 30,
         right: 5,
         bottom: 30,
         left: 30
       },
-
       hAxis: {
         textPosition: "none", # disable label of xAxis
         format: 'MMM dd',
@@ -44,7 +43,6 @@
           color: "#FFFFFF"
         }
       },
-
       vAxis: {
         # below set min - max in the chart
         viewWindow: {
@@ -68,9 +66,87 @@
       }
     }
   %>
-
   <% end %>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog flex--vh-center" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+          <h4 class="modal-title font__color--white" id="myModalLabel">How are you<br>feeling today?</h4>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for @mood, :method => 'post' do |f| %>
+            <%#= f.error_notification %>
+            <ul class="list-inline text-center">
+              <li class="list-inline-item mood-face">
+                <span>😩</span>
+              </li>
+              <li class="list-inline-item mood-face">
+                <span>😞</span>
+              </li>
+              <li class="list-inline-item mood-face">
+                <span>😐</span>
+              </li>
+              <li class="list-inline-item mood-face">
+                <span>🙂</span>
+              </li>
+              <li class="list-inline-item mood-face">
+                <span>😁</span>
+              </li>
+            </ul>
+            <!-- if set as: :hidden, select option will disapper -->
+            <!-- so set display: none in the css -->
+            <%= f.input :mood, collection: 1..5 %>
+            <%= f.button :submit, "Save your mood", class: "btn btn-primary mood-submit"%>
+          <% end %>
+        </div>
+        <!--
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+        -->
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal" id="modal-open">
+  <%= @mood_tracker_check %>
+</button>
+
+<% content_for(:after_js) do %>
+<script>
+  var modalOpen = document.querySelector("#modal-open");
+  if (<%= @mood_tracker_check %>) {
+    modalOpen.click();
+    $("#mood__modal--backdrop").addClass("active");
+    console.log("Modal opens");
+  }
+
+  var moodSelector = document.querySelector("#mood_mood");
+  console.log(moodSelector);
+  console.log(moodSelector.selectedIndex);
+  var moodFaces = document.querySelectorAll(".mood-face");
+  console.log(moodFaces);
+  var moodButton = document.querySelector(".mood-submit");
+  console.log(moodButton);
+
+  moodFaces.forEach(function(face, i) {
+    face.addEventListener("click", function(e){
+      moodSelector.selectedIndex = 0;
+      e.preventDefault();
+      console.log(face, i);
+      moodSelector.selectedIndex = i + 1;
+      console.log(moodSelector.selectedIndex);
+      moodButton.click();
+    });
+  })
+</script>
+<% end %>
 
 
 
