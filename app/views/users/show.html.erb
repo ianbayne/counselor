@@ -19,8 +19,69 @@
             </div>
           </div>
 
-          <div id="dashcard__calendar" class="col-md-8 height--100 flex--h-center">
-            <%= render 'shared/calendar' %>
+            <div id="dashcard__calendar" class="col-md-8 height--100 flex--h-center">
+
+            <%= stylesheet_link_tag 'calendar', media: 'all' %>
+
+            <div class='calendar'></div>
+
+            <!-- <div id="calendar"></div> -->
+
+            <% content_for(:after_js) do %>
+              <script>
+
+                var initialize_calendar;
+                initialize_calendar = function() {
+                  $('.calendar').each(function(){
+                    var calendar = $(this);
+                    calendar.fullCalendar({
+                      header: false,
+                      selectable: true,
+                      selectHelper: true,
+                      editable: true,
+                      eventLimit: true,
+
+                      select: function(start, end) {
+                        $.getScript('/appointments/new', function() {
+                          $('#event_date_range').val(moment(start).format("MM/DD/YYYY HH:mm") + ' - ' + moment(end).format("MM/DD/YYYY HH:mm"));
+                          date_range_picker();
+                          $('.start_hidden').val(moment(start).format('YYYY-MM-DD HH:mm'));
+                          $('.end_hidden').val(moment(end).format('YYYY-MM-DD HH:mm'));
+
+                          $('.time-picker').change(function(e) {
+                            var time = $(e.currentTarget).val();
+                            var date = $('.start_hidden').val().split(' ')[0];
+                            $('.start_hidden').val(date + ' ' + time);
+                          });
+                        });
+
+                        calendar.fullCalendar('unselect');
+                      },
+                    events: [
+                      <% @appointments.each do |appointment| %>
+                        {
+
+                          start  : <%= appointment.start_time.strftime("%Y-%m-%dT%H:%M").to_json.html_safe %>,
+                          end    : <%= appointment.end_time.strftime("%Y-%m-%dT%H:%M").to_json.html_safe %>,
+                          title    : "",
+                          url    : <%= appointment.url.to_json.html_safe %>
+
+                        },
+                      <% end %>
+                    ],
+                    eventClick: function(event) {
+                      if (event.url) {
+                        window.open(event.url);
+                        return false;
+                      }
+                    }
+                  });
+                })
+              };
+              $(document).ready(function(){initialize_calendar()});
+
+              </script>
+            <% end %>
           </div>
         </div>
 
