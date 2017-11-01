@@ -1,0 +1,83 @@
+#dashcard__goals {
+  #goal_content {
+    width: calc(100% - 26px);
+  }
+  .btn--check, .btn--delete  {
+    background-color: $white;
+    color: $color__theme--main;
+    font-size: 10px;
+    height: 16px;
+    margin: 0 0 0 2px;
+    padding: 0;
+    width: 16px;
+    transition-duration: unset;
+    &:hover {
+      color: $white;
+      transform: scale(1.25, 1.25);
+    }
+  }
+  .btn--check:hover {
+    border: 2px solid #2FBF36;
+    background-color: #2FBF36;
+  }
+  .btn--delete:hover {
+    border: 2px solid $color__theme--accent;
+    background-color: $color__theme--accent;
+  }
+  .button__case {
+    display: inline-block;
+    float: right;
+  }
+  .done {
+    text-decoration: line-through;
+  }
+  .goal__btn {
+    background-color: transparent;
+    border-radius: 0;
+    border: 2px solid $white;
+    color: $white;
+    font-size: 26px;
+    font-weight: bolder;;
+    height: 26px;
+    line-height: 0;
+    margin: 0;
+    padding: 8px 0 14px 0;
+    transition-duration: unset;
+    width: 26px;
+    &:hover {
+      background-color: $white;
+      color: $color__theme--main;
+    }
+  }
+  .goal__list--container {
+    margin: 16px auto 20px auto;
+    text-align: left;
+    width: 100%;
+    li {
+      border-bottom: 1px solid $color__theme--main-light;
+      padding: 6px 0 7px 0;
+      &:first-child {
+        border-top: 1px solid $color__theme--main-light;
+      }
+    }
+    .goal__list--text {
+      display: inline-block;
+      margin: 0 6px 0 0;
+      width: 80%;
+    }
+  }
+  .goal__input {
+    background-color: white;
+    border-radius: 0;
+    color: $color__font--main;
+    font-size: 16px;
+    line-height: initial;
+    margin: 0;
+    padding: 0px 8px 1px;
+    text-align: left;
+    width: 100%;
+  }
+}
+.plus__adj {
+
+}

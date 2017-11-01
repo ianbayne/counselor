@@ -1,5 +1,9 @@
+%extendDashCard {
+  padding: 35px;
+}
 #dashcard {
   &__counsellor {
+    @extend %extendDashCard;
     position: relative;
     img {
       border-radius: 500px;
@@ -17,12 +21,12 @@
       }
     }
     .change__counsellor {
-      bottom: 40px;
-      left: 0;
-      position: absolute;
-      text-align: center;
-      transform: translateY(-50%);
-      width: 100%;
+      // bottom: 22px;
+      // left: 35px;
+      // position: absolute;
+      // text-align: center;
+      // transform: translateY(-50%);
+      // width: 75%;
       &:hover {
         color: $white;
         text-decoration: underline;
@@ -30,12 +34,15 @@
     }
   }
   &__calendar {
+    @extend %extendDashCard;
   }
   &__goals {
+    @extend %extendDashCard;
+    overflow: hidden;
   }
   &__mood {
+    @extend %extendDashCard;
     overflow: hidden;
-    padding: 20px 20px 0 0;
   }
 }
 .dashboard--container {

@@ -19,23 +19,18 @@
             </div>
           </div>
 
-          <div id="dashcard__calendar" class="col-md-8 height--100 flex--vh-center">
+          <div id="dashcard__calendar" class="col-md-8 height--100 flex--h-center">
             <%= render 'shared/calendar' %>
           </div>
         </div>
 
         <div class="row height--50 dashcard">
-          <div id="dashcard__goals" class="col-md-6 height--100 flex--vh-center">
-            <div class="text-center">
-              <!-- <i class="fa fa-flag fa-5x font__color--white"></i>
-              <br>
-              <br> -->
-              <p class="font__color--white">Goals</p>
-              <!-- <p class="font__color--white">[UNDER CONSTRUCTION]</p> -->
+          <div id="dashcard__goals" class="col-md-6 height--100 flex--h-center">
+            <div class="width--100">
               <%= render 'shared/goals' %>
             </div>
           </div>
-          <div id="dashcard__mood" class="col-md-6 height--100 flex--vh-center">
+          <div id="dashcard__mood" class="col-md-6 height--100 flex--h-center">
             <%= render 'shared/mood_tracker' %>
           </div>
         </div>
@@ -56,7 +51,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title font__color--white" id="myModalLabel">Mood Tracker</h4>
-        <h4 class="modal-title font__color--white" id="myModalLabel">Please click a face according to your mood</h4>  
+        <h4 class="modal-title font__color--white" id="myModalLabel">Please click a face according to your mood</h4>
       </div>
       <div class="modal-body">
         <%= simple_form_for @mood, :method => 'post' do |f| %>
@@ -107,7 +102,7 @@
   console.log(moodFaces)
   var moodButton = document.querySelector(".mood-submit")
   console.log(moodButton)
-  
+
   moodFaces.forEach(function(face, i) {
     face.addEventListener("click", function(e){
       moodSelector.selectedIndex = 0
