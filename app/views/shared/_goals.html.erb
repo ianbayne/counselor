@@ -2,6 +2,7 @@
 
 <ul class="goal__list--container">
   <% @user.goals.each do |goal| %>
+
     <li class="flex--vh-spb">
       <p class="goal__list--text font__color--white"><%= goal[:content]%></p>
       <div class="button__case">
@@ -10,6 +11,7 @@
         <%= link_to "<i class='fa fa-times' aria-hidden='true'></i>".html_safe, goal_path(goal.id), method: :delete, class: 'btn btn--delete' %>
       </div>
     </li>
+
   <% end %>
 </ul>
 
@@ -21,9 +23,16 @@
 <% end %>
 
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(".check-btn").click(function(){
-      $(".goal-content").toggleClass("done");
-    });
-  <% end %>
+
+  <script>
+    var goalChecks = $(".check-btn");
+    $.each( goalChecks, (function(i, check) {
+      check.addEventListener("click", function(e) {
+      var p = $(e.target).closest("p");
+      p.find("span").toggleClass("done");
+      });
+    }));
+
+  </script>
 <% end %>
+
