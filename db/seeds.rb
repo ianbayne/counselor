@@ -15,6 +15,7 @@ Appointment.destroy_all
 
 i = 1
 p "Seed counsellors"
+p "first ten counsellors are male, last ten counsellors are female"
 p "specialty_list for counsellor as below."
 p Counsellor::SPECIALTY
 
@@ -26,9 +27,16 @@ p Counsellor::SPECIALTY
     # first_name: "first_name#{i}",
     # last_name: "last_name#{i}",
     age: (30..60).to_a.sample,
-    gender: (0..1).to_a.sample,
+    gender: i <= 10 ? 0 : 1,
     email: "counsellor#{i}@test.com",
     password: "123456")
+
+  photo_num = i <= 10 ? i : i - 10
+  photo_gender = i <= 10 ? "m" : "f"
+  photo_path = "app/assets/images/counsellor_#{photo_gender}#{photo_num}.png"
+  p "photo_path is ", photo_path
+  photo = File.open(File.join(Rails.root, photo_path))
+  counsellor.photo = photo
 
   # add 3 random speciality to counsellor from specilty list
   3.times do
@@ -43,9 +51,9 @@ p Counsellor::SPECIALTY
   counsellor.first_name = first_name
   counsellor.last_name = last_name
 
-  url = ["https://cdn3.iconfinder.com/data/icons/rcons-user-action/32/boy-512.png",
-        "https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png"]
-  counsellor.remote_photo_url = url[counsellor.gender]
+  # url = ["https://cdn3.iconfinder.com/data/icons/rcons-user-action/32/boy-512.png",
+  #       "https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png"]
+  # counsellor.remote_photo_url = url[counsellor.gender]
   counsellor.save!
 
   # introduction
@@ -119,8 +127,8 @@ i = 1
     password: "123456",
     counsellor: user_counsellor)
 
-  p "seed mood of the user"
-  day = Date.today
+  p "seed mood of user, past 10days from today"
+  day = Date.today - 10.days
   10.times do
     mood = Mood.new(mood: rand(1..5), user: user, created_at: day, updated_at: day)
     mood.save!
