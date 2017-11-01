@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     @appointments = @user.counsellor.appointments
 
 
-    @appointment = Appointment.new
+    # @appointment = Appointment.new
     @goal = Goal.new
 
     @user_moods = @user.moods.order(created_at: :desc).limit(10)
@@ -41,7 +41,6 @@ class UsersController < ApplicationController
       # if user already created mood today, not show modal.
       @mood_tracker_check = false if mood.created_at.to_date == @today
     end
->>>>>>> master
 
     if @user.mailbox.conversations.participant(@counsellor).last
       @conversation = @user.mailbox.conversations.participant(@counsellor).last

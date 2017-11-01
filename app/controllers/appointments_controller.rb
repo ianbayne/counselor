@@ -27,7 +27,7 @@ before_action :set_appointment, only: [:show, :edit, :update, :destroy]
     end
 
     if @appointment.save
-      redirect_to appointments_path
+      redirect_to user_path(current_user)
     else
       render :index
     end

@@ -16,6 +16,29 @@ initialize_calendar = function() {
           date_range_picker();
           $('.start_hidden').val(moment(start).format('YYYY-MM-DD HH:mm'));
           $('.end_hidden').val(moment(end).format('YYYY-MM-DD HH:mm'));
+
+          $('.time-picker').change(e => {
+            const time = $(e.currentTarget).val();
+            const date = $('.start_hidden').val().split(' ')[0];
+            $('.start_hidden').val(date + ' ' + time);
+          });
+
+
+
+          // $('.add-appointment').submit(e => {
+          //   e.preventDefault();
+          //   const time = $(e.currentTarget).find('input').val();
+          //   console.log('Submit manually!', time, typeof time);
+          //   fetch('/appointments', {
+          //     headers: {
+          //       'Accept': 'application/json',
+          //       'Content-Type': 'application/json'
+          //     },
+          //     method: "POST",
+          //     body: JSON.stringify({ time: time }),
+          //     credentials: 'include'
+          //   });
+          // });
         });
 
         calendar.fullCalendar('unselect');

@@ -25,14 +25,6 @@
 
             <%= stylesheet_link_tag 'calendar', media: 'all' %>
 
-            <!-- In-file styling of the calendar -->
-         <!--    <style>
-              #calendar {
-                font-size: 14px;
-                margin-right: -25px;
-                /*width: 90%;*/
-              }
-            </style> -->
 
             <div class='calendar'></div>
 
@@ -142,7 +134,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title font__color--white" id="myModalLabel">Mood Tracker</h4>
-        <h4 class="modal-title font__color--white" id="myModalLabel">Please click a face according to your mood</h4>  
+        <h4 class="modal-title font__color--white" id="myModalLabel">Please click a face according to your mood</h4>
       </div>
       <div class="modal-body">
         <%= simple_form_for @mood, :method => 'post' do |f| %>
@@ -193,7 +185,7 @@
   console.log(moodFaces)
   var moodButton = document.querySelector(".mood-submit")
   console.log(moodButton)
-  
+
   moodFaces.forEach(function(face, i) {
     face.addEventListener("click", function(e){
       moodSelector.selectedIndex = 0
