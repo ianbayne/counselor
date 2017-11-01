@@ -26,8 +26,21 @@
     padding: 4px 28px 6px 28px;
     width: 65%;
   }
+  &--positive {
+    border: 2px solid $color__theme--main;
+    color: $color__theme--main;
+    &:hover {
+      background-color: $color__theme--main;
+      border: 2px solid transparent;
+      color: $white;
+    }
+  }
   &--invert {
-    background-color: transparent;
+    background-color: $color__theme--main;
     border: 2px solid $color__theme--main-light--lg;
+    &:hover {
+      border: 2px solid $color__theme--main;
+      background-color: transparent;
+    }
   }
 }

@@ -17,12 +17,12 @@
     }
   }
   .btn--check:hover {
-    border: 2px solid #2FBF36;
-    background-color: #2FBF36;
+    border: 2px solid $color__accept;
+    background-color: $color__accept;
   }
   .btn--delete:hover {
-    border: 2px solid $color__theme--accent;
-    background-color: $color__theme--accent;
+    border: 2px solid $color__reject;
+    background-color: $color__reject;
   }
   .button__case {
     display: inline-block;
@@ -73,11 +73,8 @@
     font-size: 16px;
     line-height: initial;
     margin: 0;
-    padding: 0px 8px 1px;
+    padding: 1px 8px 2px;
     text-align: left;
     width: 100%;
   }
-}
-.plus__adj {
-
 }

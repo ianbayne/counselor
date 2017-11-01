@@ -40,6 +40,9 @@
 .position--relative {
   position: relative;
 }
+.transition--none {
+  transition-duration: unset !important;
+}
 .well {
   &__vertical {
     &--sm {
