@@ -87,8 +87,8 @@ i += 1
 gimei = Gimei.male
 
 counsellor = Counsellor.new(
-    first_name: gimei.romaji.split(" ")[0],
-    last_name: gimei.romaji.split(" ")[1],
+    first_name: "Ogai",
+    last_name: "Mori",
     age: 42,
     gender: 0,
     email: "counsellor_2@gmail.com",
@@ -112,8 +112,8 @@ i += 1
 gimei = Gimei.male
 
 counsellor = Counsellor.new(
-    first_name: gimei.romaji.split(" ")[0],
-    last_name: gimei.romaji.split(" ")[1],
+    first_name: "Soseki",
+    last_name: "Natsume",
     age: 42,
     gender: 0,
     email: "counsellor_3@gmail.com",
@@ -136,8 +136,8 @@ i += 1
 gimei = Gimei.female
 
 counsellor = Counsellor.new(
-    first_name: gimei.romaji.split(" ")[0],
-    last_name: gimei.romaji.split(" ")[1],
+    first_name: "Ginko",
+    last_name: "Ogino",
     age: 42,
     gender: 1,
     email: "counsellor_4@gmail.com",
@@ -164,8 +164,8 @@ i += 1
 gimei = Gimei.female
 
 counsellor = Counsellor.new(
-    first_name: gimei.romaji.split(" ")[0],
-    last_name: gimei.romaji.split(" ")[1],
+    first_name: "Masako",
+    last_name: "Ogawa",
     age: 42,
     gender: 1,
     email: "counsellor_5@gmail.com",
@@ -192,8 +192,8 @@ i += 1
 gimei = Gimei.female
 
 counsellor = Counsellor.new(
-    first_name: gimei.romaji.split(" ")[0],
-    last_name: gimei.romaji.split(" ")[1],
+    first_name: "Yayoi",
+    last_name: "Yoshioka",
     age: 42,
     gender: 1,
     email: "counsellor_6@gmail.com",
@@ -317,7 +317,42 @@ p "create question \##{question.id}"
 p "content:", question.content
 p "active: #{question.active}"
 
-p "no seed user for demo"
+p "one user which has mood for demo, assign counsellor_id 3 which is not shown in demo"
+p "email: user1@test.com password: 123456"
+
+user = User.create(
+  user_name: "user_name1",
+  email: "user1@test.com",
+  password: "123456",
+  counsellor: Counsellor.find(3)
+  )
+
+p "seed mood of user, past 10days from today"
+day = Date.today - 10.days
+
+def create_mood(user, day, mood)
+  mood = Mood.new(mood: mood, user: user, created_at: day, updated_at: day)
+  mood.save!
+  day += 1.day
+end
+
+day = create_mood(user, day, 1)
+day = create_mood(user, day, 2)
+day = create_mood(user, day, 1)
+day = create_mood(user, day, 2)
+day = create_mood(user, day, 3)
+day = create_mood(user, day, 2)
+day = create_mood(user, day, 2)
+day = create_mood(user, day, 3)
+day = create_mood(user, day, 3)
+day = create_mood(user, day, 4)
+
+user.counsellor.send_message(user, "Greetings! Welcome to Counsellor.com! We are glad to have you! Please tell me about yourself and your main concerns. I will respond to you as early as possible. Thank you!", "Greetings!")
+
+p "create user#1"
+p "user_name:", user.user_name
+p "email:", user.email
+p "counsellor:", user.counsellor.email
 
 if false
 p "Seed users"

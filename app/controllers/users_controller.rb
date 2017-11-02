@@ -15,12 +15,18 @@ class UsersController < ApplicationController
 
     @mood = Mood.new
 
-    @ten_days_moods = @user.moods.limit(10)
+    @chart_duration_days = 10
+    if @user.moods.count - @chart_duration_days >= 0 
+      @ten_days_moods = @user.moods.limit(10).offset(@user.moods.count - @chart_duration_days)
+    else
+      @ten_days_moods = @user.moods.limit(10)
+    end
+    # @ten_days_moods = @user.moods.order(created_at: :desc).limit(10)
+    p @ten_days_moods
     unless @ten_days_moods.empty?
       @start_day = @ten_days_moods.first.created_at.strftime("%B %d")
       @end_day = @ten_days_moods.last.created_at.strftime("%B %d")
     end
-
 
     # Original code before movement of calendar
     # @appointment = Appointment.new
