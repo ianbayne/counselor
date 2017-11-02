@@ -1,12 +1,9 @@
 <%= simple_form_for @appointment do |f| %>
   <div class="form-inputs">
     <%#= f.input :title %>
-
-    <input class="time-picker" type="time">
-
+    <input class="time-picker" type="time" value="12:00" min="08:00" max="23:00" step="900">
     <!-- commented out of original line
     <%#= f.input :date_range, input_html: { class: "form-control input-sm date-range-picker" } %>-->
-
     <%= f.input_field :start_time, as: :hidden, value: Date.today, class: 'form-control input-sm start_hidden' %>
     <!--<%#= f.input_field :end, as: :hidden, value: Date.today, class: 'form-control input-sm end_hidden' %>
     <%#= f.input :color, as: :select, collection: [['Black','black'], ['Green','green'], ['Red','red']] %>-->

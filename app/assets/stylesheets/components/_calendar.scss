@@ -1,3 +1,41 @@
+#dashcard__calendar {
+  .fc th, .fc td {
+    border: 1px solid $color__theme--main-light;
+    padding: 0;
+    vertical-align: top;
+  }
+  .fc-unthemed td.fc-today {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-radius: 0 !important;
+  }
+  table {
+    color: $white;
+    font-size: 0.95em;
+  }
+  thead {
+    th.fc-day-header {
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+  }
+  tbody {
+    div.fc-bg {
+      // display: none;
+      .fc th, .fc td {
+        border: 1px solid $color__theme--main-light;
+        padding: 0;
+        vertical-align: top;
+      }
+      // .fc-basic-view .fc-week-number, .fc-basic-view .fc-day-number {
+        // padding: 4px;
+      // }
+    }
+    div.fc-content-skeleton {
+      // display: none;
+    }
+  }
+}
 #new_appointment {
   & .form-group {
     margin-bottom: 25px;
