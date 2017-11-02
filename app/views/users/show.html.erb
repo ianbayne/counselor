@@ -18,8 +18,8 @@
               <h5 class="font__color--white">Your Counsellor</h5>
               <%= cl_image_tag @counsellor.photo, crop: :fill %>
               <h4 class="font__color--white"><%= @counsellor.first_name %> <%= @counsellor.last_name %></h4>
-              <p class="counsellor__offline">offline</p>
-              <p class="counsellor__online hidden">online</p>
+              <!-- <p class="counsellor__offline">offline</p> -->
+              <p class="counsellor__online">online</p>
               <!-- <a class="font__color--white font__size--tc change__counsellor">Prefer a different counsellor?</a> -->
             </div>
           </div>
@@ -91,13 +91,17 @@
 
 
               // ONLINE OFFLINE START
-              $(document).ready(function(){
-                setTimeout(function() {
-                  $('p.counsellor__offline').addClass('hidden');
-                  $('p.counsellor__online').removeClass('hidden');
-                  $('p.counsellor__online').addClass('animate--boing');
-                }, 7000);
-              });
+              // $(document).ready(function(){
+              //   $(document).keyup(function(e) {
+              //     if (e.which == 48) {
+              //       console.log('DETECTED 48!!');
+              //         $('p.counsellor__offline').addClass('hidden');
+              //         $('p.counsellor__online').removeClass('hidden');
+              //         $('p.counsellor__online').addClass('animate--boing');
+              //       return false;
+              //     }
+              //   });
+              // });
               // ONLINE OFFLINE END
               </script>
             <% end %>
