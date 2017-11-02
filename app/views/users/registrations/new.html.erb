@@ -15,8 +15,15 @@
               <div>
                 <h3 class="counsellor__name"><%= counsellor.first_name %> <%= counsellor.last_name %></h3>
                 <h5 class="counsellor__expertise">Expertise: <%= counsellor.specialty_list %></h5>
-                <p class="summary"><%= counsellor.first_name %> is a trained and accredited by the professional body the British Association for Counselling and Psychotherapy. There's an event so we've migrated to the tables.</p>
-                <p class="whole invisible"><%= counsellor.first_name %> is a trained and accredited by the professional body the British Association for Counselling and Psychotherapy. There's an event so we've migrated to the tables.<br><br>Psychology is the science of behavior and mind, embracing all aspects of conscious and unconscious experience as well as thought. It is an academic discipline and a social science which seeks to understand individuals and groups by establishing general principles and researching specific cases.<br><br>In this field, a professional practitioner or researcher is called a psychologist and can be classified as a social, behavioral, or cognitive scientist. Psychologists attempt to understand the role of mental functions in individual and social behavior, while also exploring the physiological and biological processes that underlie cognitive functions and behaviors.</p>
+                <p class="summary"><%= counsellor.introduction.split("\n\n")[0] %>
+                </p>
+                <p class="whole invisible">
+                  <%= counsellor.introduction.split("\n\n")[0] %>
+                  <br><br>
+                  <%= counsellor.introduction.split("\n\n")[1] %>
+                  <br><br>
+                  <%= counsellor.introduction.split("\n\n")[2] %>
+                </p>
               </div>
             </div>
           </div>
