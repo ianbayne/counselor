@@ -5,7 +5,7 @@
     <!-- If you are currently a user... -->
     <% if current_user %>
       <!-- For each conversation receipt... -->
-      <% @conversation.receipts_for(current_user).each do |receipt| %>
+      <% @conversation.receipts_for(current_user).reverse.each do |receipt| %>
         <!-- If its from a user, render it with the user layout -->
         <% if receipt.message.sender.name.include?('User') %>
           <%= render 'messages/show_user', receipt: receipt %>
@@ -16,7 +16,7 @@
       <% end %>
 
     <% elsif current_counsellor %>
-      <% @conversation.receipts_for(current_counsellor).each do |receipt| %>
+      <% @conversation.receipts_for(current_counsellor).reverse.each do |receipt| %>
         <% if receipt.message.sender.name.include?('Counsellor') %>
           <%= render 'messages/show_counsellor', receipt: receipt %>
         <% elsif receipt.message.sender.name.include?('User') %>
