@@ -24,6 +24,22 @@
 
 <% content_for(:after_js) do %>
 <script>
+  // GOAL HIDER START
+  $(document).ready(function(){
+    // var btns = $('a.btn--delete');
+    var btns = document.querySelectorAll("a.btn--delete");
+    console.log(btns);
+    btns.forEach(function(btn, i) {
+      btn.addEventListener("click", function(e) {
+        console.log(e.target);
+        // CONTINUE HERE GET li TO SCALE Y?
+      });
+    });
+  });
+    // setTimeout(function() {}, 7000);
+  // GOAL HIDER END
+
+
   // var checkButtons = document.querySelectorAll(".btn--check");
   // checkButtons.forEach(function(button, i) {
     // button.addEventListener("click", function(e){
@@ -34,12 +50,12 @@
     // });
   // });
 
-  var goalChecks = $(".btn--check");
-  $.each(goalChecks, (function(i, check) {
-    check.addEventListener("click", function(e) {
-    var p = $(e.target).closest("p.goal__list--text");
-    p.toggleClass("done");
-    });
-  }));
+  // var goalChecks = $(".btn--check");
+  // $.each(goalChecks, (function(i, check) {
+  //   check.addEventListener("click", function(e) {
+  //   var p = $(e.target).closest("p.goal__list--text");
+  //   p.toggleClass("done");
+  //   });
+  // }));
 </script>
 <% end %>
