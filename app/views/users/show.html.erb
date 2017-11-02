@@ -33,7 +33,17 @@
                   $('.calendar').each(function(){
                     var calendar = $(this);
                     calendar.fullCalendar({
-                      header: false,
+                      // aspectRatio: 1.45,
+                      // height: 304,
+                      customButtons: {
+                        customToday: {
+                          icon: 'bullet',
+                        }
+                      },
+                      header: {
+                        left: 'title',
+                        right: 'prev, customToday, next'
+                      },
                       selectable: true,
                       selectHelper: true,
                       editable: true,
@@ -72,6 +82,12 @@
                 })
               };
               $(document).ready(function(){initialize_calendar()});
+
+              // 999
+              var calHeight = $("#dashcard__calendar").height();
+              console.log(calHeight);
+              $('#calendar').fullCalendar('option', 'height', 900);
+
               </script>
             <% end %>
           </div>

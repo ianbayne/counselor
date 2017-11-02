@@ -1,40 +1,69 @@
 #dashcard__calendar {
-  .fc th, .fc td {
-    border: 1px solid $color__theme--main-light;
-    padding: 0;
-    vertical-align: top;
-  }
-  .fc-unthemed td.fc-today {
-    background: rgba(255, 255, 255, 0.9) !important;
-    border-radius: 0 !important;
-  }
-  table {
+  .fc-left h2 {
     color: $white;
-    font-size: 0.95em;
+    font-size: 20px;
   }
-  thead {
-    th.fc-day-header {
-      font-weight: normal;
-      font-size: 16px;
-      line-height: 1.4;
-    }
+  .fc-right button {
+    all: unset;
+    color: $white;
+    font-size: 20px;
+    line-height: 0;
   }
-  tbody {
-    div.fc-bg {
-      // display: none;
-      .fc th, .fc td {
-        border: 1px solid $color__theme--main-light;
-        padding: 0;
-        vertical-align: top;
-      }
-      // .fc-basic-view .fc-week-number, .fc-basic-view .fc-day-number {
-        // padding: 4px;
-      // }
-    }
-    div.fc-content-skeleton {
-      // display: none;
-    }
+  .fc-toolbar.fc-header-toolbar {
+    margin-bottom: 12px;
   }
+  .fc-icon-bullet:after {
+    content: "\2022";
+    font-weight: regular;
+    font-size: 200%;
+    top: 10%;
+  }
+  .fc button .fc-icon {
+    all: unset;
+    position: relative;
+    top: -0.05em;
+    margin: 0 .2em;
+    vertical-align: middle;
+  }
+  // .fc-basic-view .fc-body .fc-row {
+  //   min-height: 2.87em;
+  // }
+  // .fc th, .fc td {
+  //   border: 1px solid $color__theme--main-light !important;
+  //   padding: 0 !important;
+  //   vertical-align: top !important;
+  // }
+  // .fc-unthemed td.fc-today {
+  //   background: rgba(255, 255, 255, 0.9) !important;
+  //   border-radius: 0 !important;
+  // }
+  // table {
+  //   color: $white;
+  //   font-size: 0.95em;
+  // }
+  // thead {
+  //   th.fc-day-header {
+  //     font-weight: normal;
+  //     font-size: 16px;
+  //     line-height: 1.4;
+  //   }
+  // }
+  // tbody {
+  //   div.fc-bg {
+  //     // display: none;
+  //     .fc th, .fc td {
+  //       border: 1px solid $color__theme--main-light;
+  //       padding: 0;
+  //       vertical-align: top;
+  //     }
+  //     // .fc-basic-view .fc-week-number, .fc-basic-view .fc-day-number {
+  //       // padding: 4px;
+  //     // }
+  //   }
+  //   div.fc-content-skeleton {
+  //     // display: none;
+  //   }
+  // }
 }
 #new_appointment {
   & .form-group {
