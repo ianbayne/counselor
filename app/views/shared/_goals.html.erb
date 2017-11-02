@@ -1,25 +1,26 @@
-<h5 class="font__color--white">Goals</h5>
+<div class="width--same-as-graph">
+  <h5 class="font__color--white">Goals</h5>
+  <ul class="goal__list--container">
+    <% @user.goals.each do |goal| %>
 
-<ul class="goal__list--container">
-  <% @user.goals.each do |goal| %>
+      <li class="flex--vh-spb">
+        <p class="goal__list--text font__color--white"><%= goal[:content]%></p>
+        <div class="button__case">
+          <!-- <a class="btn btn--check"><i class="fa fa-check" aria-hidden="true"></i></a> -->
+          <%= link_to "<i class='fa fa-times' aria-hidden='true'></i>".html_safe, goal_path(goal.id), method: :delete, class: 'btn btn--delete' %>
+        </div>
+      </li>
 
-    <li class="flex--vh-spb">
-      <p class="goal__list--text font__color--white"><%= goal[:content]%></p>
-      <div class="button__case">
-        <!-- <a class="btn btn--check"><i class="fa fa-check" aria-hidden="true"></i></a> -->
-        <%= link_to "<i class='fa fa-times' aria-hidden='true'></i>".html_safe, goal_path(goal.id), method: :delete, class: 'btn btn--delete' %>
-      </div>
-    </li>
+    <% end %>
+  </ul>
 
+  <%= form_for(@goal) do |f| %>
+    <%= f.text_field :content, class: "goal__input", :placeholder => "New Goal" %>
+    <div class="button__case">
+      <%= f.submit '+', :class => 'btn btn--invert btn--xs goal__btn' %>
+    </div>
   <% end %>
-</ul>
-
-<%= form_for(@goal) do |f| %>
-  <%= f.text_field :content, class: "goal__input", :placeholder => "New Goal" %>
-  <div class="button__case">
-    <%= f.submit '+', :class => 'btn btn--invert btn--xs goal__btn' %>
-  </div>
-<% end %>
+</div>
 
 <% content_for(:after_js) do %>
 <script>
