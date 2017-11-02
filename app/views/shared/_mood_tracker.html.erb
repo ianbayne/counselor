@@ -10,7 +10,7 @@
   <% else %>
     <h5 class="font__color--white">Mood Tracker</h5>
     <p class="font__color--white"><%= @start_day %> to <%= @end_day %></p>
-  <%= line_chart @ten_days_moods.limit(10).group_by_day(:created_at).sum(:mood),
+  <%= line_chart @ten_days_moods.group_by_day(:created_at).sum(:mood),
     # use google chart, options are below
     # https://developers.google.com/chart/interactive/docs/gallery/linechart
     adapter: "google",
