@@ -2,14 +2,16 @@
   <div class="col-xs-12 col-sm-12 col-md-12">
     <div class="row height__no-nav">
 
+      <!-- CHAT START -->
       <div class="col-xs-12 col-sm-12 col-md-6 flex--vh-center">
           <%= render 'shared/chat' %>
-          <!-- <p><%#= @user.email %></p> -->
-          <!-- <p><%#= @user.user_name %></p> -->
       </div>
+      <!-- CHAT END -->
 
       <div class="col-xs-12 col-sm-12 col-md-6 dashboard--container height--100 background--multiply">
+        <!-- ROW 1 START -->
         <div class="row height--50 dashcard">
+          <!-- COUNSELLOR START -->
           <div id="dashcard__counsellor" class="col-md-4 height--100 flex--vh-center">
             <div class="text-center">
               <h5 class="font__color--white">Your Counsellor</h5>
@@ -18,54 +20,57 @@
               <!-- <a class="font__color--white font__size--tc change__counsellor">Prefer a different counsellor?</a> -->
             </div>
           </div>
-
-            <div id="dashcard__calendar" class="col-md-8 height--100 flex--h-center">
-
+          <!-- COUNSELLOR END -->
+          <!-- CALENDAR START  -->
+          <div id="dashcard__calendar" class="col-md-8 height--100 flex--h-center">
             <%= stylesheet_link_tag 'calendar', media: 'all' %>
-
             <div class='calendar'></div>
-
-            <!-- <div id="calendar"></div> -->
-
             <% content_for(:after_js) do %>
               <script>
-
                 var initialize_calendar;
+                // INITIALIZE CALENDAR START
                 initialize_calendar = function() {
                   $('.calendar').each(function(){
                     var calendar = $(this);
                     calendar.fullCalendar({
-                      header: false,
-                      selectable: true,
-                      selectHelper: true,
                       editable: true,
                       eventLimit: true,
-
+                      fixedWeekCount: false,
+                      height: 'parent',
+                      selectable: true,
+                      selectHelper: true,
+                      // timeFormat: '(h:mm)',
+                      timeFormat: 'H:mm',
+                      customButtons: {
+                        customToday: {
+                          icon: 'bullet',
+                        }
+                      },
+                      header: {
+                        left: 'title',
+                        right: 'prev, today, next'
+                      },
                       select: function(start, end) {
                         $.getScript('/appointments/new', function() {
                           $('#event_date_range').val(moment(start).format("MM/DD/YYYY HH:mm") + ' - ' + moment(end).format("MM/DD/YYYY HH:mm"));
                           date_range_picker();
                           $('.start_hidden').val(moment(start).format('YYYY-MM-DD HH:mm'));
                           $('.end_hidden').val(moment(end).format('YYYY-MM-DD HH:mm'));
-
                           $('.time-picker').change(function(e) {
                             var time = $(e.currentTarget).val();
                             var date = $('.start_hidden').val().split(' ')[0];
                             $('.start_hidden').val(date + ' ' + time);
                           });
                         });
-
                         calendar.fullCalendar('unselect');
                       },
                     events: [
                       <% @appointments.each do |appointment| %>
                         {
-
                           start  : <%= appointment.start_time.strftime("%Y-%m-%dT%H:%M").to_json.html_safe %>,
                           end    : <%= appointment.end_time.strftime("%Y-%m-%dT%H:%M").to_json.html_safe %>,
                           title    : "",
                           url    : <%= appointment.url.to_json.html_safe %>
-
                         },
                       <% end %>
                     ],
@@ -78,23 +83,32 @@
                   });
                 })
               };
+              // INITIALIZE CALENDAR END
               $(document).ready(function(){initialize_calendar()});
-
               </script>
             <% end %>
           </div>
+          <!-- CALENDAR END  -->
         </div>
+        <!-- ROW 1 END -->
 
+        <!-- ROW 2 START -->
         <div class="row height--50 dashcard">
+          <!-- GOALS START -->
           <div id="dashcard__goals" class="col-md-6 height--100 flex--h-center">
             <div class="width--100">
               <%= render 'shared/goals' %>
             </div>
           </div>
+          <!-- GOALS END -->
+          <!-- MOOD TRACKER START -->
           <div id="dashcard__mood" class="col-md-6 height--100 flex--h-center">
             <%= render 'shared/mood_tracker' %>
           </div>
+          <!-- MOOD TRACKER END -->
         </div>
+        <!-- ROW 2 END -->
+
       </div>
     </div>
   </div>

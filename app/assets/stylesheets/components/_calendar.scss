@@ -1,3 +1,80 @@
+#dashcard__calendar {
+  .fc-left h2 {
+    color: $white;
+    font-size: 20px;
+  }
+  .fc-right button {
+    all: unset;
+    color: $white;
+    font-size: 18px;
+    line-height: 0;
+  }
+  .fc-toolbar.fc-header-toolbar {
+    margin-bottom: 12px;
+  }
+  .fc-icon-bullet:after {
+    content: "\2022";
+    font-weight: regular;
+    font-size: 200%;
+    top: 10%;
+  }
+  .fc button .fc-icon {
+    all: unset;
+    position: relative;
+    top: -0.05em;
+    margin: 0 .2em;
+    vertical-align: middle;
+  }
+
+  .fc-today-button {
+    font-size: 16px !important;
+    margin: 0 8px !important;
+    transform: translateY(-2px) !important;
+  }
+  .fc-day-top.fc-today {
+    border-top: 3px solid $white;
+  }
+  .fc-unthemed td.fc-today {
+    background: transparent !important;
+    border-radius: 0 !important;
+  }
+  .fc-day:hover {
+    background-color: rgba(255,255,255,0.2) !important;
+  }
+  // div.fc-content-skeleton:hover{
+    // td:hover {
+      // background-color: rgba(255,255,255,0.2) !important;
+      // height: 100px;
+      // z-index: -100;
+    // }
+  // }
+  table {
+    color: $white;
+    font-size: 0.95em;
+  }
+  thead {
+    th.fc-day-header {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+  }
+  td {
+    .fc-day-number {
+      padding: 4px 4px 0 0;
+    }
+    &.fc-today.fc-state-highlight {
+      span.fc-day-number {
+        background-color: $white;
+        color: $color__theme--main;
+        font-weight: bolder;
+        padding-bottom: 3px;
+        padding-left: 3px;
+        border-bottom-left-radius: 2px;
+      }
+    }
+  }
+}
 #new_appointment {
   & .form-group {
     margin-bottom: 25px;

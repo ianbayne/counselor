@@ -1,5 +1,6 @@
 %extendDashCard {
   padding: 35px;
+  overflow: hidden;
 }
 #dashcard {
   &__counsellor {
@@ -38,11 +39,9 @@
   }
   &__goals {
     @extend %extendDashCard;
-    overflow: hidden;
   }
   &__mood {
     @extend %extendDashCard;
-    overflow: hidden;
   }
 }
 .dashboard--container {
