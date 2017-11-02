@@ -4,7 +4,7 @@
 </div>
 
 <!-- Main Part -->
-<div class="width--100">
+<div class="">
   <% if @ten_days_moods.empty? %>
     <!-- <p class="font__color--white">Please start to track your mood.</p> -->
   <% else %>
@@ -15,8 +15,8 @@
     # https://developers.google.com/chart/interactive/docs/gallery/linechart
     adapter: "google",
     # max: 5, min: 1,
-    width: "286px",
-    height: "200px",
+    width: "300px",
+    height: "140px",
     colors: ["#FFFFFF"],
     library: {
       curveType: "none", # "function" to be curved line
