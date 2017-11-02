@@ -25,7 +25,6 @@
           <div id="dashcard__calendar" class="col-md-8 height--100 flex--h-center">
             <%= stylesheet_link_tag 'calendar', media: 'all' %>
             <div class='calendar'></div>
-            <!-- <div id="calendar"></div> -->
             <% content_for(:after_js) do %>
               <script>
                 var initialize_calendar;
@@ -33,8 +32,12 @@
                   $('.calendar').each(function(){
                     var calendar = $(this);
                     calendar.fullCalendar({
-                      // aspectRatio: 1.45,
-                      // height: 304,
+                      editable: true,
+                      eventLimit: true,
+                      fixedWeekCount: false,
+                      height: 'parent',
+                      selectable: true,
+                      selectHelper: true,
                       customButtons: {
                         customToday: {
                           icon: 'bullet',
@@ -42,12 +45,8 @@
                       },
                       header: {
                         left: 'title',
-                        right: 'prev, customToday, next'
+                        right: 'prev, today, next'
                       },
-                      selectable: true,
-                      selectHelper: true,
-                      editable: true,
-                      eventLimit: true,
                       select: function(start, end) {
                         $.getScript('/appointments/new', function() {
                           $('#event_date_range').val(moment(start).format("MM/DD/YYYY HH:mm") + ' - ' + moment(end).format("MM/DD/YYYY HH:mm"));
@@ -82,12 +81,6 @@
                 })
               };
               $(document).ready(function(){initialize_calendar()});
-
-              // 999
-              var calHeight = $("#dashcard__calendar").height();
-              console.log(calHeight);
-              $('#calendar').fullCalendar('option', 'height', 900);
-
               </script>
             <% end %>
           </div>
