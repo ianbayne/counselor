@@ -69,9 +69,9 @@ counsellor = Counsellor.new(
 counsellor.specialty_list.add([:Work, :Relationship, :Loss])
 
 introduction = "Hi there.
-My name is Ian and I am a Mental Health and Addictions Counselor licensed in Japan with over 8 years of clinical experience.
+My name is Ian and I am a Mental Health and Addictions Counselor licensed in Japan with over 8 years of clinical experience.\n\n
 I hold a Masters of Arts in Counseling Psychology.
-I am also certified with the National Board of Certified Counselors.
+I am also certified with the National Board of Certified Counselors.\n\n
 I have worked with clients with a wide range of concerns
 including depression, anxiety, grief, relationship issues, addiction problems, career challenges, and life transitions.
 I have also helped individuals with a history of trauma, including emotional and physical abuse."
@@ -101,7 +101,7 @@ counsellor.specialty_list.add([:Work, :Relationship, :Financial])
 introduction = "I am a Licensed Professional Counselor in the Tokyo, Japan.
 I received a Master's Degree in Counseling Psychology at Avila University in Kansas City,
 Missouri. I added a certification as a Personal Trainer through Smart Fitness because mental health,
-diet and exercise go hand in hand. "
+diet and exercise go hand in hand."
 
 counsellor.introduction = introduction
 counsellor.save!
@@ -149,10 +149,11 @@ counsellor.specialty_list.add([:Work, :Relationship, :Loss])
 
 introduction = "I have a warm and friendly style
 and strongly believe in the importance of the therapeutic bond
-and building a healthy and trusting relationships with all of my clients.
+and building a healthy and trusting relationships with all of my clients.\n\n
 When working with me you can expect me to take a strong interest in your case
-and concern for your well-being. I own a sucessful private practice,
-and am looking forward to bringing my services to many of you through BetterHelp's online counseling services.
+and concern for your well-being.\n\n 
+I own a sucessful private practice,
+and am looking forward to bringing my services to many of you through Counsellor's online counseling services.
 Take care and I look forward to working with you!"
 
 counsellor.introduction = introduction
@@ -175,13 +176,13 @@ counsellor = Counsellor.new(
 
 counsellor.specialty_list.add([:Work, :Relationship, :Loss])
 
-introduction = "I have a warm and friendly style
-and strongly believe in the importance of the therapeutic bond
-and building a healthy and trusting relationships with all of my clients.
-When working with me you can expect me to take a strong interest in your case
-and concern for your well-being. I own a sucessful private practice,
-and am looking forward to bringing my services to many of you through Counsellor.tokyo online counseling services.
-Take care and I look forward to working with you!"
+introduction = "I am a Licensed Professional Counselor in the Tokyo, Japan.
+I received a Master's Degree in Counseling Psychology at Tokyo University.\n\n
+I added a certification as a Personal Trainer through Smart Fitness because mental health,
+diet and exercise go hand in hand.\n\n
+I have over 15 years experience in the counseling field addressing depression, anxiety, anger, trauma/abuse and addiction.
+I am also very comfortable providing crisis interventions to those
+that may be experiencing immediate distress!"
 
 counsellor.introduction = introduction
 counsellor.save!
