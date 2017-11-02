@@ -44,11 +44,12 @@ class UsersController < ApplicationController
 
     # Is this the reason why conversations don't show the initial text box if
     # a counselor has more than one user?
-    if @user.mailbox.conversations.participant(@counsellor).last
-      @conversation = @user.mailbox.conversations.participant(@counsellor).last
-    else
-      @recipients = @counsellor
-    end
+    # if @user.mailbox.conversations.participant(@counsellor).last.present?
+    #   @conversation = @user.mailbox.conversations.participant(@counsellor).last
+    # else
+    #   @recipients = @counsellor
+    # end
 
+    @conversation = @counsellor.mailbox.conversations.participant(@user).first
   end
 end
