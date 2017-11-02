@@ -363,7 +363,7 @@
   <div class="post right"></div>
   <div class="pane">
     <div class="headline sign-text-color">
-      503
+      500
     </div>
     <div class="context sign-text-color">
       Looks like we're having<br>
@@ -373,7 +373,7 @@
 </div>
 <div class="text-container">
   <div class="headline secondary-text-color">
-    503
+    500
   </div>
   <div class="context primary-text-color">
 
@@ -448,7 +448,7 @@
 
 
      ErrorPage.prototype.handleStatusFetchSuccess = function (pageType, data) {
-       if (pageType == '503') {
+       if (pageType == '500') {
          $('#replace-with-fetched-data').html(data.status.description);
        } else {
          if (!!data.scheduled_maintenances.length) {
@@ -475,7 +475,7 @@
        var url = ''
          , self = this;
 
-       if (pageType == '503') {
+       if (pageType == '500') {
          url = pageUrl + '/api/v2/status.json';
        }
        else {
@@ -494,7 +494,7 @@
        });
 
      };
-     var ep = new ErrorPage('body', "503", "sign");
+     var ep = new ErrorPage('body', "500", "sign");
      ep.initialize();
 
      // hack to make sure content stays centered >_<
