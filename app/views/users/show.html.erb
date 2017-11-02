@@ -17,7 +17,9 @@
             <div class="text-center">
               <h5 class="font__color--white">Your Counsellor</h5>
               <%= cl_image_tag @counsellor.photo, crop: :fill %>
-              <h4 class="font__color--white"><%= @counsellor.first_name %><br><%= @counsellor.last_name %></h4>
+              <h4 class="font__color--white"><%= @counsellor.first_name %> <%= @counsellor.last_name %></h4>
+              <p class="counsellor__offline">offline</p>
+              <p class="counsellor__online hidden">online</p>
               <!-- <a class="font__color--white font__size--tc change__counsellor">Prefer a different counsellor?</a> -->
             </div>
           </div>
@@ -49,7 +51,7 @@
                       },
                       header: {
                         left: 'title',
-                        right: 'prev, today, next'
+                        right: 'today, prev, next'
                       },
                       select: function(start, end) {
                         $.getScript('/appointments/new', function() {
@@ -86,6 +88,17 @@
               };
               // INITIALIZE CALENDAR END
               $(document).ready(function(){initialize_calendar()});
+
+
+              // ONLINE OFFLINE START
+              $(document).ready(function(){
+                setTimeout(function() {
+                  $('p.counsellor__offline').addClass('hidden');
+                  $('p.counsellor__online').removeClass('hidden');
+                  $('p.counsellor__online').addClass('animate--boing');
+                }, 7000);
+              });
+              // ONLINE OFFLINE END
               </script>
             <% end %>
           </div>
