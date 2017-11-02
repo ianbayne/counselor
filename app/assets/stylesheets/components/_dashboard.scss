@@ -5,6 +5,7 @@
 #dashcard {
   &__counsellor {
     @extend %extendDashCard;
+    padding: 35px 0 35px 35px;
     position: relative;
     img {
       border-radius: 500px;
@@ -39,6 +40,7 @@
   }
   &__goals {
     @extend %extendDashCard;
+    padding: 35px 0 35px 35px;
   }
   &__mood {
     @extend %extendDashCard;

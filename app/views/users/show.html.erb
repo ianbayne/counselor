@@ -1,14 +1,15 @@
 <div class="wrapper">
   <div class="col-xs-12 col-sm-12 col-md-12">
     <div class="row height__no-nav">
-
+      <!-- COLUMN 1 START -->
       <!-- CHAT START -->
-      <div class="col-xs-12 col-sm-12 col-md-6 flex--vh-center">
+      <div class="col-xs-12 col-sm-12 col-md-5 flex--vh-center">
           <%= render 'shared/chat' %>
       </div>
       <!-- CHAT END -->
-
-      <div class="col-xs-12 col-sm-12 col-md-6 dashboard--container height--100 background--multiply">
+      <!-- COLUMN 1 END -->
+      <!-- COLUMN 2 START -->
+      <div class="col-xs-12 col-sm-12 col-md-7 dashboard--container height--100 background--multiply">
         <!-- ROW 1 START -->
         <div class="row height--50 dashcard">
           <!-- COUNSELLOR START -->
@@ -96,9 +97,7 @@
         <div class="row height--50 dashcard">
           <!-- GOALS START -->
           <div id="dashcard__goals" class="col-md-6 height--100 flex--h-center">
-            <div class="width--100">
               <%= render 'shared/goals' %>
-            </div>
           </div>
           <!-- GOALS END -->
           <!-- MOOD TRACKER START -->
@@ -108,8 +107,8 @@
           <!-- MOOD TRACKER END -->
         </div>
         <!-- ROW 2 END -->
-
       </div>
+      <!-- COLUMN 2 START -->
     </div>
   </div>
 </div>
