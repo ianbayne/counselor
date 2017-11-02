@@ -87,8 +87,8 @@ i += 1
 gimei = Gimei.male
 
 counsellor = Counsellor.new(
-    first_name: gimei.romaji.split(" ")[0],
-    last_name: gimei.romaji.split(" ")[1],
+    first_name: "Ogai",
+    last_name: "Mori",
     age: 42,
     gender: 0,
     email: "counsellor_2@gmail.com",
@@ -112,8 +112,8 @@ i += 1
 gimei = Gimei.male
 
 counsellor = Counsellor.new(
-    first_name: gimei.romaji.split(" ")[0],
-    last_name: gimei.romaji.split(" ")[1],
+    first_name: "Soseki",
+    last_name: "Natsume",
     age: 42,
     gender: 0,
     email: "counsellor_3@gmail.com",
@@ -136,8 +136,8 @@ i += 1
 gimei = Gimei.female
 
 counsellor = Counsellor.new(
-    first_name: gimei.romaji.split(" ")[0],
-    last_name: gimei.romaji.split(" ")[1],
+    first_name: "Ginko",
+    last_name: "Ogino",
     age: 42,
     gender: 1,
     email: "counsellor_4@gmail.com",
@@ -164,8 +164,8 @@ i += 1
 gimei = Gimei.female
 
 counsellor = Counsellor.new(
-    first_name: gimei.romaji.split(" ")[0],
-    last_name: gimei.romaji.split(" ")[1],
+    first_name: "Masako",
+    last_name: "Ogawa",
     age: 42,
     gender: 1,
     email: "counsellor_5@gmail.com",
@@ -192,8 +192,8 @@ i += 1
 gimei = Gimei.female
 
 counsellor = Counsellor.new(
-    first_name: gimei.romaji.split(" ")[0],
-    last_name: gimei.romaji.split(" ")[1],
+    first_name: "Yayoi",
+    last_name: "Yoshioka",
     age: 42,
     gender: 1,
     email: "counsellor_6@gmail.com",
@@ -346,6 +346,8 @@ day = create_mood(user, day, 2)
 day = create_mood(user, day, 3)
 day = create_mood(user, day, 3)
 day = create_mood(user, day, 4)
+
+user.counsellor.send_message(user, "Greetings! Welcome to Counsellor.com! We are glad to have you! Please tell me about yourself and your main concerns. I will respond to you as early as possible. Thank you!", "Greetings!")
 
 p "create user#1"
 p "user_name:", user.user_name
