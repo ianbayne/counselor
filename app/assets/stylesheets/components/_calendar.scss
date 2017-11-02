@@ -38,13 +38,23 @@
     background: transparent !important;
     border-radius: 0 !important;
   }
+  .fc-day:hover {
+    background-color: rgba(255,255,255,0.2) !important;
+  }
+  // div.fc-content-skeleton:hover{
+    // td:hover {
+      // background-color: rgba(255,255,255,0.2) !important;
+      // height: 100px;
+      // z-index: -100;
+    // }
+  // }
   table {
     color: $white;
     font-size: 0.95em;
   }
   thead {
     th.fc-day-header {
-      font-weight: normal;
+      font-weight: 600;
       font-size: 16px;
       line-height: 1.4;
     }

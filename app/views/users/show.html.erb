@@ -28,6 +28,7 @@
             <% content_for(:after_js) do %>
               <script>
                 var initialize_calendar;
+                // INITIALIZE CALENDAR START
                 initialize_calendar = function() {
                   $('.calendar').each(function(){
                     var calendar = $(this);
@@ -38,6 +39,7 @@
                       height: 'parent',
                       selectable: true,
                       selectHelper: true,
+                      timeFormat: 'H(:mm)',
                       customButtons: {
                         customToday: {
                           icon: 'bullet',
@@ -80,6 +82,7 @@
                   });
                 })
               };
+              // INITIALIZE CALENDAR END
               $(document).ready(function(){initialize_calendar()});
               </script>
             <% end %>
