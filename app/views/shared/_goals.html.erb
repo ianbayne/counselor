@@ -3,7 +3,7 @@
   <ul class="goal__list--container">
     <% @user.goals.each do |goal| %>
 
-      <li class="flex--vh-spb">
+      <li class="flex--vh-spb goal">
         <p class="goal__list--text font__color--white"><%= goal[:content]%></p>
         <div class="button__case">
           <!-- <a class="btn btn--check"><i class="fa fa-check" aria-hidden="true"></i></a> -->
@@ -24,19 +24,24 @@
 
 <% content_for(:after_js) do %>
 <script>
+
+
   // GOAL HIDER START
   $(document).ready(function(){
     // var btns = $('a.btn--delete');
-    var btns = document.querySelectorAll("a.btn--delete");
+    var btns = document.querySelectorAll('a.btn--delete');
     console.log(btns);
     btns.forEach(function(btn, i) {
-      btn.addEventListener("click", function(e) {
+      btn.addEventListener('click', function(e) {
         console.log(e.target);
-        // CONTINUE HERE GET li TO SCALE Y?
+        var goal = $(e.target).closest('li.goal');
+        console.log(goal);
+        // goal.addClass('scale--y--0');
+        goal.addClass('active');
       });
     });
   });
-    // setTimeout(function() {}, 7000);
+  // setTimeout(function() {}, 7000);
   // GOAL HIDER END
 
 
