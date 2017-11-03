@@ -34,6 +34,27 @@
   .width--same-as-graph {
     width: 300px;
   }
+  li.goal {
+    // The transition below is for the scale--y--0
+    transition: $duration--md;
+    transform-origin: 50% 0%;
+    position: relative;
+    &:before {
+      // The transition below is for the strike-through
+      transition: $duration--sm;
+      background-color: $white;
+      content: '';
+      height: 2px;
+      width: 0%;
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+    }
+    &.active:before {
+      width: 90%;
+    }
+  }
   .goal__btn {
     background-color: transparent;
     border-radius: 0;
