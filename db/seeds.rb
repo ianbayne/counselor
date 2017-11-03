@@ -99,7 +99,7 @@ counsellor = Counsellor.new(
 counsellor.specialty_list.add([:Work, :Relationship, :Financial])
 
 introduction = "I am a Licensed Professional Counselor in the Tokyo, Japan.\n\n
-I received a Master's Degree in Counseling Psychology at Avila University in Kansas City,Missouri.\n\n
+I received a Master's Degree in Counseling Psychology at Kyoto University.\n\n
 I added a certification as a Personal Trainer through Smart Fitness because mental health,
 diet and exercise go hand in hand."
 
@@ -210,7 +210,7 @@ I have worked in a variety of settings to include both mental health
 and addiction treatment facilities.\n\n
 I employ active listening, interacting with you and inquiring you to share 
 as a way to sort through your emotions, and behaviors in their present and past context. 
-I am eager to guide you to your desired change and personal growth for the future.
+I am eager to guide you to your desired change and personal growth for the future."
 
 counsellor.introduction = introduction
 counsellor.save!
