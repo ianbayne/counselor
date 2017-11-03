@@ -16,9 +16,13 @@ class GoalsController < ApplicationController
   end
 
   def destroy
-    @goal = Goal.find(params[:id])
-    @goal.destroy
-    redirect_to user_path(current_user)
+    if Goal.exists?(id: params[:id])
+      @goal = Goal.find(params[:id])
+      @goal.destroy
+      redirect_to user_path(current_user)
+    else
+      redirect_to user_path(current_user)  
+    end
   end
 
   private
