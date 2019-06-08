@@ -57,7 +57,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
-    chartkick (2.3.2)
+    chartkick (3.2.0)
     cloudinary (1.9.1)
       aws_cf_signer
       rest-client
@@ -281,7 +281,7 @@ DEPENDENCIES
   autoprefixer-rails
   bootstrap-sass (= 3.4.1)
   carrierwave
-  chartkick
+  chartkick (= 3.2.0)
   cloudinary
   coffee-rails
   devise (= 4.6.1)
@@ -315,4 +315,4 @@ RUBY VERSION
    ruby 2.3.4p301
 
 BUNDLED WITH
-   1.16.1
+   2.0.1
