@@ -41,5 +41,5 @@ gem 'fullcalendar-rails'
 
 gem 'acts-as-taggable-on', '~> 5.0'
 gem 'gimei'
-gem 'chartkick', '3.2.0'
+gem 'chartkick', '3.3.0'
 gem 'groupdate'
